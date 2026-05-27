@@ -28,18 +28,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   width: 100%;
+  min-height: 100vh;
   background: #fff;
-  padding: 0;
 }
 
 .greeting-content {
   width: 390px;
   height: 844px;
-  position: relative;
   background: #fff;
-  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .greeting-text-section {
