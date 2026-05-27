@@ -66,10 +66,19 @@ onMounted(() => {
 .welcome-text {
   align-self: stretch;
   text-align: center;
-  font-size: 16px;
-  font-weight: 500;
   line-height: 1.5;
   color: #000;
+}
+
+.welcome-text span {
+  font-family:
+    'Noto Sans KR',
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .user-nickname {
