@@ -25,26 +25,19 @@
 
 <style scoped>
 .greeting-page {
-  width: 100%;
-  min-height: 100vh;
-  background: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0;
-  margin: 0;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
 }
 
 .greeting-content {
   width: 390px;
   height: 844px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
   background: #fff;
-  box-sizing: border-box;
-  margin: 0 auto;
 }
 
 .greeting-text-section {
