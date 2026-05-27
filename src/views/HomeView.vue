@@ -26,7 +26,7 @@
 <style scoped>
 .greeting-page {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: #fff;
   display: flex;
   align-items: center;
@@ -43,6 +43,7 @@
   align-items: center;
   position: relative;
   background: #fff;
+  box-sizing: border-box;
 }
 
 .greeting-text-section {
