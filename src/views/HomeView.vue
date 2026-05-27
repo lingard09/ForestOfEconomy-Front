@@ -1,126 +1,145 @@
 <template>
-  <div class="greeting-page">
-    <div class="greeting-content">
-      <div class="greeting-text-section">
-        <div class="greeting-title">
-          <span>안녕하세요! 경제의 숲에 오신<br />여러분들을 환영합니다 :)</span>
-        </div>
-        <div class="greeting-subtitle">
-          <span>매일매일 시사 경제 공부를 통해<br />열심히 성장해봅시다!</span>
-        </div>
-      </div>
+  <div class="onboarding-page">
+    <div class="app-info">
+      <h1 class="app-title">경제의 숲</h1>
+      <p class="app-subtitle">매일매일 경제 지식 한토막</p>
+    </div>
 
+    <div class="mascot-wrapper">
       <img
-        class="greeting-mascot"
-        src="https://api.builder.io/api/v1/image/assets/TEMP/a107d5a935522d44c6bc4205c76df2406a25c54e?width=410"
-        alt="Forest of Economy mascot squirrel"
+        class="mascot-image"
+        src="https://api.builder.io/api/v1/image/assets/TEMP/00ba7a438bda158e6cda90755d70f5714d3e5e80?width=427"
+        alt="경제의 숲 마스코트"
       />
+    </div>
 
-      <button class="greeting-button">시작하기</button>
+    <div class="social-login-section">
+      <hr class="divider" />
+      <div class="social-icons">
+        <img
+          class="social-icon"
+          src="https://api.builder.io/api/v1/image/assets/TEMP/aedc79130e07ecc687d42d6aecb85d8fb7f3c074?width=81"
+          alt="구글 로그인"
+        />
+        <img
+          class="social-icon naver-icon"
+          src="https://api.builder.io/api/v1/image/assets/TEMP/6db46ead6f02484dfd98268044c3c290f1cc93cf?width=81"
+          alt="네이버 로그인"
+        />
+        <img
+          class="social-icon kakao-icon"
+          src="https://api.builder.io/api/v1/image/assets/TEMP/1aa3797f7c58f7c34b3e4138a4e2bea2aec57fe9?width=81"
+          alt="카카오 로그인"
+        />
+      </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
-
 <style scoped>
-.greeting-page {
+.onboarding-page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
   min-height: 100vh;
   background: #fff;
+  padding: 80px 24px 60px;
 }
 
-.greeting-content {
-  width: 390px;
-  height: 844px;
-  background: #fff;
-  position: relative;
+.app-info {
   display: flex;
   flex-direction: column;
-}
-
-.greeting-text-section {
-  position: absolute;
-  top: 170px;
-  left: 32px;
-  width: 326px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
   align-items: center;
-}
-
-.greeting-title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   gap: 5px;
-  align-self: stretch;
 }
 
-.greeting-title span {
-  font-family: "Noto Sans KR", -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: normal;
+.app-title {
+  font-family: 'Yde street', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
   color: #000;
   text-align: center;
-  align-self: stretch;
-}
-
-.greeting-subtitle {
-  width: 326px;
-  height: 52px;
-}
-
-.greeting-subtitle span {
-  font-family: "Noto Sans KR", -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
   line-height: normal;
+}
+
+.app-subtitle {
+  font-family: 'Noto Sans KR', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
   color: #000;
   text-align: center;
-  display: block;
+  line-height: normal;
 }
 
-.greeting-mascot {
-  position: absolute;
-  top: 407px;
-  left: 87px;
-  width: 205px;
-  height: 236px;
-  aspect-ratio: 86/99;
-}
-
-.greeting-button {
-  position: absolute;
-  top: 715px;
-  left: 32px;
-  width: 325px;
-  height: 50px;
-  padding: 15px 120px;
-  border: none;
-  border-radius: 30px;
-  background: var(--Color-3, #0a6e3c);
-  color: #fff;
-  font-family: "Noto Sans KR", -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
+.mascot-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  flex: 1;
 }
 
-.greeting-button:hover {
-  opacity: 0.9;
+.mascot-image {
+  width: 213px;
+  height: auto;
+  max-width: 60vw;
 }
 
-.greeting-button:active {
+.social-login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.divider {
+  width: 230px;
+  border: none;
+  border-top: 1px solid #d9d9d9;
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+
+.social-icon {
+  width: 41px;
+  height: 41px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.social-icon:hover {
   opacity: 0.8;
+}
+
+.naver-icon {
+  border-radius: 24px;
+}
+
+.kakao-icon {
+  border-radius: 22px;
+}
+
+@media (min-width: 768px) {
+  .onboarding-page {
+    padding: 120px 24px 80px;
+  }
+
+  .app-title {
+    font-size: 32px;
+  }
+
+  .app-subtitle {
+    font-size: 18px;
+  }
+
+  .mascot-image {
+    width: 280px;
+  }
 }
 </style>
