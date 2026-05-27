@@ -55,7 +55,12 @@
 }
 
 .app-title {
-  font-family: 'Yde street', -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    'Yde street',
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 27px;
   font-weight: 700;
   color: #000;
@@ -64,7 +69,12 @@
 }
 
 .app-subtitle {
-  font-family: 'Noto Sans KR', -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    'Noto Sans KR',
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 400;
   color: #000;
