@@ -101,7 +101,7 @@
 
 .greeting-button {
   position: absolute;
-  bottom: 715px;
+  top: 715px;
   left: 32px;
   width: 325px;
   height: 50px;
