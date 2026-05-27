@@ -31,6 +31,7 @@
   min-height: 100vh;
   width: 100%;
   background: #fff;
+  padding: 0;
 }
 
 .greeting-content {
@@ -38,6 +39,7 @@
   height: 844px;
   position: relative;
   background: #fff;
+  flex-shrink: 0;
 }
 
 .greeting-text-section {
