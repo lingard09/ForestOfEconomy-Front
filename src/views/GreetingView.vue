@@ -16,12 +16,20 @@
         alt="Forest of Economy mascot squirrel"
       />
 
-      <button class="greeting-button">시작하기</button>
+      <button class="greeting-button" @click="goToNamesetting">시작하기</button>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const goToNamesetting = () => {
+  router.push('/namesetting')
+}
+</script>
 
 <style scoped>
 .greeting-page {
