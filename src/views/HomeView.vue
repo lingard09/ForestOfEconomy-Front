@@ -8,7 +8,7 @@
     <div class="mascot-wrapper">
       <img
         class="mascot-image"
-        src="https://api.builder.io/api/v1/image/assets/TEMP/00ba7a438bda158e6cda90755d70f5714d3e5e80?width=427"
+        src="../assets/home_mascot.png"
         alt="경제의 숲 마스코트"
       />
     </div>

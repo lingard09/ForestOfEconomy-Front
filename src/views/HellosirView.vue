@@ -23,7 +23,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const nickname = ref('사용자')
 
 onMounted(() => {
@@ -31,6 +33,11 @@ onMounted(() => {
   if (storedNickname) {
     nickname.value = storedNickname
   }
+
+  // 3초 뒤에 알림 제안 화면(/notisuggest)으로 자동 이동
+  setTimeout(() => {
+    router.push('/notisuggest')
+  }, 3000)
 })
 </script>
 
