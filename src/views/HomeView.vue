@@ -44,6 +44,7 @@
   position: relative;
   background: #fff;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .greeting-text-section {
