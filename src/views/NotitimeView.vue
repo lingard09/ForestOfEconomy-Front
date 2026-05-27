@@ -1,13 +1,13 @@
 <template>
-  <div class="notitime-page">
-    <div class="notitime-content">
+  <div class="app-page-wrapper">
+    <div class="app-content-container">
       <!-- 상단 질문 영역 (알림 종 아이콘 + 텍스트) -->
       <div class="header-section">
         <img class="bell-icon" src="../assets/bell.png" alt="알림 종" />
-        <div class="header-title">언제 알람을 드릴까요?</div>
+        <div class="header-title global-font-noto">언제 알람을 드릴까요?</div>
       </div>
 
-      <!-- 알림 시간대 목록 영역 -->
+      <!-- 알림 시간대 목록 영역 (중앙에 유연하게 배치) -->
       <div class="time-options-list">
         <div
           v-for="option in timeOptions"
@@ -30,18 +30,20 @@
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </div>
-          <span class="option-label">{{ option.label }}</span>
+          <span class="option-label global-font-noto">{{ option.label }}</span>
         </div>
       </div>
 
       <!-- 하단 다음 버튼 -->
-      <button
-        class="submit-button"
-        :disabled="!selectedTime"
-        @click="goToNext"
-      >
-        다음
-      </button>
+      <div class="button-wrapper">
+        <button
+          class="submit-button global-font-noto"
+          :disabled="!selectedTime"
+          @click="goToNext"
+        >
+          다음
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -81,34 +83,13 @@ const goToNext = () => {
 </script>
 
 <style scoped>
-.notitime-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  background: #fff;
-}
-
-.notitime-content {
-  width: 390px;
-  height: 844px;
-  background: #fff;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 32px;
-}
-
 .header-section {
-  position: absolute;
-  top: 160px;
-  width: 326px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  width: 100%;
+  margin-top: 60px;
 }
 
 .bell-icon {
@@ -120,12 +101,6 @@ const goToNext = () => {
 .header-title {
   align-self: stretch;
   text-align: center;
-  font-family:
-    'Noto Sans KR',
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-size: 16px;
   font-weight: 500;
   color: #000;
@@ -133,17 +108,19 @@ const goToNext = () => {
 }
 
 .time-options-list {
-  position: absolute;
-  top: 320px;
-  width: 326px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
+  width: 326px;
+  max-width: 100%;
+  flex: 1;
+  justify-content: center;
+  margin: 30px 0;
 }
 
 .option-item {
   align-self: stretch;
-  height: 60px;
+  height: 58px;
   border-radius: 40px;
   background-color: #f6f6f6;
   border: 1px solid #f6f6f6;
@@ -165,8 +142,8 @@ const goToNext = () => {
 }
 
 .circle-checkbox {
-  height: 48px;
-  width: 48px;
+  height: 46px;
+  width: 46px;
   border-radius: 50%;
   background-color: #fff;
   display: flex;
@@ -182,12 +159,6 @@ const goToNext = () => {
 }
 
 .option-label {
-  font-family:
-    'Noto Sans KR',
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #000;
@@ -197,21 +168,19 @@ const goToNext = () => {
   color: #fff;
 }
 
+.button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .submit-button {
-  position: absolute;
-  top: 740px;
   width: 146px;
   height: 50px;
   border-radius: 30px;
   border: none;
   background-color: #f6f6f6;
   color: #999;
-  font-family:
-    'Noto Sans KR',
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: not-allowed;
@@ -219,6 +188,7 @@ const goToNext = () => {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
 }
 
 .submit-button:not(:disabled) {
@@ -230,5 +200,15 @@ const goToNext = () => {
 
 .submit-button:not(:disabled):hover {
   opacity: 0.9;
+}
+
+.submit-button:not(:disabled):active {
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .header-section {
+    margin-top: 80px;
+  }
 }
 </style>

@@ -1,22 +1,29 @@
 <template>
-  <div class="greeting-page">
-    <div class="greeting-content">
+  <div class="app-page-wrapper">
+    <div class="app-content-container">
+      <!-- 상단 타이틀 영역 -->
       <div class="greeting-text-section">
         <div class="greeting-title">
-          <span>안녕하세요! 경제의 숲에 오신<br />여러분들을 환영합니다 :)</span>
+          <span class="global-font-noto">안녕하세요! 경제의 숲에 오신<br />여러분들을 환영합니다 :)</span>
         </div>
         <div class="greeting-subtitle">
-          <span>매일매일 시사 경제 공부를 통해<br />열심히 성장해봅시다!</span>
+          <span class="global-font-noto">매일매일 시사 경제 공부를 통해<br />열심히 성장해봅시다!</span>
         </div>
       </div>
 
-      <img
-        class="greeting-mascot"
-        src="https://api.builder.io/api/v1/image/assets/TEMP/a107d5a935522d44c6bc4205c76df2406a25c54e?width=410"
-        alt="Forest of Economy mascot squirrel"
-      />
+      <!-- 중앙 마스코트 캐릭터 -->
+      <div class="mascot-wrapper">
+        <img
+          class="greeting-mascot"
+          src="https://api.builder.io/api/v1/image/assets/TEMP/a107d5a935522d44c6bc4205c76df2406a25c54e?width=410"
+          alt="Forest of Economy mascot squirrel"
+        />
+      </div>
 
-      <button class="greeting-button" @click="goToNamesetting">시작하기</button>
+      <!-- 하단 시작하기 버튼 -->
+      <div class="button-wrapper">
+        <button class="btn-primary-green" @click="goToNamesetting">시작하기</button>
+      </div>
     </div>
   </div>
 </template>
@@ -32,50 +39,22 @@ const goToNamesetting = () => {
 </script>
 
 <style scoped>
-.greeting-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  background: #fff;
-}
-
-.greeting-content {
-  width: 390px;
-  height: 844px;
-  background: #fff;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
 .greeting-text-section {
-  position: absolute;
-  top: 170px;
-  left: 32px;
-  width: 326px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  width: 100%;
 }
 
 .greeting-title {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
+  align-items: center;
   align-self: stretch;
 }
 
 .greeting-title span {
-  font-family:
-    'Noto Sans KR',
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: normal;
@@ -85,17 +64,10 @@ const goToNamesetting = () => {
 }
 
 .greeting-subtitle {
-  width: 326px;
-  height: 52px;
+  align-self: stretch;
 }
 
 .greeting-subtitle span {
-  font-family:
-    'Noto Sans KR',
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: normal;
@@ -104,46 +76,30 @@ const goToNamesetting = () => {
   display: block;
 }
 
-.greeting-mascot {
-  position: absolute;
-  top: 407px;
-  left: 87px;
-  width: 205px;
-  height: 236px;
-  aspect-ratio: 86/99;
-}
-
-.greeting-button {
-  position: absolute;
-  top: 715px;
-  left: 32px;
-  width: 325px;
-  height: 50px;
-  padding: 15px 120px;
-  border: none;
-  border-radius: 30px;
-  background: var(--Color-3, #0a6e3c);
-  color: #fff;
-  font-family:
-    'Noto Sans KR',
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
+.mascot-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  flex: 1;
+  min-height: 150px;
 }
 
-.greeting-button:hover {
-  opacity: 0.9;
+.greeting-mascot {
+  width: 205px;
+  height: auto;
+  max-height: 35vh;
+  object-fit: contain;
 }
 
-.greeting-button:active {
-  opacity: 0.8;
+.button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .greeting-mascot {
+    max-height: 236px;
+  }
 }
 </style>

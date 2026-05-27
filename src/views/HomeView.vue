@@ -42,9 +42,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  min-height: 100vh;
+  min-height: 100%;
+  height: 100%;
   background: #fff;
-  padding: 80px 24px 60px;
+  padding: 40px 24px;
 }
 
 .app-info {
