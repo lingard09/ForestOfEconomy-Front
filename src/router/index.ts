@@ -47,6 +47,11 @@ const router = createRouter({
       name: 'noticonfirm',
       component: () => import('../views/NoticonfirmView.vue'),
     },
+    {
+      path: '/today',
+      name: 'today',
+      component: () => import('../views/TodayView.vue'),
+    },
   ],
 })
 
