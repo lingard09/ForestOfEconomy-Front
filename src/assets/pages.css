@@ -20,7 +20,12 @@
 }
 
 .home-page .app-title {
-  font-family: 'Yde street', -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    'Yde street',
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 27px;
   font-weight: 700;
   color: #000;
@@ -29,7 +34,12 @@
 }
 
 .home-page .app-subtitle {
-  font-family: 'Noto Sans KR', -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    'Noto Sans KR',
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 400;
   color: #000;
@@ -267,7 +277,12 @@
 }
 
 .hellosir-page .welcome-text span {
-  font-family: 'Noto Sans KR', -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    'Noto Sans KR',
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 500;
 }
@@ -350,7 +365,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s, background-color 0.2s;
+  transition:
+    opacity 0.2s,
+    background-color 0.2s;
   box-sizing: border-box;
 }
 
@@ -645,3 +662,1378 @@
   max-height: 100%;
   object-fit: contain;
 }
+
+/* ==========================================================================
+   Levelselect Page Styles
+   ========================================================================== */
+.levelselect-page .parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.levelselect-page .icon {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.levelselect-page .group {
+  align-self: stretch;
+  text-align: center;
+}
+
+.levelselect-page .div3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.5;
+}
+
+.levelselect-page .div4 {
+  font-size: 14px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.levelselect-page .frame-parent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 326px;
+  max-width: 100%;
+  flex: 1;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.levelselect-page .ellipse-parent,
+.levelselect-page .ellipse-group {
+  align-self: stretch;
+  height: 58px;
+  border-radius: 40px;
+  background-color: #f6f6f6;
+  border: 1px solid #f6f6f6;
+  display: flex;
+  align-items: center;
+  padding: 5px 6px;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.levelselect-page .ellipse-parent:hover,
+.levelselect-page .ellipse-group:hover {
+  background-color: #f0f0f0;
+}
+
+.levelselect-page .ellipse-parent.is-active,
+.levelselect-page .ellipse-group.is-active {
+  background-color: #0a6e3c;
+  border-color: #0a6e3c;
+}
+
+.levelselect-page .frame-child,
+.levelselect-page .frame-item {
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.levelselect-page .ellipse-parent.is-active .frame-child,
+.levelselect-page .ellipse-group.is-active .frame-item {
+  background-color: #fff;
+}
+
+.levelselect-page .check-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.levelselect-page .lv-200,
+.levelselect-page .lv-400 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.levelselect-page .ellipse-parent.is-active .lv-200,
+.levelselect-page .ellipse-group.is-active .lv-400 {
+  color: #fff;
+}
+
+.levelselect-page .frame-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: stretch;
+}
+
+.levelselect-page .frame-container {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.levelselect-page .div2 {
+  display: none;
+  align-self: stretch;
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.levelselect-page .ellipse-parent.is-active + .div2,
+.levelselect-page .ellipse-group.is-active + .div2 {
+  display: block;
+}
+
+.levelselect-page .wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.levelselect-page .btn-submit {
+  width: 146px;
+  height: 50px;
+  border-radius: 30px;
+  border: none;
+  background-color: #f6f6f6;
+  color: #999;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.levelselect-page .btn-submit:not(:disabled) {
+  background-color: #262626;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.levelselect-page .btn-submit:not(:disabled):active {
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   Leveloption Page Styles
+   ========================================================================== */
+.leveloption-page .div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
+.leveloption-page .parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.leveloption-page .icon {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.leveloption-page .group {
+  align-self: stretch;
+  text-align: center;
+}
+
+.leveloption-page .div2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.5;
+}
+
+.leveloption-page .div3 {
+  font-size: 14px;
+  color: #555555;
+  margin-top: 4px;
+}
+
+.leveloption-page .container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.leveloption-page .div4 {
+  width: 325px;
+  max-width: 100%;
+  height: 50px;
+  background-color: #0a6e3c;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: opacity 0.2s;
+}
+
+.leveloption-page .div4:hover {
+  opacity: 0.9;
+}
+
+.leveloption-page .div4 .div5 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.leveloption-page .ai {
+  width: 325px;
+  max-width: 100%;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 40px;
+  outline: 1px solid #0a6e3c;
+  outline-offset: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.2s;
+}
+
+.leveloption-page .ai:hover {
+  background-color: rgba(10, 110, 60, 0.05);
+}
+
+.leveloption-page .ai .div5 {
+  color: #0a6e3c;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Beginner Page Styles
+   ========================================================================== */
+.beginner-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  font-family: Inter;
+}
+.beginner-page .div2 {
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  width: 150px;
+  height: 150px;
+  display: none;
+  color: #000;
+}
+.beginner-page .div3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #d9d9d9;
+  width: 150px;
+  height: 150px;
+}
+.beginner-page .div4 {
+  position: absolute;
+  top: 63px;
+  left: 56px;
+}
+.beginner-page .child {
+  position: absolute;
+  top: 346px;
+  left: 46px;
+  width: 298px;
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.beginner-page .item {
+  position: absolute;
+  top: 112px;
+  left: calc(50% - 163px);
+  border-radius: 20px;
+  background-color: #eff1e0;
+  width: 326px;
+  height: 573.4px;
+}
+.beginner-page .frame-parent {
+  position: absolute;
+  top: 446px;
+  left: 90px;
+  width: 211px;
+  height: 188px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 24px;
+  font-family: 'Yde street';
+}
+.beginner-page .frame-group {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.beginner-page .wrapper {
+  align-self: stretch;
+  border-radius: 20px;
+  background-color: #62903f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+}
+.beginner-page .div5 {
+  position: relative;
+}
+.beginner-page .div6 {
+  align-self: stretch;
+  position: relative;
+  color: #62903f;
+}
+.beginner-page .div7 {
+  width: 211px;
+  flex: 1;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Noto Sans KR';
+  color: #000;
+  white-space: pre-wrap;
+  display: inline-block;
+}
+.beginner-page .object-icon {
+  position: absolute;
+  height: 20.84%;
+  top: 24.17%;
+  bottom: 54.99%;
+  left: calc(50% - 85px);
+  max-height: 100%;
+  width: 170px;
+  object-fit: cover;
+}
+.beginner-page .object-icon2 {
+  position: absolute;
+  height: 9.48%;
+  top: 9.48%;
+  bottom: 81.04%;
+  left: calc(50% - 139px);
+  max-height: 100%;
+  width: 64px;
+  object-fit: cover;
+}
+.beginner-page .container {
+  position: absolute;
+  top: 740px;
+  left: calc(50% - 162px);
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+  font-family: 'Noto Sans KR';
+}
+.beginner-page .div8 {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 120px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: none;
+}
+.beginner-page .div8:hover {
+  opacity: 0.9;
+}
+.beginner-page .div9 {
+  position: relative;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Intermediate Page Styles
+   ========================================================================== */
+.intermediate-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  font-family: Inter;
+}
+.intermediate-page .div2 {
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  width: 150px;
+  height: 150px;
+  display: none;
+  color: #000;
+}
+.intermediate-page .div3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #d9d9d9;
+  width: 150px;
+  height: 150px;
+}
+.intermediate-page .div4 {
+  position: absolute;
+  top: 63px;
+  left: 56px;
+}
+.intermediate-page .child {
+  position: absolute;
+  top: 330px;
+  left: 46px;
+  width: 298px;
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.intermediate-page .item {
+  position: absolute;
+  top: 112px;
+  left: calc(50% - 163px);
+  border-radius: 20px;
+  background-color: #fcf7e7;
+  width: 326px;
+  height: 573.4px;
+}
+.intermediate-page .frame-parent {
+  position: absolute;
+  top: 429.89px;
+  left: calc(50% - 131px);
+  width: 262px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 24px;
+  font-family: 'Yde street';
+}
+.intermediate-page .frame-group {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.intermediate-page .wrapper {
+  border-radius: 20px;
+  background-color: #e89a13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+}
+.intermediate-page .div5 {
+  position: relative;
+}
+.intermediate-page .div6 {
+  align-self: stretch;
+  position: relative;
+  color: #e89a13;
+}
+.intermediate-page .div7 {
+  width: 262px;
+  height: 77px;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Noto Sans KR';
+  color: #000;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.intermediate-page .container {
+  position: absolute;
+  top: 740px;
+  left: calc(50% - 162px);
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+  font-family: 'Noto Sans KR';
+}
+.intermediate-page .div8 {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 120px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: none;
+}
+.intermediate-page .div8:hover {
+  opacity: 0.9;
+}
+.intermediate-page .div9 {
+  position: relative;
+  font-weight: 500;
+  color: #fff;
+}
+.intermediate-page .object-icon {
+  position: absolute;
+  height: 9.48%;
+  top: 9.48%;
+  bottom: 81.04%;
+  left: calc(50% - 139px);
+  max-height: 100%;
+  width: 64px;
+  object-fit: cover;
+}
+.intermediate-page .object-icon2 {
+  position: absolute;
+  height: 23.02%;
+  top: 20.85%;
+  bottom: 56.13%;
+  left: calc(50% - 98px);
+  max-height: 100%;
+  width: 195.3px;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Advanced Page Styles
+   ========================================================================== */
+.advanced-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  font-family: Inter;
+}
+.advanced-page .div2 {
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  width: 150px;
+  height: 150px;
+  display: none;
+  color: #000;
+}
+.advanced-page .div3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #d9d9d9;
+  width: 150px;
+  height: 150px;
+}
+.advanced-page .div4 {
+  position: absolute;
+  top: 63px;
+  left: 56px;
+}
+.advanced-page .child {
+  position: absolute;
+  top: 330px;
+  left: 46px;
+  width: 298px;
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.advanced-page .item {
+  position: absolute;
+  top: 112px;
+  left: calc(50% - 163px);
+  border-radius: 20px;
+  background-color: #ede8f3;
+  width: 326px;
+  height: 573.4px;
+}
+.advanced-page .frame-parent {
+  position: absolute;
+  top: 430px;
+  left: 90px;
+  width: 211px;
+  height: 188px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 24px;
+  font-family: 'Yde street';
+}
+.advanced-page .frame-group {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.advanced-page .wrapper {
+  border-radius: 20px;
+  background-color: #945db7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+}
+.advanced-page .div5 {
+  position: relative;
+}
+.advanced-page .div6 {
+  align-self: stretch;
+  position: relative;
+  color: #945db7;
+}
+.advanced-page .div7 {
+  width: 211px;
+  flex: 1;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Noto Sans KR';
+  color: #000;
+  display: inline-block;
+}
+.advanced-page .container {
+  position: absolute;
+  top: 740px;
+  left: calc(50% - 162px);
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+  font-family: 'Noto Sans KR';
+}
+.advanced-page .div8 {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 120px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: none;
+}
+.advanced-page .div8:hover {
+  opacity: 0.9;
+}
+.advanced-page .div9 {
+  position: relative;
+  font-weight: 500;
+  color: #fff;
+}
+.advanced-page .inner {
+  position: absolute;
+  top: 178px;
+  left: 106px;
+  width: 195px;
+  height: 191px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.advanced-page .frame-child {
+  position: absolute;
+  top: 65.22px;
+  left: 74.36px;
+  width: 10.6px;
+  height: 11.5px;
+  flex-shrink: 0;
+}
+.advanced-page .object-icon {
+  position: absolute;
+  height: 9.41%;
+  top: 9.48%;
+  bottom: 81.11%;
+  left: calc(50% - 139px);
+  max-height: 100%;
+  width: 64px;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Teststart Page Styles
+   ========================================================================== */
+.teststart-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+  font-family: 'Noto Sans KR';
+}
+.teststart-page .parent {
+  position: absolute;
+  top: 140px;
+  left: calc(50% - 163px);
+  width: 326px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.teststart-page .icon {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  object-fit: contain;
+}
+.teststart-page .ai-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.teststart-page .ai {
+  align-self: stretch;
+  position: relative;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #000;
+}
+.teststart-page .div2 {
+  width: 302px;
+  height: 19px;
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.teststart-page .wrapper {
+  position: absolute;
+  top: 715.21px;
+  left: calc(50% - 162px);
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+  color: #fff;
+}
+.teststart-page .div3 {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 120px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.teststart-page .div3:hover {
+  opacity: 0.9;
+}
+.teststart-page .div4 {
+  position: relative;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Multiple Choice Problem Page Styles
+   ========================================================================== */
+.problem-multiple-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+  font-family: 'Noto Sans KR';
+}
+.problem-multiple-page .child {
+  position: absolute;
+  top: 40px;
+  left: 33px;
+  width: 31.9px;
+  height: 14.6px;
+  opacity: 0.3;
+}
+.problem-multiple-page .rectangle-parent {
+  position: absolute;
+  top: 80px;
+  left: 33px;
+  width: 325px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.problem-multiple-page .frame-child {
+  height: 3px;
+  width: 28px;
+  position: relative;
+  border-radius: 2px;
+  background-color: #0a6e3c;
+}
+.problem-multiple-page .frame-item {
+  height: 3px;
+  width: 28px;
+  position: relative;
+  border-radius: 2px;
+  background-color: #f6f6f6;
+}
+.problem-multiple-page .instance-parent {
+  position: absolute;
+  top: 400.24px;
+  left: 32.97px;
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.problem-multiple-page .option-item {
+  width: 325px;
+  height: 60px;
+  border-radius: 40px;
+  background-color: #f6f6f6;
+  border: 1px solid #f6f6f6;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px 5px 6px;
+  gap: 16px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.problem-multiple-page .option-item.is-active {
+  background-color: #0a6e3c;
+  color: #fff;
+}
+.problem-multiple-page .check-circle {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.problem-multiple-page .check-icon {
+  width: 24px;
+  height: 24px;
+  display: none;
+}
+.problem-multiple-page .option-item.is-active .check-icon {
+  display: block;
+}
+.problem-multiple-page .div2 {
+  position: relative;
+  font-weight: 500;
+}
+.problem-multiple-page .frame-group {
+  position: absolute;
+  top: 140px;
+  left: 33px;
+  width: 325.9px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  text-align: left;
+}
+.problem-multiple-page .group-wrapper {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+.problem-multiple-page .group-icon {
+  height: 32.2px;
+  width: 30px;
+  position: relative;
+  object-fit: contain;
+}
+.problem-multiple-page .div6 {
+  align-self: stretch;
+  position: relative;
+  font-weight: 500;
+}
+.problem-multiple-page .wrapper {
+  position: absolute;
+  top: 740px;
+  left: calc(50% - 72.57px);
+  border-radius: 30px;
+  background-color: #272727;
+  border: 1px solid #f6f6f6;
+  box-sizing: border-box;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px 60px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+.problem-multiple-page .wrapper:hover {
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   Word Guessing Problem Page Styles
+   ========================================================================== */
+.problem-word-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+  font-family: 'Noto Sans KR';
+}
+.problem-word-page .div2 {
+  position: absolute;
+  top: 200px;
+  left: 33px;
+  font-weight: 500;
+  text-align: left;
+  display: inline-block;
+  width: 325.9px;
+  line-height: 1.4;
+}
+.problem-word-page .rectangle-parent {
+  position: absolute;
+  top: 80px;
+  left: 33px;
+  width: 325px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.problem-word-page .frame-child {
+  height: 3px;
+  width: 28px;
+  position: relative;
+  border-radius: 2.13px;
+  background-color: #0a6e3c;
+}
+.problem-word-page .frame-inner {
+  height: 3px;
+  width: 28px;
+  position: relative;
+  border-radius: 2.13px;
+  background-color: #f6f6f6;
+}
+.problem-word-page .frame-parent {
+  position: absolute;
+  top: 500px;
+  left: calc(50% - 159px);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+  width: 322px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 18px;
+  color: #0a6e3c;
+}
+.problem-word-page .frame-group {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.problem-word-page .letter-btn {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  border: 2px solid #0a6e3c;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+.problem-word-page .letter-btn:hover {
+  background-color: rgba(10, 110, 60, 0.05);
+}
+.problem-word-page .letter-btn.is-used {
+  background-color: #f6f6f6;
+  border-color: #d9d9d9;
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.problem-word-page .div3 {
+  align-self: stretch;
+  position: relative;
+  font-weight: 500;
+}
+.problem-word-page .wrapper13 {
+  position: absolute;
+  top: 740px;
+  left: calc(50% - 75px);
+  border-radius: 30px;
+  background-color: #f6f6f6;
+  border: 1px solid #f6f6f6;
+  box-sizing: border-box;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px 60px;
+  color: #999;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+.problem-word-page .wrapper13.is-active {
+  background-color: #272727;
+  color: #fff;
+  cursor: pointer;
+}
+.problem-word-page .div18 {
+  position: relative;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.problem-word-page .child {
+  position: absolute;
+  top: 40px;
+  left: 33px;
+  width: 31.9px;
+  height: 14.6px;
+  opacity: 0.3;
+}
+.problem-word-page .inner {
+  position: absolute;
+  top: 140px;
+  left: 33.43px;
+  width: 325px;
+  display: flex;
+  align-items: center;
+}
+.problem-word-page .group-icon {
+  height: 32.2px;
+  width: 30px;
+  position: relative;
+  object-fit: contain;
+}
+
+/* 동적 단어 입력 슬롯 영역 스타일 */
+.problem-word-page .word-slots-container {
+  position: absolute;
+  top: 430px;
+  left: calc(50% - 140px);
+  width: 280px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.problem-word-page .word-slot {
+  width: 60px;
+  height: 44px;
+  border-bottom: 3px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a6e3c;
+  cursor: pointer;
+  transition: border-bottom-color 0.2s;
+}
+.problem-word-page .word-slot:hover {
+  border-bottom-color: #0a6e3c;
+}
+.problem-word-page .word-slot.has-value {
+  border-bottom-color: #0a6e3c;
+}
+
+/* ==========================================================================
+   Subjective Problem Page Styles
+   ========================================================================== */
+.problem-subjective-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: left;
+  font-size: 16px;
+  color: #000;
+  font-family: 'Noto Sans KR';
+}
+.problem-subjective-page .div2 {
+  position: absolute;
+  top: 200px;
+  left: 33px;
+  font-weight: 500;
+  display: inline-block;
+  width: 325.9px;
+}
+.problem-subjective-page .parent {
+  position: absolute;
+  top: 400px;
+  left: 97px;
+  width: 195px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 18px;
+}
+.problem-subjective-page .div3 {
+  align-self: stretch;
+  position: relative;
+  font-weight: 500;
+}
+.problem-subjective-page .subjective-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+  width: 100%;
+  font-family: 'Noto Sans KR';
+}
+.problem-subjective-page .subjective-input::placeholder {
+  color: #ccc;
+  font-weight: 400;
+}
+.problem-subjective-page .frame-child {
+  width: 195px;
+  height: 2px;
+  position: relative;
+  background-color: #000;
+  transition: background-color 0.2s ease;
+}
+.problem-subjective-page .subjective-input:focus + .frame-child {
+  background-color: #0a6e3c;
+}
+.problem-subjective-page .child {
+  position: absolute;
+  top: 40px;
+  left: 33px;
+  width: 31.9px;
+  height: 14.6px;
+  opacity: 0.3;
+}
+.problem-subjective-page .rectangle-parent {
+  position: absolute;
+  top: 80px;
+  left: 33px;
+  width: 325px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.problem-subjective-page .frame-item {
+  height: 3px;
+  width: 28px;
+  position: relative;
+  border-radius: 2.13px;
+  background-color: #0a6e3c;
+}
+.problem-subjective-page .frame-child2 {
+  height: 3px;
+  width: 28px;
+  position: relative;
+  border-radius: 2.13px;
+  background-color: #f6f6f6;
+}
+.problem-subjective-page .inner {
+  position: absolute;
+  top: 140px;
+  left: 33.43px;
+  width: 325px;
+  display: flex;
+  align-items: center;
+}
+.problem-subjective-page .group-icon {
+  height: 32.2px;
+  width: 30px;
+  position: relative;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   Levelmeasure Page Styles
+   ========================================================================== */
+.levelmeasure-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  text-align: center;
+  font-size: 20px;
+  color: #000;
+  font-family: Inter;
+}
+.levelmeasure-page .div2 {
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  width: 150px;
+  height: 150px;
+  display: none;
+}
+.levelmeasure-page .div3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #d9d9d9;
+  width: 150px;
+  height: 150px;
+}
+.levelmeasure-page .div4 {
+  position: absolute;
+  top: 63px;
+  left: 56px;
+}
+.levelmeasure-page .parent {
+  position: absolute;
+  top: 330px;
+  left: 46px;
+  width: 298px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-family: 'Yde street';
+}
+.levelmeasure-page .div5 {
+  align-self: stretch;
+  position: relative;
+}
+.levelmeasure-page .div6 {
+  align-self: stretch;
+  position: relative;
+  font-size: 16px;
+  font-family: 'Noto Sans KR';
+}
+.levelmeasure-page .child {
+  position: absolute;
+  top: 140px;
+  left: 96px;
+  width: 200px;
+  height: 168.5px;
+  object-fit: contain;
+}
+
+
+
+
+
+
+

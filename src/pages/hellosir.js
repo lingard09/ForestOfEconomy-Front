@@ -39,9 +39,9 @@ export class Hellosir {
   }
 
   mount(container) {
-    // 3초 뒤에 알림 제안 화면(/notisuggest)으로 자동 이동
+    // 3초 뒤에 난이도 선택 화면(/leveloption)으로 자동 이동
     this.timerId = window.setTimeout(() => {
-      navigateTo('notisuggest')
+      navigateTo('leveloption')
     }, 3000)
   }
 

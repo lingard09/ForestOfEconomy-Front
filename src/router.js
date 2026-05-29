@@ -6,17 +6,39 @@ import { Notisuggest } from './pages/notisuggest'
 import { Notitime } from './pages/notitime'
 import { Noticonfirm } from './pages/noticonfirm'
 import { Today } from './pages/today'
+import { Leveloption } from './pages/leveloption'
+import { Levelselect } from './pages/levelselect'
+import { Beginner } from './pages/beginner'
+import { Intermediate } from './pages/intermediate'
+import { Advanced } from './pages/advanced'
+import { Teststart } from './pages/teststart'
+import { Multiple } from './pages/problem/multiple'
+import { Word } from './pages/problem/word'
+import { Subjective } from './pages/problem/subjective'
+import { Leveltest } from './pages/leveltest'
+import { Levelmeasure } from './pages/levelmeasure'
 
 const routes = {
   '': () => new Home(),
-  'home': () => new Home(),
-  'greeting': () => new Greeting(),
-  'namesetting': () => new Namesetting(),
-  'hellosir': () => new Hellosir(),
-  'notisuggest': () => new Notisuggest(),
-  'notitime': () => new Notitime(),
-  'noticonfirm': () => new Noticonfirm(),
-  'today': () => new Today()
+  home: () => new Home(),
+  greeting: () => new Greeting(),
+  namesetting: () => new Namesetting(),
+  hellosir: () => new Hellosir(),
+  notisuggest: () => new Notisuggest(),
+  notitime: () => new Notitime(),
+  noticonfirm: () => new Noticonfirm(),
+  today: () => new Today(),
+  leveloption: () => new Leveloption(),
+  levelselect: () => new Levelselect(),
+  beginner: () => new Beginner(),
+  intermediate: () => new Intermediate(),
+  advanced: () => new Advanced(),
+  teststart: () => new Teststart(),
+  'problem/multiple': () => new Multiple(),
+  'problem/word': () => new Word(),
+  'problem/subjective': () => new Subjective(),
+  leveltest: () => new Leveltest(),
+  levelmeasure: () => new Levelmeasure(),
 }
 
 let currentPage = null
@@ -43,7 +65,7 @@ export function initRouter(containerId) {
   }
 
   window.addEventListener('popstate', handleRoute)
-  
+
   document.addEventListener('click', (e) => {
     const target = e.target
     const anchor = target.closest('a')
