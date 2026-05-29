@@ -1,21 +1,16 @@
-import { Page, navigateTo } from '../router'
+import { navigateTo } from '../router'
 import bellImg from '../assets/bell.png'
 
-interface TimeOption {
-  label: string
-  value: string
-}
-
-export class Notitime implements Page {
-  private selectedTime: string | null = null
-  private timeOptions: TimeOption[] = [
+export class Notitime {
+  selectedTime = null
+  timeOptions = [
     { label: '아침 (8 AM)', value: 'morning' },
     { label: '점심 (1 PM)', value: 'lunch' },
     { label: '저녁 (8 PM)', value: 'evening' },
     { label: '취침 전 (11 PM)', value: 'night' }
   ]
 
-  render(): string {
+  render() {
     return `
       <div class="app-page-wrapper notitime-page">
         <div class="app-content-container">
@@ -69,13 +64,13 @@ export class Notitime implements Page {
     `
   }
 
-  mount(container: HTMLElement): void {
+  mount(container) {
     const listContainer = container.querySelector('.time-options-list')
-    const submitBtn = container.querySelector('.btn-submit') as HTMLButtonElement
+    const submitBtn = container.querySelector('.btn-submit')
 
     if (listContainer && submitBtn) {
       listContainer.addEventListener('click', (e) => {
-        const optionItem = (e.target as HTMLElement).closest('.option-item') as HTMLElement | null
+        const optionItem = e.target.closest('.option-item')
         if (!optionItem) return
 
         const val = optionItem.dataset.value || null

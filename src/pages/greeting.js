@@ -1,7 +1,7 @@
-import { Page, navigateTo } from '../router'
+import { navigateTo } from '../router'
 
-export class Greeting implements Page {
-  render(): string {
+export class Greeting {
+  render() {
     return `
       <div class="app-page-wrapper greeting-page">
         <div class="app-content-container">
@@ -33,7 +33,7 @@ export class Greeting implements Page {
     `
   }
 
-  mount(container: HTMLElement): void {
+  mount(container) {
     const startBtn = container.querySelector('.btn-start')
     if (startBtn) {
       startBtn.addEventListener('click', () => {

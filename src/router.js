@@ -1,9 +1,3 @@
-export interface Page {
-  render(): string
-  mount?(container: HTMLElement): void
-  unmount?(): void
-}
-
 import { Home } from './pages/home'
 import { Greeting } from './pages/greeting'
 import { Namesetting } from './pages/namesetting'
@@ -13,7 +7,7 @@ import { Notitime } from './pages/notitime'
 import { Noticonfirm } from './pages/noticonfirm'
 import { Today } from './pages/today'
 
-const routes: Record<string, () => Page> = {
+const routes = {
   '': () => new Home(),
   'home': () => new Home(),
   'greeting': () => new Greeting(),
@@ -25,9 +19,9 @@ const routes: Record<string, () => Page> = {
   'today': () => new Today()
 }
 
-let currentPage: Page | null = null
+let currentPage = null
 
-export function initRouter(containerId: string) {
+export function initRouter(containerId) {
   const container = document.getElementById(containerId)
   if (!container) return
 
@@ -37,7 +31,6 @@ export function initRouter(containerId: string) {
       currentPage.unmount()
     }
 
-    // Get clean path without hash (e.g., "/greeting" -> "greeting")
     const path = window.location.pathname.replace(/^\/|\/$/g, '')
     const createPage = routes[path] || routes['home']
     if (!createPage) return
@@ -49,12 +42,10 @@ export function initRouter(containerId: string) {
     }
   }
 
-  // Listen to popstate event (back/forward browser buttons)
   window.addEventListener('popstate', handleRoute)
   
-  // Intercept standard internal links if necessary
   document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement
+    const target = e.target
     const anchor = target.closest('a')
     if (anchor) {
       const href = anchor.getAttribute('href')
@@ -68,10 +59,8 @@ export function initRouter(containerId: string) {
   handleRoute()
 }
 
-export function navigateTo(path: string) {
-  // Push state to browser history
+export function navigateTo(path) {
   window.history.pushState({}, '', `/${path}`)
-  // Dispatch popstate manually so the router captures the location change
   const popStateEvent = new PopStateEvent('popstate')
   window.dispatchEvent(popStateEvent)
 }

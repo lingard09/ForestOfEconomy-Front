@@ -1,8 +1,8 @@
-import { Page, navigateTo } from '../router'
+import { navigateTo } from '../router'
 import bellImg from '../assets/bell.png'
 
-export class Notisuggest implements Page {
-  render(): string {
+export class Notisuggest {
+  render() {
     return `
       <div class="app-page-wrapper notisuggest-page">
         <div class="app-content-container">
@@ -24,7 +24,7 @@ export class Notisuggest implements Page {
     `
   }
 
-  mount(container: HTMLElement): void {
+  mount(container) {
     const acceptBtn = container.querySelector('.btn-accept')
     const declineBtn = container.querySelector('.btn-decline')
 

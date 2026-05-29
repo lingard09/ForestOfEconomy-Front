@@ -1,8 +1,8 @@
-import { Page, navigateTo } from '../router'
+import { navigateTo } from '../router'
 import homeMascotImg from '../assets/home_mascot.png'
 
-export class Home implements Page {
-  render(): string {
+export class Home {
+  render() {
     return `
       <div class="home-page">
         <div class="app-info">
@@ -42,7 +42,7 @@ export class Home implements Page {
     `
   }
 
-  mount(container: HTMLElement): void {
+  mount(container) {
     const socialIcons = container.querySelectorAll('.social-icon')
     socialIcons.forEach(icon => {
       icon.addEventListener('click', () => {

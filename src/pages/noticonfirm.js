@@ -1,14 +1,14 @@
-import { Page, navigateTo } from '../router'
+import { navigateTo } from '../router'
 import notiConfirmImg from '../assets/noti_confirm.png'
 
-export class Noticonfirm implements Page {
-  private notiTime: string = 'morning'
+export class Noticonfirm {
+  notiTime = 'morning'
 
   constructor() {
     this.notiTime = localStorage.getItem('noti-time') || 'morning'
   }
 
-  private formatTimeText(time: string): string {
+  formatTimeText(time) {
     switch (time) {
       case 'morning':
         return '아침 8시'
@@ -23,7 +23,7 @@ export class Noticonfirm implements Page {
     }
   }
 
-  render(): string {
+  render() {
     return `
       <div class="app-page-wrapper noticonfirm-page">
         <div class="app-content-container">
@@ -50,7 +50,7 @@ export class Noticonfirm implements Page {
     `
   }
 
-  mount(container: HTMLElement): void {
+  mount(container) {
     const startBtn = container.querySelector('.btn-start')
     if (startBtn) {
       startBtn.addEventListener('click', () => {

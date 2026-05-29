@@ -1,8 +1,8 @@
-import { Page, navigateTo } from '../router'
+import { navigateTo } from '../router'
 import childImg from '../assets/child.png'
 
-export class Today implements Page {
-  render(): string {
+export class Today {
+  render() {
     return `
       <div class="today-page">
         <div class="today-parent">
@@ -19,7 +19,7 @@ export class Today implements Page {
     `
   }
 
-  mount(container: HTMLElement): void {
+  mount(container) {
     const confirmBtn = container.querySelector('.btn-confirm')
     if (confirmBtn) {
       confirmBtn.addEventListener('click', () => {

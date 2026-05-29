@@ -1,10 +1,10 @@
-import { Page, navigateTo } from '../router'
+import { navigateTo } from '../router'
 import coinImg from '../assets/coin.png'
 
-export class Namesetting implements Page {
-  private nickname: string = ''
+export class Namesetting {
+  nickname = ''
 
-  render(): string {
+  render() {
     return `
       <div class="app-page-wrapper namesetting-page">
         <div class="app-content-container">
@@ -40,15 +40,15 @@ export class Namesetting implements Page {
     `
   }
 
-  mount(container: HTMLElement): void {
-    const inputEl = container.querySelector('.nickname-input') as HTMLInputElement
-    const submitBtn = container.querySelector('.btn-submit') as HTMLButtonElement
+  mount(container) {
+    const inputEl = container.querySelector('.nickname-input')
+    const submitBtn = container.querySelector('.btn-submit')
 
     if (inputEl && submitBtn) {
       inputEl.focus()
 
       inputEl.addEventListener('input', (e) => {
-        const val = (e.target as HTMLInputElement).value
+        const val = e.target.value
         this.nickname = val
         submitBtn.disabled = !val.trim()
       })

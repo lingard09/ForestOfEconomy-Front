@@ -1,10 +1,10 @@
-import { Page, navigateTo } from '../router'
+import { navigateTo } from '../router'
 import coinImg from '../assets/coin.png'
 import mascotImg from '../assets/mascot.png'
 
-export class Hellosir implements Page {
-  private nickname: string = '사용자'
-  private timerId: number | null = null
+export class Hellosir {
+  nickname = '사용자'
+  timerId = null
 
   constructor() {
     const storedNickname = localStorage.getItem('user-nickname')
@@ -13,7 +13,7 @@ export class Hellosir implements Page {
     }
   }
 
-  render(): string {
+  render() {
     return `
       <div class="app-page-wrapper hellosir-page">
         <div class="app-content-container">
@@ -38,14 +38,14 @@ export class Hellosir implements Page {
     `
   }
 
-  mount(container: HTMLElement): void {
+  mount(container) {
     // 3초 뒤에 알림 제안 화면(/notisuggest)으로 자동 이동
     this.timerId = window.setTimeout(() => {
       navigateTo('notisuggest')
     }, 3000)
   }
 
-  unmount(): void {
+  unmount() {
     if (this.timerId) {
       clearTimeout(this.timerId)
       this.timerId = null
