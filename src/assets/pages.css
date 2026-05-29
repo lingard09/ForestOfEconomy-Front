@@ -1,0 +1,647 @@
+/* ==========================================================================
+   Home / Onboarding Page Styles
+   ========================================================================== */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 40px 24px;
+}
+
+.home-page .app-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.home-page .app-title {
+  font-family: 'Yde street', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  line-height: normal;
+}
+
+.home-page .app-subtitle {
+  font-family: 'Noto Sans KR', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  line-height: normal;
+}
+
+.home-page .mascot-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.home-page .mascot-image {
+  width: 213px;
+  height: auto;
+  max-width: 60vw;
+}
+
+.home-page .social-login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.home-page .divider {
+  width: 230px;
+  border: none;
+  border-top: 1px solid #d9d9d9;
+  margin: 0;
+}
+
+.home-page .social-icons {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+
+.home-page .social-icon {
+  width: 41px;
+  height: 41px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.home-page .social-icon:hover {
+  opacity: 0.8;
+}
+
+.home-page .naver-icon {
+  border-radius: 24px;
+}
+
+.home-page .kakao-icon {
+  border-radius: 22px;
+}
+
+@media (min-width: 768px) {
+  .home-page {
+    padding: 120px 24px 80px;
+  }
+  .home-page .app-title {
+    font-size: 32px;
+  }
+  .home-page .app-subtitle {
+    font-size: 18px;
+  }
+  .home-page .mascot-image {
+    width: 280px;
+  }
+}
+
+/* ==========================================================================
+   Greeting Page Styles
+   ========================================================================== */
+.greeting-page .greeting-text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.greeting-page .greeting-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+}
+
+.greeting-page .greeting-title span {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: center;
+  align-self: stretch;
+}
+
+.greeting-page .greeting-subtitle {
+  align-self: stretch;
+}
+
+.greeting-page .greeting-subtitle span {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  text-align: center;
+  display: block;
+}
+
+.greeting-page .mascot-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 150px;
+}
+
+.greeting-page .greeting-mascot {
+  width: 205px;
+  height: auto;
+  max-height: 35vh;
+  object-fit: contain;
+}
+
+.greeting-page .button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .greeting-page .greeting-mascot {
+    max-height: 236px;
+  }
+}
+
+/* ==========================================================================
+   Namesetting Page Styles
+   ========================================================================== */
+.namesetting-page .header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.namesetting-page .icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.namesetting-page .coin-image {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.namesetting-page .instruction-text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+  text-align: center;
+}
+
+.namesetting-page .input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.namesetting-page .nickname-input {
+  width: 200px;
+  border: none;
+  border-bottom: 2px solid #0a6e3c;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+  outline: none;
+  background-color: transparent;
+}
+
+.namesetting-page .nickname-input::placeholder {
+  color: #999;
+  font-weight: 500;
+}
+
+.namesetting-page .button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Hellosir Page Styles
+   ========================================================================== */
+.hellosir-page .parent-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.hellosir-page .coin-icon {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.hellosir-page .welcome-text-wrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hellosir-page .welcome-text {
+  align-self: stretch;
+  text-align: center;
+  line-height: 1.5;
+  color: #000;
+}
+
+.hellosir-page .welcome-text span {
+  font-family: 'Noto Sans KR', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.hellosir-page .user-nickname {
+  color: #0a6e3c;
+}
+
+.hellosir-page .mascot-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 200px;
+}
+
+.hellosir-page .mascot-character {
+  width: 220px;
+  height: auto;
+  max-height: 35vh;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .hellosir-page .mascot-character {
+    max-height: 242px;
+  }
+}
+
+/* ==========================================================================
+   Notisuggest Page Styles
+   ========================================================================== */
+.notisuggest-page .question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.notisuggest-page .bell-icon {
+  width: 36.3px;
+  height: 43px;
+  object-fit: contain;
+}
+
+.notisuggest-page .question-text {
+  align-self: stretch;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+}
+
+.notisuggest-page .button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.notisuggest-page .btn-round-shape {
+  border-radius: 40px;
+}
+
+.notisuggest-page .decline-button {
+  width: 325px;
+  max-width: 100%;
+  height: 50px;
+  border: 1px solid #0a6e3c;
+  border-radius: 40px;
+  background-color: #fff;
+  color: #0a6e3c;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.notisuggest-page .decline-button:hover {
+  background-color: rgba(10, 110, 60, 0.05);
+}
+
+.notisuggest-page .decline-button:active {
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .notisuggest-page .question-container {
+    margin-top: 80px;
+  }
+}
+
+/* ==========================================================================
+   Notitime Page Styles
+   ========================================================================== */
+.notitime-page .header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.notitime-page .bell-icon {
+  width: 36.3px;
+  height: 43px;
+  object-fit: contain;
+}
+
+.notitime-page .header-title {
+  align-self: stretch;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.5;
+}
+
+.notitime-page .time-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 326px;
+  max-width: 100%;
+  flex: 1;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.notitime-page .option-item {
+  align-self: stretch;
+  height: 58px;
+  border-radius: 40px;
+  background-color: #f6f6f6;
+  border: 1px solid #f6f6f6;
+  display: flex;
+  align-items: center;
+  padding: 5px 6px;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.notitime-page .option-item:hover {
+  background-color: #f0f0f0;
+}
+
+.notitime-page .option-item.is-active {
+  background-color: #0a6e3c;
+  border-color: #0a6e3c;
+}
+
+.notitime-page .circle-checkbox {
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+
+.notitime-page .check-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.notitime-page .option-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.notitime-page .option-item.is-active .option-label {
+  color: #fff;
+}
+
+.notitime-page .button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.notitime-page .submit-button {
+  width: 146px;
+  height: 50px;
+  border-radius: 30px;
+  border: none;
+  background-color: #f6f6f6;
+  color: #999;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.notitime-page .submit-button:not(:disabled) {
+  background-color: #262626;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.notitime-page .submit-button:not(:disabled):hover {
+  opacity: 0.9;
+}
+
+.notitime-page .submit-button:not(:disabled):active {
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .notitime-page .header-section {
+    margin-top: 80px;
+  }
+}
+
+/* ==========================================================================
+   Noticonfirm Page Styles
+   ========================================================================== */
+.noticonfirm-page .mascot-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 150px;
+  margin-top: 40px;
+}
+
+.noticonfirm-page .mascot-confirm-image {
+  width: 187px;
+  height: auto;
+  max-height: 30vh;
+  object-fit: contain;
+}
+
+.noticonfirm-page .message-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.noticonfirm-page .confirm-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  align-self: stretch;
+  text-align: center;
+}
+
+.noticonfirm-page .confirm-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
+  align-self: stretch;
+  text-align: center;
+}
+
+.noticonfirm-page .button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .noticonfirm-page .mascot-confirm-image {
+    max-height: 183px;
+  }
+  .noticonfirm-page .mascot-wrapper {
+    margin-top: 0;
+  }
+}
+
+/* ==========================================================================
+   Today Page Styles
+   ========================================================================== */
+.today-page {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  text-align: center;
+  font-size: 24px;
+  color: #000;
+  font-family: 'Yde street';
+}
+
+.today-page .today-parent {
+  position: absolute;
+  top: 315px;
+  left: calc(50% - 149px);
+  width: 298px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.today-page .today-title {
+  align-self: stretch;
+  position: relative;
+}
+
+.today-page .today-subtitle {
+  align-self: stretch;
+  position: relative;
+  font-size: 16px;
+  color: #999;
+}
+
+.today-page .today-btn-wrapper {
+  position: absolute;
+  top: 715px;
+  left: calc(50% - 162px);
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 16px;
+  color: #fff;
+  font-family: 'Noto Sans KR';
+}
+
+.today-page .today-btn {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 40px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 120px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.today-page .today-btn:hover {
+  opacity: 0.9;
+}
+
+.today-page .today-child-img {
+  position: absolute;
+  height: 19.96%;
+  width: 41.69%;
+  top: 14.22%;
+  right: 29.33%;
+  bottom: 65.82%;
+  left: 28.97%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: contain;
+}
