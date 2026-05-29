@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 단어 조합 문제</title>
+  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-page-wrapper problem-word-page">
+    <div class="app-content-container" style="padding: 0; min-height: 844px; overflow: hidden; border-radius: 20px;">
+      <div class="div">
+        <img class="child btn-back" src="assets/arrow_back.png" alt="뒤로가기" style="cursor: pointer;" />
+        
+        <div class="rectangle-parent">
+          <div class="frame-child"></div>
+          <div class="frame-child"></div>
+          <div class="frame-inner"></div>
+          <div class="frame-inner"></div>
+          <div class="frame-inner"></div>
+          <div class="frame-inner"></div>
+          <div class="frame-inner"></div>
+          <div class="frame-inner"></div>
+          <div class="frame-inner"></div>
+          <div class="frame-inner"></div>
+        </div>
+        
+        <div class="div2">최근 미국의 트럼프 대통령은 0000 해협에 대한 해상 지원을 영국, 독일, 중국, 일본, 한국 5개국에 요청했다.</div>
+        
+        <div class="inner">
+          <img class="group-icon" src="assets/acorn.png" alt="도토리" />
+        </div>
+
+        <!-- 동적 단어 입력 슬롯 영역 -->
+        <div class="word-slots-container">
+          <div class="word-slot" data-index="0" style="cursor: pointer;"></div>
+          <div class="word-slot" data-index="1" style="cursor: pointer;"></div>
+          <div class="word-slot" data-index="2" style="cursor: pointer;"></div>
+          <div class="word-slot" data-index="3" style="cursor: pointer;"></div>
+        </div>
+        
+        <div class="frame-parent">
+          <div class="frame-group">
+            <div class="wrapper letter-btn" data-char="아" style="cursor: pointer;"><div class="div3">아</div></div>
+            <div class="wrapper letter-btn" data-char="요" style="cursor: pointer;"><div class="div3">요</div></div>
+            <div class="wrapper letter-btn" data-char="갈" style="cursor: pointer;"><div class="div3">갈</div></div>
+            <div class="wrapper letter-btn" data-char="누" style="cursor: pointer;"><div class="div3">누</div></div>
+            <div class="wrapper letter-btn" data-char="즈" style="cursor: pointer;"><div class="div3">즈</div></div>
+          </div>
+          <div class="frame-group">
+            <div class="wrapper letter-btn" data-char="용" style="cursor: pointer;"><div class="div3">용</div></div>
+            <div class="wrapper letter-btn" data-char="호" style="cursor: pointer;"><div class="div3">호</div></div>
+            <div class="wrapper letter-btn" data-char="에" style="cursor: pointer;"><div class="div3">에</div></div>
+            <div class="wrapper letter-btn" data-char="앙" style="cursor: pointer;"><div class="div3">앙</div></div>
+            <div class="wrapper letter-btn" data-char="이" style="cursor: pointer;"><div class="div3">이</div></div>
+          </div>
+          <div class="frame-group">
+            <div class="wrapper letter-btn" data-char="루" style="cursor: pointer;"><div class="div3">루</div></div>
+            <div class="wrapper letter-btn" data-char="르" style="cursor: pointer;"><div class="div3">르</div></div>
+            <div class="wrapper letter-btn" data-char="무" style="cursor: pointer;"><div class="div3">무</div></div>
+            <div class="wrapper letter-btn" data-char="헤" style="cursor: pointer;"><div class="div3">헤</div></div>
+            <div class="wrapper letter-btn" data-char="샤" style="cursor: pointer;"><div class="div3">샤</div></div>
+          </div>
+        </div>
+        
+        <div class="wrapper13 btn-next">
+          <div class="div18">다음</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const letterBtns = document.querySelectorAll('.letter-btn');
+    const slots = document.querySelectorAll('.word-slot');
+    const nextBtn = document.querySelector('.btn-next');
+    const backBtn = document.querySelector('.btn-back');
+
+    let slotsState = ['', '', '', ''];
+
+    const updateUI = () => {
+      slots.forEach((slot, index) => {
+        const value = slotsState[index];
+        slot.textContent = value;
+        if (value) {
+          slot.classList.add('has-value');
+        } else {
+          slot.classList.remove('has-value');
+        }
+      });
+
+      const isComplete = slotsState.every((val) => val !== '');
+      if (isComplete) {
+        nextBtn.classList.add('is-active');
+      } else {
+        nextBtn.classList.remove('is-active');
+      }
+    };
+
+    letterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('is-used')) return;
+
+        const emptyIndex = slotsState.indexOf('');
+        if (emptyIndex !== -1) {
+          const char = btn.dataset.char;
+          slotsState[emptyIndex] = char;
+          btn.classList.add('is-used');
+          updateUI();
+        }
+      });
+    });
+
+    slots.forEach((slot, index) => {
+      slot.addEventListener('click', () => {
+        const char = slotsState[index];
+        if (!char) return;
+
+        slotsState[index] = '';
+
+        const matchedBtn = Array.from(letterBtns).find(
+          (btn) => btn.dataset.char === char && btn.classList.contains('is-used')
+        );
+        if (matchedBtn) {
+          matchedBtn.classList.remove('is-used');
+        }
+
+        updateUI();
+      });
+    });
+
+    if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        window.history.back();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const isComplete = slotsState.every((val) => val !== '');
+        if (isComplete) {
+          console.log('입력한 답변:', slotsState.join(''));
+          window.location.href = 'today.html';
+        }
+      });
+    }
+
+    updateUI();
+  </script>
+</body>
+</html>

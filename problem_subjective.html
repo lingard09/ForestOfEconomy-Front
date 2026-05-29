@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 주관식 단답형 문제</title>
+  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-page-wrapper problem-subjective-page">
+    <div class="app-content-container" style="padding: 0; min-height: 844px; overflow: hidden; border-radius: 20px;">
+      <div class="div">
+        <img class="child btn-back" src="assets/arrow_back.png" alt="뒤로가기" style="cursor: pointer;" />
+        
+        <div class="rectangle-parent">
+          <div class="frame-item"></div>
+          <div class="frame-item"></div>
+          <div class="frame-item"></div>
+          <div class="frame-child2"></div>
+          <div class="frame-child2"></div>
+          <div class="frame-child2"></div>
+          <div class="frame-child2"></div>
+          <div class="frame-child2"></div>
+          <div class="frame-child2"></div>
+          <div class="frame-child2"></div>
+        </div>
+        
+        <div class="div2">현재 이스라엘의 총리는?</div>
+        
+        <div class="parent">
+          <input type="text" class="div3 subjective-input" placeholder="답안 입력" autofocus />
+          <div class="frame-child underline-line"></div>
+        </div>
+        
+        <div class="inner">
+          <img class="group-icon" src="assets/acorn.png" alt="도토리" />
+        </div>
+
+        <div class="wrapper13 btn-next">
+          <div class="div18">다음</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.querySelector('.subjective-input');
+    const nextBtn = document.querySelector('.btn-next');
+    const backBtn = document.querySelector('.btn-back');
+
+    const updateButtonState = () => {
+      const value = input.value.trim();
+      if (value) {
+        nextBtn.classList.add('is-active');
+      } else {
+        nextBtn.classList.remove('is-active');
+      }
+    };
+
+    if (input) {
+      input.addEventListener('input', updateButtonState);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const value = input.value.trim();
+          if (value) {
+            console.log('입력한 답변:', value);
+            window.location.href = 'today.html';
+          }
+        }
+      });
+    }
+
+    if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        window.history.back();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const value = input.value.trim();
+        if (value) {
+          console.log('입력한 답변:', value);
+          window.location.href = 'today.html';
+        }
+      });
+    }
+
+    updateButtonState();
+  </script>
+</body>
+</html>

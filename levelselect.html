@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 레벨 직접 선택</title>
+  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-page-wrapper levelselect-page">
+    <div class="app-content-container" style="position: relative; background: white; overflow: hidden; min-height: 844px; border-radius: 20px;">
+      
+      <!-- 상단 헤더 영역 -->
+      <div class="parent">
+        <img class="icon" src="assets/coin.png" alt="도토리 코인" />
+        <div class="group">
+          <div class="div3 global-font-noto">본인에게 맞는 레벨을 선택해주세요</div>
+          <div class="div4 global-font-noto">누르면 레벨별 상세 설명을 확인할 수 있어요</div>
+        </div>
+      </div>
+
+      <!-- 레벨 옵션 목록 영역 -->
+      <div class="frame-parent">
+        <div class="frame-group">
+          <!-- 초보 -->
+          <div class="frame-container">
+            <div class="ellipse-parent level-option-item" data-level="beginner" style="cursor: pointer;">
+              <div class="frame-child checkbox-box"></div>
+              <div class="lv-200 global-font-noto">초보 (lv. 200)</div>
+            </div>
+            <div class="div2 global-font-noto">경제 뉴스를 쉽게 이해할 수 있는 수준</div>
+          </div>
+          
+          <!-- 중수 -->
+          <div class="frame-container">
+            <div class="ellipse-group level-option-item" data-level="intermediate" style="cursor: pointer;">
+              <div class="frame-item checkbox-box"></div>
+              <div class="lv-400 global-font-noto">중수 (lv. 400)</div>
+            </div>
+            <div class="div2 global-font-noto">경제 뉴스를 어느 정도 탐독할 수 있는 수준</div>
+          </div>
+        </div>
+        
+        <!-- 고수 -->
+        <div class="frame-container">
+          <div class="ellipse-group level-option-item" data-level="advanced" style="cursor: pointer;">
+            <div class="frame-item checkbox-box"></div>
+            <div class="lv-400 global-font-noto">고수 (lv. 600)</div>
+          </div>
+          <div class="div2 global-font-noto">경제 뉴스를 분석하고, 비판적으로 이해할 수 있는 수준</div>
+        </div>
+      </div>
+
+      <!-- 하단 다음 버튼 -->
+      <div class="wrapper">
+        <button class="btn-submit global-font-noto div5" disabled style="cursor: pointer;">다음</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const listItems = document.querySelectorAll('.level-option-item');
+    const submitBtn = document.querySelector('.btn-submit');
+    let selectedLevel = null;
+
+    listItems.forEach(item => {
+      item.addEventListener('click', () => {
+        selectedLevel = item.dataset.level;
+
+        // 초기화
+        listItems.forEach(el => {
+          el.classList.remove('is-active');
+          const checkbox = el.querySelector('.checkbox-box');
+          if (checkbox) checkbox.innerHTML = '';
+        });
+
+        // 활성화
+        item.classList.add('is-active');
+        const checkbox = item.querySelector('.checkbox-box');
+        if (checkbox) {
+          checkbox.innerHTML = `
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#0a6e3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          `;
+        }
+
+        // 버튼 활성화
+        submitBtn.disabled = !selectedLevel;
+      });
+    });
+
+    submitBtn.addEventListener('click', () => {
+      if (selectedLevel) {
+        localStorage.setItem('user-level', selectedLevel);
+        // 수동 선택 시, 세부 점수는 기본 점수로 동기화
+        let defaultScore = '200';
+        if (selectedLevel === 'intermediate') defaultScore = '400';
+        if (selectedLevel === 'advanced') defaultScore = '600';
+        localStorage.setItem('user-level-score', defaultScore);
+
+        window.location.href = selectedLevel + '.html';
+      }
+    });
+  </script>
+</body>
+</html>
