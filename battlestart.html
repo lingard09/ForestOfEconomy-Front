@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 배틀 시작</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-page-wrapper battlestart-page">
+      <div class="app-content-container">
+        <div class="div">
+          <div class="div2">
+            <div class="div3"></div>
+            <div class="div4">로고</div>
+          </div>
+          <div class="frame-parent">
+            <div class="wrapper">
+              <div class="div5">배틀 모드</div>
+            </div>
+            <div class="container">
+              <div class="div5">정답률이 중요해요</div>
+            </div>
+          </div>
+          <div class="frame">
+            <div class="div7 btn-start" style="cursor: pointer">
+              <div class="div8">시작하기</div>
+            </div>
+          </div>
+          <img
+            class="child btn-back"
+            src="assets/arrow_back.png"
+            alt="뒤로가기"
+            style="cursor: pointer"
+          />
+
+          <img class="object-icon" src="assets/battle_mascot.png" alt="마스코트" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const backBtn = document.querySelector(".btn-back");
+      const startBtn = document.querySelector(".btn-start");
+
+      if (backBtn) {
+        backBtn.addEventListener("click", () => {
+          window.history.back();
+        });
+      }
+
+      if (startBtn) {
+        startBtn.addEventListener("click", () => {
+          window.location.href = "battle.html";
+        });
+      }
+    </script>
+  </body>
+</html>

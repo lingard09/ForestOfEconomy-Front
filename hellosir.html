@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="app-page-wrapper hellosir-page">
-    <div class="app-content-container" style="min-height: 844px; overflow: hidden; border-radius: 20px;">
+    <div class="app-content-container">
       <!-- 상단 헤더 영역 (코인 + 웰컴텍스트) -->
       <div class="parent-section">
         <img class="coin-icon" src="assets/coin.png" alt="도토리 코인" />
@@ -32,8 +32,16 @@
   </div>
 
   <script>
-    // 닉네임 로드
-    const nickname = localStorage.getItem('user-nickname') || '사용자';
+    // 닉네임 로드 (URL 파라미터 우선 -> 로컬스토리지 -> 기본값 '사용자')
+    const urlParams = new URLSearchParams(window.location.search);
+    let nickname = urlParams.get('nickname');
+    
+    if (nickname) {
+      localStorage.setItem('user-nickname', nickname);
+    } else {
+      nickname = localStorage.getItem('user-nickname') || '사용자';
+    }
+
     document.querySelector('.user-nickname').textContent = nickname;
 
     // 3초 뒤에 레벨선택안내(/leveloption) 화면으로 자동 이동

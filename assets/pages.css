@@ -1769,7 +1769,8 @@
   position: relative;
   font-weight: 500;
 }
-.problem-word-page .wrapper13 {
+.problem-word-page .wrapper13,
+.problem-subjective-page .wrapper13 {
   position: absolute;
   top: 740px;
   left: calc(50% - 75px);
@@ -1786,12 +1787,14 @@
   font-size: 14px;
   transition: all 0.2s ease;
 }
-.problem-word-page .wrapper13.is-active {
+.problem-word-page .wrapper13.is-active,
+.problem-subjective-page .wrapper13.is-active {
   background-color: #272727;
   color: #fff;
   cursor: pointer;
 }
-.problem-word-page .div18 {
+.problem-word-page .div18,
+.problem-subjective-page .div18 {
   position: relative;
   font-weight: 500;
   flex-shrink: 0;
@@ -2030,6 +2033,197 @@
   height: 168.5px;
   object-fit: contain;
 }
+
+/* ==========================================================================
+   Battlestart Page Styles
+   ========================================================================== */
+.battlestart-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  text-align: center;
+  font-size: 20px;
+  color: #000;
+  font-family: Inter;
+}
+.battlestart-page .div2 {
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  width: 150px;
+  height: 150px;
+  display: none;
+}
+.battlestart-page .div3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #d9d9d9;
+  width: 150px;
+  height: 150px;
+}
+.battlestart-page .div4 {
+  position: absolute;
+  top: 63px;
+  left: 56px;
+}
+.battlestart-page .frame-parent {
+  position: absolute;
+  top: 315px;
+  left: 46px;
+  width: 298px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 24px;
+  font-family: 'Yde street';
+}
+.battlestart-page .wrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.battlestart-page .div5 {
+  align-self: stretch;
+  position: relative;
+}
+.battlestart-page .container {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: #999;
+}
+.battlestart-page .frame {
+  position: absolute;
+  top: 740px;
+  left: calc(50% - 162px);
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 16px;
+  color: #fff;
+  font-family: 'Noto Sans KR';
+}
+.battlestart-page .div7 {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 40px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 120px;
+  box-sizing: border-box;
+}
+.battlestart-page .div8 {
+  position: relative;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.battlestart-page .child {
+  position: absolute;
+  top: 40px;
+  left: 33px;
+  width: 31.9px;
+  height: 14.6px;
+  opacity: 0.3;
+}
+.battlestart-page .object-icon {
+  position: absolute;
+  height: 16.11%;
+  width: 30.51%;
+  top: 17.77%;
+  right: 34.87%;
+  bottom: 66.11%;
+  left: 34.62%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Battle Results Modal Styles
+   ========================================================================== */
+.battle-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 20px;
+}
+.battle-modal-content {
+  background-color: #fff;
+  padding: 30px 24px;
+  border-radius: 20px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.battle-modal-title {
+  font-family: 'Yde street', sans-serif;
+  font-size: 22px;
+  color: #0a6e3c;
+  margin-bottom: 12px;
+}
+.battle-modal-text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.battle-modal-btn {
+  width: 100%;
+  height: 48px;
+  background-color: #0a6e3c;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.battle-modal-btn:hover {
+  opacity: 0.9;
+}
+.battle-modal-correct {
+  color: #0a6e3c;
+}
+.battle-modal-subtext {
+  font-size: 14px;
+  color: #666;
+}
+.battle-modal-acorn {
+  color: #ea9b00;
+}
+.btn-next {
+  cursor: pointer;
+}
+.btn-back {
+  cursor: pointer;
+}
+
+/* 퀴즈 페이지(레벨테스트 및 배틀모드)의 이중 패딩 제거 및 844px absolute 레이아웃 핏팅 */
+.leveltest-page .app-content-container {
+  padding: 0 !important;
+}
+
+
 
 
 

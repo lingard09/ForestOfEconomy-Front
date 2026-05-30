@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="app-page-wrapper namesetting-page">
-    <div class="app-content-container" style="min-height: 844px; overflow: hidden; border-radius: 20px;">
+    <div class="app-content-container">
       <!-- 상단 헤더 영역 (코인 + 타이틀) -->
       <div class="header-section">
         <div class="icon-wrapper">
@@ -51,11 +51,21 @@
       submitBtn.disabled = !val.trim();
     });
 
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = inputEl.value.trim();
+        if (val) {
+          localStorage.setItem('user-nickname', val);
+          window.location.href = 'hellosir.html?nickname=' + encodeURIComponent(val);
+        }
+      }
+    });
+
     submitBtn.addEventListener('click', () => {
       const val = inputEl.value.trim();
       if (val) {
         localStorage.setItem('user-nickname', val);
-        window.location.href = 'hellosir.html';
+        window.location.href = 'hellosir.html?nickname=' + encodeURIComponent(val);
       }
     });
   </script>
