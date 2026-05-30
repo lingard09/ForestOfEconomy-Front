@@ -99,9 +99,17 @@
         localStorage.setItem('user-level', selectedLevel);
         // 수동 선택 시, 세부 점수는 기본 점수로 동기화
         let defaultScore = '200';
-        if (selectedLevel === 'intermediate') defaultScore = '400';
-        if (selectedLevel === 'advanced') defaultScore = '600';
+        let defaultRp = '200';
+        if (selectedLevel === 'intermediate') {
+          defaultScore = '400';
+          defaultRp = '400';
+        }
+        if (selectedLevel === 'advanced') {
+          defaultScore = '600';
+          defaultRp = '600';
+        }
         localStorage.setItem('user-level-score', defaultScore);
+        localStorage.setItem('user-rp', defaultRp);
 
         window.location.href = selectedLevel + '.html';
       }

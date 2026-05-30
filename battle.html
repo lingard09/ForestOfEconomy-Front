@@ -253,7 +253,10 @@
                 <div class="battle-modal-title">배틀 완료!</div>
                 <div class="battle-modal-text">
                   10문제 중 <strong id="correct-count" class="battle-modal-correct">0</strong>문제를 맞췄습니다!<br>
-                  <span class="battle-modal-subtext">도토리 코인 <strong id="acorn-reward" class="battle-modal-acorn">0</strong>개를 획득했습니다!</span>
+                  <span class="battle-modal-subtext">
+                    도토리 코인 <strong id="acorn-reward" class="battle-modal-acorn">0</strong>개를 획득했습니다!<br>
+                    티어 RP가 <strong id="rp-reward" style="color: #bc5d0c; font-weight: bold;">+0</strong> 증가했습니다!
+                  </span>
                 </div>
                 <button class="battle-modal-btn" id="modal-confirm-btn">확인</button>
               </div>
@@ -281,8 +284,28 @@
             const finalScore = calculateScore();
             const acornReward = finalScore * 5; // 문제당 도토리 5코인씩 지급하는 게임적 연출
 
+            // 정답률에 따른 티어 RP 차등 지급
+            let rpReward = 5; // 기본 참가 RP
+            if (finalScore === 10) {
+              rpReward = 30;
+            } else if (finalScore >= 8) {
+              rpReward = 25;
+            } else if (finalScore >= 6) {
+              rpReward = 20;
+            } else if (finalScore >= 4) {
+              rpReward = 15;
+            } else if (finalScore >= 1) {
+              rpReward = 10;
+            }
+
+            // 사용자 누적 RP 업데이트 (티어 점수)
+            let userRp = parseInt(localStorage.getItem('user-rp') || '250', 10);
+            userRp += rpReward;
+            localStorage.setItem('user-rp', userRp.toString());
+
             document.getElementById("correct-count").textContent = finalScore;
             document.getElementById("acorn-reward").textContent = acornReward;
+            document.getElementById("rp-reward").textContent = `+${rpReward}`;
 
             const modal = document.getElementById("result-modal");
             modal.style.display = "flex";
@@ -425,7 +448,62 @@
         const modalConfirmBtn = document.getElementById("modal-confirm-btn");
         if (modalConfirmBtn) {
           modalConfirmBtn.addEventListener("click", () => {
-            window.location.href = "today.html";
+            const userRp = parseInt(localStorage.getItem('user-rp') || '200', 10);
+            let targetPage = "today.html";
+            
+            // 사용자의 누적 RP에 알맞은 티어 결과 페이지로 이동하여 차오르는 시각적 링 확인
+            if (userRp >= 3800) {
+              targetPage = "challenger1.html";
+            } else if (userRp >= 3600) {
+              targetPage = "challenger2.html";
+            } else if (userRp >= 3400) {
+              targetPage = "challenger3.html";
+            } else if (userRp >= 3200) {
+              targetPage = "challenger4.html";
+            } else if (userRp >= 3000) {
+              targetPage = "challenger5.html";
+            } else if (userRp >= 2800) {
+              targetPage = "diamond1.html";
+            } else if (userRp >= 2600) {
+              targetPage = "diamond2.html";
+            } else if (userRp >= 2400) {
+              targetPage = "diamond3.html";
+            } else if (userRp >= 2200) {
+              targetPage = "diamond4.html";
+            } else if (userRp >= 2000) {
+              targetPage = "diamond5.html";
+            } else if (userRp >= 1800) {
+              targetPage = "gold1.html";
+            } else if (userRp >= 1600) {
+              targetPage = "gold2.html";
+            } else if (userRp >= 1400) {
+              targetPage = "gold3.html";
+            } else if (userRp >= 1200) {
+              targetPage = "gold4.html";
+            } else if (userRp >= 1000) {
+              targetPage = "gold5.html";
+            } else if (userRp >= 900) {
+              targetPage = "silver1.html";
+            } else if (userRp >= 800) {
+              targetPage = "silver2.html";
+            } else if (userRp >= 700) {
+              targetPage = "silver3.html";
+            } else if (userRp >= 600) {
+              targetPage = "silver4.html";
+            } else if (userRp >= 500) {
+              targetPage = "silver5.html";
+            } else if (userRp >= 440) {
+              targetPage = "bronze1.html";
+            } else if (userRp >= 380) {
+              targetPage = "bronze2.html";
+            } else if (userRp >= 320) {
+              targetPage = "bronze3.html";
+            } else if (userRp >= 260) {
+              targetPage = "bronze4.html";
+            } else {
+              targetPage = "bronze5.html";
+            }
+            window.location.href = targetPage;
           });
         }
       }

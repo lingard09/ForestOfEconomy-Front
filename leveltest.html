@@ -240,6 +240,9 @@
           
           localStorage.setItem('user-level', level);
           localStorage.setItem('user-level-score', computedLevel.toString());
+          // 레벨 테스트 정답 수에 기반하여 독립적인 초기 티어 점수(user-rp) 설정
+          const initialRp = 200 + finalScore * 20; 
+          localStorage.setItem('user-rp', initialRp.toString());
           window.location.href = 'levelmeasure.html';
         }
       };
