@@ -21,7 +21,7 @@
 
 .home-page .app-title {
   font-family:
-    'Yde street',
+    "Yde street",
     -apple-system,
     Roboto,
     Helvetica,
@@ -35,7 +35,7 @@
 
 .home-page .app-subtitle {
   font-family:
-    'Noto Sans KR',
+    "Noto Sans KR",
     -apple-system,
     Roboto,
     Helvetica,
@@ -278,7 +278,7 @@
 
 .hellosir-page .welcome-text span {
   font-family:
-    'Noto Sans KR',
+    "Noto Sans KR",
     -apple-system,
     Roboto,
     Helvetica,
@@ -589,7 +589,7 @@
   text-align: center;
   font-size: 24px;
   color: #000;
-  font-family: 'Yde street';
+  font-family: "Yde street";
 }
 
 .today-page .today-parent {
@@ -625,7 +625,7 @@
   align-items: flex-start;
   font-size: 16px;
   color: #fff;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 
 .today-page .today-btn {
@@ -642,7 +642,8 @@
   border: none;
   color: #fff;
   font-weight: 500;
-  font-family: inherit;
+  font-size: 16px;
+  font-family: "Noto Sans KR";
 }
 
 .today-page .today-btn:hover {
@@ -1009,7 +1010,7 @@
   align-items: center;
   gap: 20px;
   font-size: 24px;
-  font-family: 'Yde street';
+  font-family: "Yde street";
 }
 .beginner-page .frame-group {
   align-self: stretch;
@@ -1041,7 +1042,7 @@
   position: relative;
   font-size: 14px;
   font-weight: 500;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   color: #000;
   white-space: pre-wrap;
   display: inline-block;
@@ -1075,7 +1076,7 @@
   flex-direction: column;
   align-items: flex-start;
   font-size: 14px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .beginner-page .div8 {
   align-self: stretch;
@@ -1169,7 +1170,7 @@
   align-items: center;
   gap: 20px;
   font-size: 24px;
-  font-family: 'Yde street';
+  font-family: "Yde street";
 }
 .intermediate-page .frame-group {
   align-self: stretch;
@@ -1200,7 +1201,7 @@
   position: relative;
   font-size: 14px;
   font-weight: 500;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   color: #000;
   display: inline-block;
   flex-shrink: 0;
@@ -1214,7 +1215,7 @@
   flex-direction: column;
   align-items: flex-start;
   font-size: 14px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .intermediate-page .div8 {
   align-self: stretch;
@@ -1329,7 +1330,7 @@
   align-items: center;
   gap: 20px;
   font-size: 24px;
-  font-family: 'Yde street';
+  font-family: "Yde street";
 }
 .advanced-page .frame-group {
   align-self: stretch;
@@ -1360,7 +1361,7 @@
   position: relative;
   font-size: 14px;
   font-weight: 500;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   color: #000;
   display: inline-block;
 }
@@ -1373,7 +1374,7 @@
   flex-direction: column;
   align-items: flex-start;
   font-size: 14px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .advanced-page .div8 {
   align-self: stretch;
@@ -1442,7 +1443,7 @@
   text-align: center;
   font-size: 16px;
   color: #000;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .teststart-page .parent {
   position: absolute;
@@ -1533,7 +1534,7 @@
   text-align: center;
   font-size: 16px;
   color: #000;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .problem-multiple-page .child {
   position: absolute;
@@ -1684,7 +1685,7 @@
   text-align: center;
   font-size: 16px;
   color: #000;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .problem-word-page .div2 {
   position: absolute;
@@ -1869,7 +1870,7 @@
   text-align: left;
   font-size: 16px;
   color: #000;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .problem-subjective-page .div2 {
   position: absolute;
@@ -1905,7 +1906,7 @@
   color: #000;
   text-align: center;
   width: 100%;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .problem-subjective-page .subjective-input::placeholder {
   color: #ccc;
@@ -2013,7 +2014,7 @@
   align-items: center;
   gap: 8px;
   font-size: 24px;
-  font-family: 'Yde street';
+  font-family: "Yde street";
 }
 .levelmeasure-page .div5 {
   align-self: stretch;
@@ -2023,7 +2024,7 @@
   align-self: stretch;
   position: relative;
   font-size: 16px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .levelmeasure-page .child {
   position: absolute;
@@ -2079,7 +2080,7 @@
   align-items: flex-start;
   gap: 4px;
   font-size: 24px;
-  font-family: 'Yde street';
+  font-family: "Yde street";
 }
 .battlestart-page .wrapper {
   align-self: stretch;
@@ -2109,7 +2110,7 @@
   align-items: flex-start;
   font-size: 16px;
   color: #fff;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .battlestart-page .div7 {
   align-self: stretch;
@@ -2171,16 +2172,16 @@
   border-radius: 20px;
   text-align: center;
   width: 300px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 .battle-modal-title {
-  font-family: 'Yde street', sans-serif;
+  font-family: "Yde street", sans-serif;
   font-size: 22px;
   color: #0a6e3c;
   margin-bottom: 12px;
 }
 .battle-modal-text {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
   color: #333;
   margin-bottom: 24px;
@@ -2193,7 +2194,7 @@
   color: #fff;
   border: none;
   border-radius: 24px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -2224,7 +2225,11 @@
 .beginner-page .app-content-container,
 .intermediate-page .app-content-container,
 .advanced-page .app-content-container,
-.bronze-page .app-content-container {
+.bronze-page .app-content-container,
+.group-page .app-content-container,
+.groupranking-page .app-content-container,
+.groupmember-page .app-content-container,
+.today-page-container .app-content-container {
   padding: 0 !important;
 }
 
@@ -2240,7 +2245,7 @@
   text-align: center;
   font-size: 20px;
   color: #000;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .bronze-page .div2 {
   position: absolute;
@@ -2345,7 +2350,7 @@
   align-items: center;
   gap: 4px;
   font-size: 24px;
-  font-family: 'Yde street';
+  font-family: "Yde street";
 }
 .bronze-page .div7 {
   align-self: stretch;
@@ -2356,9 +2361,1501 @@
   position: relative;
   font-size: 16px;
   font-weight: 500;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   color: #787878;
 }
 
+/* ==========================================================================
+   Group Page Styles
+   ========================================================================== */
+.group-page .div {
+  width: 100%;
+  height: 844px;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  text-align: left;
+  font-size: 25px;
+  color: #000;
+  font-family: "Yde street";
+}
+.group-page .div2 {
+  position: absolute;
+  top: 70px;
+  left: 33px;
+}
+.group-page .vector-icon {
+  position: absolute;
+  height: 2.37%;
+  width: 5.13%;
+  top: 9%;
+  right: 8.21%;
+  bottom: 88.63%;
+  left: 86.67%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.group-page .div3 {
+  position: absolute;
+  top: 360px;
+  left: calc(50% - 97px);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Noto Sans KR";
+  color: #999;
+  text-align: center;
+  display: inline-block;
+  width: 193px;
+}
+.group-page .child {
+  position: absolute;
+  top: 39.96px;
+  left: 33px;
+  width: 31.9px;
+  height: 14.6px;
+  opacity: 0.3;
+}
+.group-page .object-icon {
+  position: absolute;
+  height: 10.07%;
+  top: 29.62%;
+  bottom: 60.31%;
+  left: calc(50% - 74px);
+  max-height: 100%;
+  width: 147px;
+  object-fit: cover;
+}
+.group-page .div4 {
+  position: absolute;
+  top: 740px;
+  left: 33px;
+  border-radius: 40px;
+  background-color: #131313;
+  width: 325px;
+  height: 50px;
+}
+.group-page .item {
+  position: absolute;
+  top: 5px;
+  left: 162.48px;
+  border-radius: 22px;
+  width: 81.6px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.group-page .frame-parent {
+  position: absolute;
+  top: 9.59px;
+  left: calc(50% - 126.39px);
+  width: 264px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-shrink: 0;
+}
+.group-page .rectangle-parent {
+  width: 21.5px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 3px;
+}
+.group-page .frame-child {
+  height: 10.7px;
+  width: 10.7px;
+  position: relative;
+  border-radius: 2px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+.group-page .vector-icon2 {
+  height: 23.9px;
+  width: 30.4px;
+  position: relative;
+}
+.group-page .pepicons-poppeople {
+  height: 30px;
+  width: 30px;
+  position: relative;
+}
+.group-page .group-icon {
+  height: 21.3px;
+  width: 22.8px;
+  position: relative;
+}
 
+/* 그룹 메뉴 팝업 모달 스타일 */
+.group-page .group-menu-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+.group-page .popup-bg {
+  position: absolute;
+  top: 70px;
+  left: 150px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  background-color: #272727;
+  width: 170px;
+  height: 100px;
+  pointer-events: auto;
+}
+.group-page .popup-menu {
+  position: absolute;
+  top: 85px;
+  left: 175px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  color: #fff;
+  pointer-events: auto;
+  z-index: 11;
+}
+.group-page .popup-item {
+  align-self: stretch;
+  position: relative;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "Noto Sans KR";
+  cursor: pointer;
+  white-space: nowrap;
+}
+.group-page .popup-divider {
+  position: absolute;
+  top: 119px;
+  left: 171px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  width: 130px;
+  z-index: 12;
+  pointer-events: none;
+}
 
+/* ==========================================================================
+   Group Create Modal Styles (Namespace: .gcm-*)
+   ========================================================================== */
+.gcm-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.gcm-modal {
+  width: 340px;
+  height: 615px;
+  border-radius: 20px;
+  background-color: #fff;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: "Noto Sans KR", sans-serif;
+  overflow: hidden;
+}
+
+.gcm-title {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 18px;
+  color: #000;
+  font-weight: 700;
+}
+
+.gcm-close-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 10;
+  transition: opacity 0.2s;
+}
+
+.gcm-close-btn:hover {
+  opacity: 0.7;
+}
+
+.gcm-close-btn svg {
+  display: block;
+}
+
+.gcm-form {
+  position: absolute;
+  top: 95px;
+  left: 27.5px; /* (340px - 285px) / 2 = 27.5px */
+  width: 285px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.gcm-field-container {
+  align-self: stretch;
+  height: 101.7px;
+  position: relative;
+}
+
+.gcm-label {
+  position: absolute;
+  top: -0.36px;
+  left: -0.07px;
+  width: 285px;
+  height: 24px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.gcm-label-text {
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  color: #000;
+}
+
+.gcm-required {
+  color: #7256ff;
+}
+
+.gcm-input-wrapper {
+  position: absolute;
+  top: 28.64px;
+  left: -0.07px;
+  width: 285px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.gcm-input {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 10px;
+  border: 1.5px solid #d1d5dc;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #000;
+  font-family: "Noto Sans KR", sans-serif;
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+  transition: border-color 0.2s;
+}
+
+.gcm-input:focus {
+  border-color: #0a6e3c;
+}
+
+.gcm-input::placeholder {
+  color: #787878;
+}
+
+.gcm-char-count-wrapper {
+  align-self: stretch;
+  height: 18px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  font-size: 12px;
+  color: #6a7282;
+}
+
+.gcm-char-count {
+  position: absolute;
+  top: 0.36px;
+  left: 0px;
+}
+
+.gcm-textarea-field {
+  height: 160px;
+}
+
+.gcm-textarea-wrapper {
+  position: absolute;
+  top: 28.64px;
+  left: -0.07px;
+  width: 286px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.gcm-textarea {
+  width: 285px;
+  height: 100px;
+  border-radius: 10px;
+  border: 1.5px solid #d1d5dc;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #000;
+  font-family: "Noto Sans KR", sans-serif;
+  resize: none;
+  outline: none;
+  background-color: transparent;
+  transition: border-color 0.2s;
+}
+
+.gcm-textarea:focus {
+  border-color: #0a6e3c;
+}
+
+.gcm-textarea::placeholder {
+  color: #787878;
+}
+
+.gcm-notice-container {
+  width: 285px;
+  height: 95px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 16px 0px;
+  box-sizing: border-box;
+  color: #4a5565;
+}
+
+.gcm-notice-text {
+  align-self: stretch;
+  height: 58.5px;
+  position: relative;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.gcm-submit-btn {
+  width: 285px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: #0a6e3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.gcm-submit-btn:hover {
+  opacity: 0.9;
+}
+
+.gcm-submit-btn-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* ==========================================================================
+   Group Create Success Modal Styles (Namespace: .gcs-*)
+   ========================================================================== */
+.gcs-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 110;
+}
+
+.gcs-modal {
+  width: 280px;
+  height: 165px;
+  border-radius: 15px;
+  background-color: #fff;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: "Noto Sans KR", sans-serif;
+  overflow: hidden;
+}
+
+.gcs-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 29px 15px 28px;
+  box-sizing: border-box;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+}
+
+.gcs-text-wrapper {
+  width: 156px;
+  height: 47px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.gcs-title {
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.gcs-code {
+  align-self: stretch;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  text-align: center;
+}
+
+.gcs-confirm-btn {
+  width: 245px;
+  height: 40px;
+  border: none;
+  border-radius: 8.79px;
+  background-color: #0a6e3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.gcs-confirm-btn:hover {
+  opacity: 0.9;
+}
+
+.gcs-confirm-btn-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Group Join Modal Styles (Namespace: .gjm-*)
+   ========================================================================== */
+.gjm-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.gjm-modal {
+  width: 340px;
+  height: 225px;
+  border-radius: 20px;
+  background-color: #fff;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: "Noto Sans KR", sans-serif;
+  overflow: hidden;
+}
+
+.gjm-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 27px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 10;
+  transition: opacity 0.2s;
+}
+
+.gjm-close-btn:hover {
+  opacity: 0.7;
+}
+
+.gjm-close-btn svg {
+  display: block;
+}
+
+.gjm-content {
+  position: absolute;
+  top: 20px;
+  left: 27px;
+  width: 287px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.gjm-title {
+  font-size: 18px;
+  color: #000;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  display: inline-block;
+  text-align: center;
+}
+
+.gjm-form {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.gjm-input {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 10px;
+  border: 1.4px solid #d1d5dc;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #000;
+  font-family: "Noto Sans KR", sans-serif;
+  outline: none;
+  background-color: transparent;
+  transition: border-color 0.2s;
+}
+
+.gjm-input:focus {
+  border-color: #0a6e3c;
+}
+
+.gjm-input::placeholder {
+  color: rgba(10, 10, 10, 0.5);
+}
+
+.gjm-submit-btn {
+  align-self: stretch;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.gjm-submit-btn:hover {
+  opacity: 0.9;
+}
+
+.gjm-submit-btn-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* ==========================================================================
+   Group Join Confirm Modal Styles (Namespace: .gjc-*)
+   ========================================================================== */
+.gjc-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 120;
+}
+
+.gjc-modal {
+  width: 308px;
+  height: 156px;
+  border-radius: 15px;
+  background-color: #fff;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: "Noto Sans KR", sans-serif;
+  overflow: hidden;
+}
+
+.gjc-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 28px 15px;
+  box-sizing: border-box;
+  gap: 45px;
+  width: 100%;
+  height: 100%;
+}
+
+.gjc-text {
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gjc-btn-group {
+  width: 252px;
+  height: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.gjc-cancel-btn {
+  height: 40px;
+  width: 121px;
+  border: none;
+  border-radius: 8.79px;
+  background-color: #272727;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.gjc-confirm-btn {
+  height: 40px;
+  width: 121px;
+  border: none;
+  border-radius: 8.79px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.gjc-cancel-btn:hover,
+.gjc-confirm-btn:hover {
+  opacity: 0.9;
+}
+
+.gjc-btn-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* ==========================================================================
+   Group Ranking Page Styles (.groupranking-page)
+   ========================================================================== */
+.groupranking-page .div {
+  width: 100%;
+  min-height: 844px;
+  height: auto;
+  position: relative;
+  background-color: #fff;
+  overflow: visible;
+  padding-bottom: 90px;
+  text-align: left;
+  font-size: 16px;
+  color: #000;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.groupranking-page .frame-parent {
+  position: absolute;
+  top: 80px;
+  left: 27px;
+  width: 326px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  font-size: 25px;
+  font-family: "Yde street";
+}
+
+.groupranking-page .container-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.groupranking-page .container {
+  align-self: stretch;
+  height: 37.5px;
+  display: flex;
+  align-items: center;
+}
+
+.groupranking-page .div2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 37.5px;
+}
+
+.groupranking-page .container2 {
+  align-self: stretch;
+  height: 115px;
+  border-radius: 15px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px 16px 0px;
+  box-sizing: border-box;
+  gap: 8px;
+  font-size: 20px;
+  font-family: "Noto Sans KR";
+}
+
+.groupranking-page .paragraph2 {
+  align-self: stretch;
+  height: 30px;
+  position: relative;
+}
+
+.groupranking-page .div3 {
+  position: absolute;
+  top: -0.32px;
+  left: 0px;
+  line-height: 30px;
+  font-weight: 600;
+  color: #000;
+}
+
+.groupranking-page .group-more-btn {
+  position: absolute;
+  top: 8.18px;
+  left: 280px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 115%;
+  font-weight: 500;
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+  cursor: pointer;
+  color: #787878;
+}
+
+.groupranking-page .container3 {
+  align-self: stretch;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #4a5565;
+}
+
+.groupranking-page .paragraph3 {
+  height: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.groupranking-page .yua9yfw9 {
+  position: relative;
+  font-weight: 500;
+}
+
+.groupranking-page .yua9yfw92 {
+  color: #0a6e3c;
+  font-weight: 700;
+}
+
+.groupranking-page .div5 {
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0a6e3c;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.groupranking-page .div5:active {
+  opacity: 0.7;
+}
+
+.groupranking-page .paragraph4 {
+  align-self: stretch;
+  height: 18px;
+  position: relative;
+  font-size: 14px;
+  color: #6a7282;
+}
+
+.groupranking-page .div6 {
+  position: absolute;
+  top: 0.36px;
+  left: 0px;
+  font-weight: 500;
+}
+
+.groupranking-page .btn-member-detail {
+  align-self: stretch;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1.4px solid #0a6e3c;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  gap: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #0a6e3c;
+  font-family: "Noto Sans KR";
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.groupranking-page .btn-member-detail:hover {
+  background-color: rgba(10, 110, 60, 0.04);
+}
+
+.groupranking-page .btn-member-detail:active {
+  opacity: 0.85;
+}
+
+.groupranking-page .div7 {
+  position: relative;
+  font-weight: 500;
+}
+
+.groupranking-page .btn-back {
+  position: absolute;
+  top: 39.96px;
+  left: 33px;
+  width: 31.9px;
+  height: 14.6px;
+  opacity: 0.3;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.2s;
+}
+
+.groupranking-page .btn-back:hover {
+  opacity: 0.7;
+}
+
+/* 주별/월별 탭 */
+.groupranking-page .tab-weekly {
+  position: absolute;
+  top: 425px;
+  left: 33px;
+  line-height: 27px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  color: #000;
+  z-index: 5;
+}
+
+.groupranking-page .tab-monthly {
+  position: absolute;
+  top: 425px;
+  left: 95px;
+  line-height: 27px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  color: #787878;
+  z-index: 5;
+}
+
+.groupranking-page .tab-weekly.is-active {
+  color: #000;
+  font-weight: 700;
+}
+
+.groupranking-page .tab-monthly.is-active {
+  color: #000;
+  font-weight: 700;
+}
+
+.groupranking-page .tab-indicator {
+  position: absolute;
+  top: 454px;
+  left: 33px;
+  height: 3px;
+  background-color: #0a6e3c;
+  width: 30px;
+  transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+/* 랭킹 리스트 컨테이너 */
+.groupranking-page .container-group {
+  position: absolute;
+  top: 475px;
+  left: 33px;
+  width: 326px;
+  height: auto;
+  font-size: 18px;
+}
+
+.groupranking-page .container4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 21px;
+  font-size: 12px;
+  color: #787878;
+  display: grid;
+  grid-template-columns: 30px 120px 50px 50px;
+  column-gap: 12px;
+  align-items: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.groupranking-page .div10,
+.groupranking-page .div11,
+.groupranking-page .div12,
+.groupranking-page .div13 {
+  position: static;
+  text-align: center;
+}
+
+.groupranking-page .div11 {
+  text-align: left;
+}
+
+.groupranking-page .container5 {
+  position: absolute;
+  top: 31px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-right: 4px;
+  box-sizing: border-box;
+}
+
+.groupranking-page .container5::-webkit-scrollbar {
+  width: 4px;
+}
+
+.groupranking-page .container5::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.groupranking-page .container5::-webkit-scrollbar-thumb {
+  background: rgba(10, 110, 60, 0.3);
+  border-radius: 10px;
+}
+
+.groupranking-page .container6 {
+  width: 320px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid #d1d5dc;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px 16px;
+  flex-shrink: 0;
+}
+
+.groupranking-page .container7 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30px 120px 50px 50px;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.groupranking-page .div14 {
+  position: static;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.groupranking-page .div15 {
+  position: static;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.groupranking-page .div16 {
+  position: static;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.groupranking-page .div17 {
+  position: static;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.groupranking-page .container8 {
+  width: 320px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #0a6e3c;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.groupranking-page .container8 .div14,
+.groupranking-page .container8 .div15,
+.groupranking-page .container8 .div16,
+.groupranking-page .container8 .div17 {
+  color: #fff;
+}
+
+.groupranking-page .paragraph6 {
+  position: absolute;
+  top: 375px;
+  left: 33px;
+  width: 326px;
+  height: 27px;
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+  font-size: 18px;
+}
+
+.groupranking-page .b {
+  flex: 1;
+  position: relative;
+  font-family: "Yde street", sans-serif;
+  font-size: 18px;
+  color: #000;
+}
+
+.groupranking-page .div4 {
+  position: absolute;
+  bottom: 20px;
+  left: 33px;
+  border-radius: 40px;
+  background-color: #131313;
+  width: 325px;
+  height: 50px;
+}
+
+/* ==========================================================================
+   Group Member Page Styles (.groupmember-page)
+   ========================================================================== */
+.groupmember-page .div {
+  width: 100%;
+  min-height: 844px;
+  height: auto;
+  position: relative;
+  background-color: #fff;
+  overflow: visible;
+  padding-bottom: 100px;
+  text-align: left;
+  font-size: 25px;
+  color: #000;
+  font-family: "Yde street", sans-serif;
+}
+
+.groupmember-page .btn-back {
+  position: absolute;
+  top: 39.96px;
+  left: 33px;
+  width: 31.9px;
+  height: 14.6px;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+.groupmember-page .btn-back:hover {
+  opacity: 0.7;
+}
+
+.groupmember-page .container-parent {
+  position: absolute;
+  top: 80px;
+  left: 31.1px;
+  width: 330.9px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.groupmember-page .container {
+  align-self: stretch;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.groupmember-page .paragraph {
+  height: 37.5px;
+  width: 50px;
+  position: relative;
+}
+
+.groupmember-page .div2 {
+  position: absolute;
+  top: 4.12px;
+  left: 0px;
+  line-height: 37.5px;
+  flex-shrink: 0;
+}
+
+.groupmember-page .container2 {
+  align-self: stretch;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 20px;
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.groupmember-page .container3 {
+  width: 329px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #0a6e3c;
+  border: 1.4px solid #0a6e3c;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+}
+
+.groupmember-page .paragraph2 {
+  height: 30px;
+  width: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.groupmember-page .div3 {
+  position: absolute;
+  top: -0.32px;
+  left: 0px;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+.groupmember-page .container4 {
+  height: 30px;
+  width: 30px;
+  position: relative;
+  border-radius: 30px;
+  background-color: #d9d9d9;
+  flex-shrink: 0;
+}
+
+.groupmember-page .container-wrapper {
+  height: 43px;
+  width: 209px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.groupmember-page .container5 {
+  height: 43px;
+  width: 97px;
+  position: relative;
+}
+
+.groupmember-page .member-name {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-weight: 500;
+  display: inline-block;
+  width: 208.3px;
+  flex-shrink: 0;
+}
+
+.groupmember-page .span {
+  font-size: 14px;
+}
+
+.groupmember-page .div5 {
+  position: absolute;
+  top: 23px;
+  left: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  width: 208.3px;
+  flex-shrink: 0;
+}
+
+.groupmember-page .container6 {
+  width: 329px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #272727;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+  gap: 16px;
+}
+
+.groupmember-page .container-group {
+  width: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.groupmember-page .container8 {
+  height: 43px;
+  width: 67px;
+  position: relative;
+}
+
+.groupmember-page .wrapper {
+  height: 30px;
+  width: 60px;
+  border-radius: 16px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px 10px 6px 11px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s;
+}
+
+.groupmember-page .wrapper:hover {
+  background-color: #f0f0f0;
+}
+
+.groupmember-page .wrapper:active {
+  opacity: 0.8;
+}
+
+.groupmember-page .div9 {
+  position: relative;
+  font-weight: 500;
+}
+
+/* 네비게이션 바 */
+.groupmember-page .div4 {
+  position: absolute;
+  bottom: 20px;
+  left: 33.19px;
+  border-radius: 40px;
+  background-color: #131313;
+  width: 325px;
+  height: 50px;
+}
+
+/* 그룹 탈퇴하기 레이어 팝업 */
+.groupranking-page .container-child {
+  width: 170px;
+  height: 50px;
+  position: absolute;
+  margin: 0 !important;
+  top: 100px;
+  left: 102px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  background-color: #272727;
+  z-index: 3;
+  display: none;
+  cursor: pointer;
+}
+
+.groupranking-page .div7.btn-leave-group {
+  width: 92px;
+  height: 23px;
+  position: absolute;
+  margin: 0 !important;
+  top: 113px;
+  left: 115px;
+  font-weight: 500;
+  color: #fff;
+  display: none;
+  z-index: 4;
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+}
+
+.groupranking-page .container-child.is-active,
+.groupranking-page .div7.btn-leave-group.is-active {
+  display: block;
+}
+
+/* 그룹 탈퇴 확인 커스텀 모달 */
+.groupranking-page .inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  min-height: 844px;
+  z-index: 100;
+  display: none;
+}
+
+.groupranking-page .group-div {
+  position: absolute;
+  top: 315px;
+  left: calc(50% - 140px);
+  width: 280px;
+  height: 153px;
+  z-index: 101;
+  text-align: center;
+  display: none;
+}
+
+.groupranking-page .inner.is-active,
+.groupranking-page .group-div.is-active {
+  display: block;
+}
+
+.groupranking-page .group {
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 140px);
+  border-radius: 15px;
+  background-color: #fff;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 28px 15px;
+  box-sizing: border-box;
+  gap: 45px;
+}
+
+.groupranking-page .button-parent {
+  width: 252px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.groupranking-page .button2 {
+  height: 40px;
+  width: 123px;
+  border-radius: 8.79px;
+  background-color: #272727;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 46px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.groupranking-page .button3 {
+  width: 119px;
+  height: 40px;
+  border-radius: 8.79px;
+  background-color: #0a6e3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 44px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
