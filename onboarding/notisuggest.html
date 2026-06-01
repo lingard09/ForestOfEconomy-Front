@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 알림 설정</title>
+  <link rel="icon" type="image/png" href="../assets/acorn.png">
+  <link rel="stylesheet" href="../assets/main.css">
+  <link rel="stylesheet" href="../assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-page-wrapper notisuggest-page">
+    <div class="app-content-container">
+      <!-- 상단 질문 영역 (알림 종 아이콘 + 텍스트) -->
+      <div class="question-container">
+        <img class="bell-icon" src="../assets/bell.png" alt="알림 종" />
+        <div class="question-text global-font-noto">
+          매일매일 놓치지 않게<br />알림을 받아보시겠어요?
+        </div>
+      </div>
+
+      <!-- 하단 버튼 영역 -->
+      <div class="button-container">
+        <button class="btn-primary-green btn-round-shape btn-accept" style="cursor: pointer;">네, 해주세요!</button>
+        <button class="decline-button global-font-noto btn-decline" style="cursor: pointer;">아니요, 괜찮아요</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const acceptBtn = document.querySelector('.btn-accept');
+    const declineBtn = document.querySelector('.btn-decline');
+
+    acceptBtn.addEventListener('click', async () => {
+      if (!('Notification' in window)) {
+        alert('이 브라우저는 시스템 알림을 지원하지 않습니다.');
+        window.location.href = 'notitime.html';
+        return;
+      }
+
+      try {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          localStorage.setItem('noti-agreement', 'true');
+        } else {
+          localStorage.setItem('noti-agreement', 'false');
+        }
+      } catch (error) {
+        console.error('알림 권한 요청 에러:', error);
+      }
+
+      window.location.href = 'notitime.html';
+    });
+
+    declineBtn.addEventListener('click', () => {
+      localStorage.setItem('noti-agreement', 'false');
+      // 알림을 거부하면 오늘의 학습 대시보드 화면(today.html)으로 이동합니다.
+      window.location.href = '../study/today.html';
+    });
+  </script>
+</body>
+</html>

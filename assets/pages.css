@@ -606,6 +606,8 @@
 .today-page .today-title {
   align-self: stretch;
   position: relative;
+  font-family: "Yde street", sans-serif;
+  font-weight: 700;
 }
 
 .today-page .today-subtitle {
@@ -613,6 +615,7 @@
   position: relative;
   font-size: 16px;
   color: #999;
+  font-family: "Yde street", sans-serif;
 }
 
 .today-page .today-btn-wrapper {
@@ -2019,12 +2022,14 @@
 .levelmeasure-page .div5 {
   align-self: stretch;
   position: relative;
+  font-weight: 700;
 }
 .levelmeasure-page .div6 {
   align-self: stretch;
   position: relative;
   font-size: 16px;
   font-family: "Noto Sans KR";
+  white-space: nowrap;
 }
 .levelmeasure-page .child {
   position: absolute;
@@ -2222,6 +2227,7 @@
 /* 절대좌표 캔버스형 페이지들의 이중 패딩 제거 및 844px absolute 레이아웃 핏팅 */
 .leveltest-page .app-content-container,
 .levelmeasure-page .app-content-container,
+.teststart-page .app-content-container,
 .beginner-page .app-content-container,
 .intermediate-page .app-content-container,
 .advanced-page .app-content-container,
@@ -2379,34 +2385,38 @@
   color: #000;
   font-family: "Yde street";
 }
+.group-page .group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  padding: 0 32px;
+  width: 100%;
+  box-sizing: border-box;
+}
 .group-page .div2 {
-  position: absolute;
-  top: 70px;
-  left: 33px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Yde street", sans-serif;
+  color: #000;
 }
 .group-page .vector-icon {
-  position: absolute;
-  height: 2.37%;
-  width: 5.13%;
-  top: 9%;
-  right: 8.21%;
-  bottom: 88.63%;
-  left: 86.67%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
+  width: 19px;
+  height: 19px;
+  object-fit: cover;
 }
 .group-page .div3 {
   position: absolute;
   top: 360px;
-  left: calc(50% - 97px);
+  left: calc(50% - 140px);
   font-size: 16px;
   font-weight: 500;
   font-family: "Noto Sans KR";
   color: #999;
   text-align: center;
   display: inline-block;
-  width: 193px;
+  width: 280px;
 }
 .group-page .child {
   position: absolute;

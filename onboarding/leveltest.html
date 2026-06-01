@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - AI 레벨 테스트</title>
+  <link rel="icon" type="image/png" href="../assets/acorn.png">
+  <link rel="stylesheet" href="../assets/main.css">
+  <link rel="stylesheet" href="../assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="../assets/quizzes.js"></script>
+</head>
+<body>
+  <div id="app-container">
+    <!-- 동적 문제 렌더링 영역 -->
+  </div>
+
+  <script>
+    let PROBLEMS = [];
+    let currentIndex = 0;
+    let answers = [];
+
+    const appContainer = document.getElementById('app-container');
+
+    function loadProblems() {
+      try {
+        if (!window.QUIZ_POOL || !Array.isArray(window.QUIZ_POOL)) {
+          throw new Error('QUIZ_POOL이 로드되지 않았거나 배열이 아닙니다.');
+        }
+        PROBLEMS = window.QUIZ_POOL;
+        answers = Array(PROBLEMS.length).fill(null);
+        render();
+      } catch (error) {
+        console.error('문제를 불러오는 중 오류가 발생했습니다:', error);
+        appContainer.innerHTML = '<div class="error-message">데이터 로드 오류가 발생했습니다.</div>';
+      }
+    }
+
+    function initCurrentAnswer() {
+      const currentProblem = PROBLEMS[currentIndex];
+      if (answers[currentIndex] === null) {
+        if (currentProblem.type === 'multiple') {
+          answers[currentIndex] = null;
+        } else if (currentProblem.type === 'word') {
+          answers[currentIndex] = Array(currentProblem.answerLength).fill('');
+        } else if (currentProblem.type === 'subjective') {
+          answers[currentIndex] = '';
+        }
+      }
+    }
+
+    function calculateScore() {
+      let score = 0;
+      PROBLEMS.forEach((prob, index) => {
+        const userAnswer = answers[index];
+        if (prob.type === 'multiple') {
+          if (userAnswer === prob.answer) score++;
+        } else if (prob.type === 'word') {
+          const answerStr = Array.isArray(userAnswer) ? userAnswer.join('') : '';
+          if (answerStr === prob.answer) score++;
+        } else if (prob.type === 'subjective') {
+          const trimmedUser = (userAnswer || '').trim().replace(/\s+/g, '');
+          const trimmedAns = prob.answer.trim().replace(/\s+/g, '');
+          
+          if (index === 5) { // 세금 문제 동의어 처리
+            if (trimmedUser === '세금' || trimmedUser === '조세') {
+              score++;
+              return;
+            }
+          }
+          if (trimmedUser === trimmedAns) score++;
+        }
+      });
+      return score;
+    }
+
+    function isCurrentAnswerFilled() {
+      const currentProblem = PROBLEMS[currentIndex];
+      const userAnswer = answers[currentIndex];
+      if (currentProblem.type === 'multiple') {
+        return userAnswer !== null;
+      } else if (currentProblem.type === 'word') {
+        return userAnswer && userAnswer.every(val => val !== '');
+      } else if (currentProblem.type === 'subjective') {
+        return userAnswer && userAnswer.trim() !== '';
+      }
+      return false;
+    }
+
+    function render() {
+      initCurrentAnswer();
+      const currentProblem = PROBLEMS[currentIndex];
+      
+      let pageClass = '';
+      let contentHtml = '';
+      
+      if (currentProblem.type === 'multiple') {
+        pageClass = 'problem-multiple-page';
+        const selected = answers[currentIndex];
+        contentHtml = `
+          <div class="frame-group">
+            <div class="group-wrapper">
+              <img class="group-icon" src="../assets/acorn.png" alt="도토리" />
+            </div>
+            <div class="div6">${currentProblem.question}</div>
+          </div>
+          <div class="instance-parent">
+            ${currentProblem.options.map((option, idx) => {
+              const index = idx + 1;
+              const isActive = selected === index;
+              return `
+                <div class="ellipse-parent option-item ${isActive ? 'is-active' : ''}" data-index="${index}">
+                  <div class="instance-child check-circle">
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#0a6e3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <div class="div2">${option}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+          <div class="wrapper btn-next" style="cursor: pointer;">
+            <div class="div2">다음</div>
+          </div>
+        `;
+      } else if (currentProblem.type === 'word') {
+        pageClass = 'problem-word-page';
+        const slots = answers[currentIndex] || [];
+        contentHtml = `
+          <div class="div2">${currentProblem.question}</div>
+          <div class="inner">
+            <img class="group-icon" src="../assets/acorn.png" alt="도토리" />
+          </div>
+          <div class="word-slots-container">
+            ${slots.map((char, index) => `
+              <div class="word-slot ${char ? 'has-value' : ''}" data-index="${index}">${char}</div>
+            `).join('')}
+          </div>
+          <div class="frame-parent">
+            <div class="frame-group">
+              ${currentProblem.letters.slice(0, 5).map(char => {
+                const isUsed = slots.includes(char);
+                return `<div class="wrapper letter-btn ${isUsed ? 'is-used' : ''}" data-char="${char}"><div class="div3">${char}</div></div>`;
+              }).join('')}
+            </div>
+            <div class="frame-group">
+              ${currentProblem.letters.slice(5, 10).map(char => {
+                const isUsed = slots.includes(char);
+                return `<div class="wrapper letter-btn ${isUsed ? 'is-used' : ''}" data-char="${char}"><div class="div3">${char}</div></div>`;
+              }).join('')}
+            </div>
+            <div class="frame-group">
+              ${currentProblem.letters.slice(10, 15).map(char => {
+                const isUsed = slots.includes(char);
+                return `<div class="wrapper letter-btn ${isUsed ? 'is-used' : ''}" data-char="${char}"><div class="div3">${char}</div></div>`;
+              }).join('')}
+            </div>
+          </div>
+          <div class="wrapper13 btn-next">
+            <div class="div18">다음</div>
+          </div>
+        `;
+      } else if (currentProblem.type === 'subjective') {
+        pageClass = 'problem-subjective-page';
+        const value = answers[currentIndex] || '';
+        contentHtml = `
+          <div class="div2">${currentProblem.question}</div>
+          <div class="parent">
+            <input type="text" class="div3 subjective-input" placeholder="답안 입력" value="${value}" autofocus />
+            <div class="frame-child underline-line"></div>
+          </div>
+          <div class="inner">
+            <img class="group-icon" src="../assets/acorn.png" alt="도토리" />
+          </div>
+          <div class="wrapper13 btn-next">
+            <div class="div18">다음</div>
+          </div>
+        `;
+      }
+
+      appContainer.innerHTML = `
+        <div class="app-page-wrapper leveltest-page ${pageClass}">
+          <div class="app-content-container">
+            <div class="div">
+              <img class="child btn-back" src="../assets/arrow_back.png" alt="뒤로가기" style="cursor: pointer;" />
+              
+              <div class="rectangle-parent">
+                ${Array.from({ length: 10 }).map((_, index) => {
+                  let activeClass = '';
+                  let inactiveClass = '';
+                  if (currentProblem.type === 'multiple') {
+                    activeClass = 'frame-child';
+                    inactiveClass = 'frame-item';
+                  } else if (currentProblem.type === 'word') {
+                    activeClass = 'frame-child';
+                    inactiveClass = 'frame-inner';
+                  } else if (currentProblem.type === 'subjective') {
+                    activeClass = 'frame-item';
+                    inactiveClass = 'frame-child2';
+                  }
+                  const isPassed = index <= currentIndex;
+                  return `<div class="${isPassed ? activeClass : inactiveClass}"></div>`;
+                }).join('')}
+              </div>
+              
+              ${contentHtml}
+            </div>
+          </div>
+        </div>
+      `;
+
+      bindEvents();
+    }
+
+    function bindEvents() {
+      const currentProblem = PROBLEMS[currentIndex];
+      const backBtn = document.querySelector('.btn-back');
+      const nextBtn = document.querySelector('.btn-next');
+      
+      const handleNext = () => {
+        if (!isCurrentAnswerFilled()) return;
+
+        if (currentIndex < PROBLEMS.length - 1) {
+          currentIndex++;
+          render();
+        } else {
+          const finalScore = calculateScore();
+          const computedLevel = 200 + finalScore * 60; // 200 ~ 800
+          console.log('최종 점수:', finalScore, '레벨:', computedLevel);
+          
+          let level = 'beginner';
+          if (computedLevel >= 620) {
+            level = 'advanced';
+          } else if (computedLevel >= 440) {
+            level = 'intermediate';
+          } else {
+            level = 'beginner';
+          }
+          
+          localStorage.setItem('user-level', level);
+          localStorage.setItem('user-level-score', computedLevel.toString());
+          // 레벨 테스트 정답 수에 기반하여 독립적인 초기 티어 점수(user-rp) 설정
+          const initialRp = 200 + finalScore * 20; 
+          localStorage.setItem('user-rp', initialRp.toString());
+          window.location.href = 'levelmeasure.html';
+        }
+      };
+
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
+          if (currentIndex > 0) {
+            currentIndex--;
+            render();
+          } else {
+            window.location.href = 'teststart.html';
+          }
+        });
+      }
+
+      if (currentProblem.type === 'multiple') {
+        const options = document.querySelectorAll('.option-item');
+        
+        const updateButtonState = () => {
+          if (answers[currentIndex] !== null) {
+            nextBtn.classList.add('is-active');
+          } else {
+            nextBtn.classList.remove('is-active');
+          }
+        };
+
+        options.forEach(option => {
+          option.addEventListener('click', () => {
+            options.forEach(opt => opt.classList.remove('is-active'));
+            option.classList.add('is-active');
+            answers[currentIndex] = parseInt(option.dataset.index);
+            updateButtonState();
+          });
+        });
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', handleNext);
+        }
+        updateButtonState();
+
+      } else if (currentProblem.type === 'word') {
+        const letterBtns = document.querySelectorAll('.letter-btn');
+        const slots = document.querySelectorAll('.word-slot');
+        
+        const updateUI = () => {
+          const currentSlots = answers[currentIndex];
+          slots.forEach((slot, idx) => {
+            const val = currentSlots[idx] || '';
+            slot.textContent = val;
+            if (val) {
+              slot.classList.add('has-value');
+            } else {
+              slot.classList.remove('has-value');
+            }
+          });
+
+          const isComplete = currentSlots.every(val => val !== '');
+          if (isComplete) {
+            nextBtn.classList.add('is-active');
+          } else {
+            nextBtn.classList.remove('is-active');
+          }
+        };
+
+        letterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (btn.classList.contains('is-used')) return;
+            const currentSlots = answers[currentIndex];
+            const emptyIndex = currentSlots.indexOf('');
+            if (emptyIndex !== -1) {
+              const char = btn.dataset.char;
+              currentSlots[emptyIndex] = char;
+              btn.classList.add('is-used');
+              updateUI();
+            }
+          });
+        });
+
+        slots.forEach((slot, idx) => {
+          slot.addEventListener('click', () => {
+            const currentSlots = answers[currentIndex];
+            const char = currentSlots[idx];
+            if (!char) return;
+
+            currentSlots[idx] = '';
+            const matchedBtn = Array.from(letterBtns).find(
+              btn => btn.dataset.char === char && btn.classList.contains('is-used')
+            );
+            if (matchedBtn) {
+              matchedBtn.classList.remove('is-used');
+            }
+            updateUI();
+          });
+        });
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', handleNext);
+        }
+        updateUI();
+
+      } else if (currentProblem.type === 'subjective') {
+        const input = document.querySelector('.subjective-input');
+        
+        const updateButtonState = () => {
+          const val = input.value.trim();
+          answers[currentIndex] = val;
+          if (val) {
+            nextBtn.classList.add('is-active');
+          } else {
+            nextBtn.classList.remove('is-active');
+          }
+        };
+
+        if (input) {
+          input.addEventListener('input', updateButtonState);
+          input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+              const val = input.value.trim();
+              if (val) {
+                answers[currentIndex] = val;
+                handleNext();
+              }
+            }
+          });
+          
+          input.focus();
+          const valLen = input.value.length;
+          input.setSelectionRange(valLen, valLen);
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', handleNext);
+        }
+        updateButtonState();
+      }
+    }
+
+    // 첫 실행
+    loadProblems();
+  </script>
+</body>
+</html>

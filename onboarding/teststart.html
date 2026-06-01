@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 테스트 시작</title>
+  <link rel="icon" type="image/png" href="../assets/acorn.png">
+  <link rel="stylesheet" href="../assets/main.css">
+  <link rel="stylesheet" href="../assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-page-wrapper teststart-page">
+    <div class="app-content-container">
+      <div class="div">
+        <div class="parent">
+          <img class="icon" src="../assets/coin.png" alt="도토리 코인" />
+          
+          <div class="ai-parent">
+            <div class="ai">지금부터 AI 기반<br> 레벨 테스트가 시작됩니다</div>
+            <div class="div2"> 총 10문제입니다</div>
+          </div>
+        </div>
+        
+        <div class="wrapper">
+          <div class="div3 btn-confirm" style="cursor: pointer;">
+            <div class="div4">레벨테스트 시작하기</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.btn-confirm').addEventListener('click', () => {
+      window.location.href = 'leveltest.html';
+    });
+  </script>
+</body>
+</html>
