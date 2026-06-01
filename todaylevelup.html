@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 레벨업</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Yde+street:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 컨테이너 패딩 제거 */
+      .todaylevelup-page .app-content-container {
+        padding: 0 !important;
+      }
+
+      .todaylevelup-page .div {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 32px;
+        box-sizing: border-box;
+      }
+
+      .todaylevelup-page .object-parent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
+      .todaylevelup-page .object-icon {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+      }
+
+      .todaylevelup-page .div2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #000;
+        font-family: "Yde street", sans-serif;
+      }
+
+      .todaylevelup-page .wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: auto;
+        margin-bottom: 40px;
+      }
+
+      .todaylevelup-page .div3 {
+        align-self: stretch;
+        height: 50px;
+        border-radius: 40px;
+        background-color: #0a6e3c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+
+      .todaylevelup-page .div3:hover {
+        opacity: 0.9;
+      }
+
+      .todaylevelup-page .div4 {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      @media (min-width: 768px) {
+        .todaylevelup-page .div {
+          min-height: 844px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-page-wrapper todaylevelup-page">
+      <div class="app-content-container">
+        <div class="div">
+          <div class="object-parent">
+            <img class="object-icon" alt="레벨업" src="assets/levelup_mascot.png" />
+            <div class="div2">LEVEL UP!</div>
+          </div>
+          <div class="wrapper btn-confirm">
+            <div class="div3">
+              <div class="div4">확인하기</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const confirmBtn = document.querySelector(".btn-confirm");
+      if (confirmBtn) {
+        confirmBtn.addEventListener("click", () => {
+          window.location.href = "todaycheck.html";
+        });
+      }
+    </script>
+  </body>
+</html>

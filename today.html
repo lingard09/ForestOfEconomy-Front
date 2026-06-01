@@ -32,8 +32,9 @@
 
     <script>
       document.querySelector(".btn-confirm").addEventListener("click", () => {
-        // 확인하기 클릭 시 처음 시작 화면인 index.html로 돌려보냅니다.
-        window.location.href = "index.html";
+        sessionStorage.setItem("quiz_round", "1");
+        sessionStorage.setItem("correct_count", "0");
+        window.location.href = "todayquiz.html";
       });
     </script>
   </body>

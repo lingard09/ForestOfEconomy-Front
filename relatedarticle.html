@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 관련 기사</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 컨테이너 패딩 제거 */
+      .relatedarticle-page .app-content-container {
+        padding: 0 !important;
+      }
+
+      .relatedarticle-page .div {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        font-size: 14px;
+        color: #000;
+        font-family: "Noto Sans KR";
+        padding: 0 32px;
+        box-sizing: border-box;
+      }
+
+      /* 뒤로가기 화살표 */
+      .relatedarticle-page .child {
+        width: 31.9px;
+        height: 14.6px;
+        object-fit: contain;
+        opacity: 0.3;
+        cursor: pointer;
+        align-self: flex-start;
+        margin-top: 40px;
+      }
+
+      /* 진행바 */
+      .relatedarticle-page .rectangle-parent {
+        align-self: stretch;
+        height: 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 20px;
+      }
+      .relatedarticle-page .frame-item {
+        height: 3px;
+        width: 28px;
+        border-radius: 2px;
+        background-color: #0a6e3c;
+      }
+      .relatedarticle-page .frame-inner {
+        height: 3px;
+        width: 28px;
+        border-radius: 2px;
+        background-color: #f6f6f6;
+      }
+
+      /* 도토리 아이콘 + 안내 문구 */
+      .relatedarticle-page .inner {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #787878;
+        width: 100%;
+        margin-top: 35px;
+      }
+      .relatedarticle-page .group-parent {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+      }
+      .relatedarticle-page .frame-child {
+        height: 32.2px;
+        width: 30px;
+        object-fit: contain;
+      }
+      .relatedarticle-page .div5 {
+        font-weight: 500;
+      }
+
+      /* 기사 제목 */
+      .relatedarticle-page .div2 {
+        font-size: 18px;
+        font-weight: 500;
+        width: 100%;
+        margin-top: 25px;
+      }
+
+      /* 날짜 + AI 뱃지 */
+      .relatedarticle-page .date-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .relatedarticle-page .div3 {
+        font-size: 12px;
+        color: #000;
+      }
+      .relatedarticle-page .ai-wrapper {
+        border-radius: 16px;
+        border: 1px solid #0a6e3c;
+        box-sizing: border-box;
+        padding: 4px 9px;
+        font-size: 10px;
+        color: #0a6e3c;
+        display: inline-flex;
+        align-items: center;
+      }
+      .relatedarticle-page .ai {
+        font-weight: 700;
+      }
+
+      /* 기사 이미지 */
+      .relatedarticle-page .icon {
+        width: 100%;
+        height: 155px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      /* 기사 본문 */
+      .relatedarticle-page .div4 {
+        font-size: 16px;
+        width: 100%;
+        margin-top: 20px;
+        line-height: 1.6;
+        flex: 1;
+      }
+
+      /* 다음 버튼 */
+      .relatedarticle-page .wrapper {
+        border-radius: 30px;
+        background-color: #272727;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 17px 60px;
+        text-align: center;
+        color: #fff;
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        align-self: center;
+        margin-top: auto;
+        margin-bottom: 40px;
+      }
+      .relatedarticle-page .wrapper:hover {
+        opacity: 0.9;
+      }
+
+      @media (min-width: 768px) {
+        .relatedarticle-page .div {
+          min-height: 844px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-page-wrapper relatedarticle-page">
+      <div class="app-content-container">
+        <div class="div">
+          <img
+            class="child btn-back"
+            src="assets/arrow_back.png"
+            alt="뒤로가기"
+          />
+
+          <div class="rectangle-parent">
+            <div class="frame-item"></div>
+            <div class="frame-inner"></div>
+            <div class="frame-inner"></div>
+            <div class="frame-inner"></div>
+            <div class="frame-inner"></div>
+            <div class="frame-inner"></div>
+            <div class="frame-inner"></div>
+            <div class="frame-inner"></div>
+            <div class="frame-inner"></div>
+            <div class="frame-inner"></div>
+          </div>
+
+          <div class="inner">
+            <div class="group-parent">
+              <img class="frame-child" alt="도토리" src="assets/acorn.png" />
+              <div class="div5">관련 기사를 보여드릴게요</div>
+            </div>
+          </div>
+
+          <div class="div2">트럼프, 이란 최고지도자 하메네이 사살</div>
+
+          <div class="date-row">
+            <div class="div3">2026. 10.26</div>
+            <div class="ai-wrapper">
+              <b class="ai">AI가 정리한 기사예요</b>
+            </div>
+          </div>
+
+          <img class="icon" alt="기사 이미지" src="assets/article_trump.jpg" />
+
+          <div class="div4">
+            이란의 최고 지도자인 아야톨라 알리 하메네이가 사망하거나 유고 상황에 처할 경우, 차기 최고 지도자 자리를 두고 그의 차남인 '모즈타파 하메네이'가 유력한 후계자 중 한 명으로 거론되고 있습니다. 이란 정계와 외신 분석에 따르면, 하메네이 사후 시아파 성직자들로 구성된 전문가 회의가 차기 최고 지도자를 최종 선출하게 되며, 모즈타파는 종교적 권위와 이란 혁명수비대(IRGC) 내의 막강한 지지 기반을 바탕으로 후계 구도에서 입지를 탄탄히 굳혀온 인물입니다.
+          </div>
+
+          <div class="wrapper btn-next">
+            <div class="div5">다음</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const articleData = {
+        "1": {
+          title: "트럼프, 이란 최고지도자 하메네이 사살",
+          date: "2026. 10.26",
+          image: "assets/article_trump.jpg",
+          content: "이란의 최고 지도자인 아야톨라 알리 하메네이가 사망하거나 유고 상황에 처할 경우, 차기 최고 지도자 자리를 두고 그의 차남인 '모즈타파 하메네이'가 유력한 후계자 중 한 명으로 거론되고 있습니다. 이란 정계와 외신 분석에 따르면, 하메네이 사후 시아파 성직자들로 구성된 전문가 회의가 차기 최고 지도자를 최종 선출하게 되며, 모즈타파는 종교적 권위와 이란 혁명수비대(IRGC) 내의 막강한 지지 기반을 바탕으로 후계 구도에서 입지를 탄탄히 굳혀온 인물입니다.",
+          progress: 2
+        },
+        "2": {
+          title: "미 연준, 기준금리 0.5%p 인상하는 '빅스텝' 단행",
+          date: "2026. 10.27",
+          image: "assets/article_fed.png",
+          content: "미국 연방준비제도(Fed)가 인플레이션 압력을 억제하기 위해 기준금리를 0.5%포인트 인상하는 이른바 '빅스텝'을 단행했습니다. 이는 통상적인 0.25%포인트 인상(베이비 스텝)의 두 배에 달하는 조치로, 시장의 유동성을 빠르게 흡수하여 고물가 추세를 잡기 위한 강력한 통화 긴축 정책입니다.",
+          progress: 5
+        },
+        "3": {
+          title: "글로벌 투자 시장의 화두, ESG 경영이란 무엇인가",
+          date: "2026. 10.28",
+          image: "assets/article_esg.png",
+          content: "ESG는 환경(Environmental), 사회(Social), 지배구조(Governance)의 약칭으로, 기업의 장기적인 생존과 지속가능한 성장을 위해 필수적인 평가 요소로 자리 잡았습니다. 글로벌 투자사들은 재무적 성과뿐만 아니라 ESG 평가지표를 기반으로 투자를 집행하고 있습니다.",
+          progress: 8
+        }
+      };
+
+      const currentRound = sessionStorage.getItem("quiz_round") || "1";
+      const currentData = articleData[currentRound] || articleData["1"];
+
+      // 기사 콘텐츠 적용
+      document.querySelector(".div2").textContent = currentData.title;
+      document.querySelector(".div3").textContent = currentData.date;
+      document.querySelector(".icon").setAttribute("src", currentData.image);
+      document.querySelector(".div4").textContent = currentData.content;
+
+      // 진행바 적용
+      const progressBars = document.querySelectorAll(".rectangle-parent > div");
+      progressBars.forEach((bar, idx) => {
+        if (idx < currentData.progress) {
+          bar.className = "frame-item"; // Active green (wait, in relatedarticle.html, let's look at frame-item vs frame-inner. In relatedarticle, active is frame-item and inactive is frame-inner. Let's check below!)
+        } else {
+          bar.className = "frame-inner";
+        }
+      });
+
+      const backBtn = document.querySelector(".btn-back");
+      const nextBtn = document.querySelector(".btn-next");
+
+      if (backBtn) {
+        backBtn.addEventListener("click", () => {
+          window.history.back();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          window.location.href = "todayrequiz.html";
+        });
+      }
+    </script>
+  </body>
+</html>

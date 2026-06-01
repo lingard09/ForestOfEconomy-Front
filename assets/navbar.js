@@ -2,7 +2,7 @@
  * 경제의 숲 - 공통 네비게이션 바 컴포넌트
  */
 function renderNavbar(activeTab) {
-  const navContainer = document.querySelector('.div4');
+  const navContainer = document.querySelector('.div27') || document.querySelector('.div > .div4:last-of-type');
   if (!navContainer) {
     console.warn('.div4 네비게이션 바 컨테이너를 찾을 수 없습니다.');
     return;
@@ -55,7 +55,7 @@ function renderNavbar(activeTab) {
     window.location.href = 'today.html';
   });
   document.querySelector('.nav-news').addEventListener('click', () => {
-    window.location.href = 'battlestart.html';
+    window.location.href = 'newslist.html';
   });
   document.querySelector('.nav-group').addEventListener('click', () => {
     window.location.href = 'group.html';
