@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 출석 체크</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Yde+street:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 컨테이너 패딩 제거 */
+      .todaycheck-page .app-content-container {
+        padding: 0 !important;
+      }
+
+      .todaycheck-page .div {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 32px;
+        box-sizing: border-box;
+      }
+
+      .todaycheck-page .object-icon {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+        margin-top: auto;
+        margin-bottom: 20px;
+      }
+
+      .todaycheck-page .div4 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        font-family: "Yde street", sans-serif;
+        margin-bottom: auto;
+      }
+
+      .todaycheck-page .inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .todaycheck-page .frame-parent {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .todaycheck-page .ellipse-parent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .todaycheck-page .frame-child {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #f6f6f6;
+      }
+
+      .todaycheck-page .frame-inner {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .todaycheck-page .s {
+        font-size: 12px;
+        font-weight: 700;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      .todaycheck-page .wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+      }
+
+      .todaycheck-page .div2 {
+        align-self: stretch;
+        height: 50px;
+        border-radius: 40px;
+        background-color: #0a6e3c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+
+      .todaycheck-page .div2:hover {
+        opacity: 0.9;
+      }
+
+      .todaycheck-page .div3 {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      @media (min-width: 768px) {
+        .todaycheck-page .div {
+          min-height: 844px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-page-wrapper todaycheck-page">
+      <div class="app-content-container">
+        <div class="div">
+          <img
+            class="object-icon"
+            alt="출석 마스코트"
+            src="assets/attendance_mascot.png"
+          />
+          <div class="div4">오늘의 학습</div>
+
+          <div class="inner">
+            <div class="frame-parent">
+              <div class="ellipse-parent">
+                <div class="frame-child"></div>
+                <b class="s">S</b>
+              </div>
+              <div class="ellipse-parent">
+                <div class="frame-child"></div>
+                <b class="s">M</b>
+              </div>
+              <div class="ellipse-parent">
+                <div class="frame-child"></div>
+                <b class="s">T</b>
+              </div>
+              <div class="ellipse-parent">
+                <div class="frame-child"></div>
+                <b class="s">W</b>
+              </div>
+              <div class="ellipse-parent">
+                <div class="frame-child"></div>
+                <b class="s">T</b>
+              </div>
+              <div class="ellipse-parent">
+                <div class="frame-child"></div>
+                <b class="s">F</b>
+              </div>
+              <div class="ellipse-parent">
+                <div class="frame-child"></div>
+                <b class="s">S</b>
+              </div>
+            </div>
+          </div>
+
+          <div class="wrapper btn-confirm">
+            <div class="div2">
+              <div class="div3">확인하기</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 연속 출석 일수 계산 (localStorage 사용) - 하루에 한 번만 증가
+      let attendanceDays = parseInt(
+        localStorage.getItem("attendance_days") || "0",
+      );
+
+      const todayDateKey = new Date().toISOString().split("T")[0];
+      const alreadyCounted = localStorage.getItem(`attendance_${todayDateKey}`);
+      if (!alreadyCounted) {
+        attendanceDays += 1;
+        localStorage.setItem("attendance_days", attendanceDays.toString());
+        localStorage.setItem(`attendance_${todayDateKey}`, "true");
+      }
+
+      // 2일 이상 출석 시 문구 변경
+      const headerText = document.querySelector(".div4");
+      if (headerText) {
+        if (attendanceDays >= 2) {
+          headerText.textContent = `${attendanceDays}DAY 연속 학습`;
+        } else {
+          headerText.textContent = "오늘의 학습";
+        }
+      }
+
+      // 달력 요일에 도토리 도장 적용
+      const dayElements = document.querySelectorAll(".ellipse-parent");
+      dayElements.forEach((day, index) => {
+        // 출석한 날만큼 도토리 도장 찍기
+        if (index < attendanceDays) {
+          day.innerHTML = `
+            <img class="frame-inner" alt="출석" src="assets/coin.png" />
+            <b class="s" style="color: #0a6e3c;">${day.querySelector(".s").textContent}</b>
+          `;
+        } else {
+          day.innerHTML = `
+            <div class="frame-child"></div>
+            <b class="s" style="color: #d9d9d9;">${day.querySelector(".s").textContent}</b>
+          `;
+        }
+      });
+      const confirmBtn = document.querySelector(".btn-confirm");
+      if (confirmBtn) {
+        confirmBtn.addEventListener("click", () => {
+          const goalDays = localStorage.getItem("goal_days");
+          const attendanceDays = parseInt(
+            localStorage.getItem("attendance_days") || "0",
+          );
+
+          let completed = parseInt(
+            localStorage.getItem("study_completed_count") || "0",
+          );
+          completed = Math.min(6, completed + 1);
+          localStorage.setItem("study_completed_count", completed.toString());
+          // BroadcastChannel로 홈에 즉시 반영 메시지 전송 (없는 환경도 try-catch)
+          try {
+            const bc = new BroadcastChannel("study_channel");
+            bc.postMessage("study_updated");
+            bc.close();
+          } catch (e) {
+            console.debug("BroadcastChannel post failed", e);
+          }
+
+          // goal_days가 설정되어 있고 출석 목표를 달성한 경우에만 goaldays.html로 이동
+          if (goalDays && attendanceDays >= parseInt(goalDays)) {
+            window.location.href = "goaldays.html";
+          } else {
+            window.location.href = "home.html";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

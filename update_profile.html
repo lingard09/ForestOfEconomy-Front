@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="initial-scale=1, width=device-width">
+  	<title>경제의 숲 - 개인정보 수정</title>
+  	<link rel="icon" type="image/png" href="assets/acorn.png" />
+  	<link rel="stylesheet" href="assets/main.css" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+  	<style>
+      .update-profile-page .app-content-container {
+        padding: 0 !important;
+        overflow: hidden !important;
+        position: relative !important;
+      }
+      .div {
+        width: 100%;
+        height: 100%;
+        min-height: 844px;
+        position: relative;
+        background-color: #fff;
+        overflow: hidden;
+        text-align: left;
+        font-size: 12px;
+        color: #787878;
+        font-family: 'Noto Sans KR';
+      }
+      .child {
+        position: absolute;
+        top: 73.5px;
+        left: 33px;
+        width: 24px;
+        height: 20px;
+        object-fit: contain;
+        cursor: pointer;
+        z-index: 10;
+      }
+      .frame-parent {
+        position: absolute;
+        top: 72px;
+        left: 33px;
+        width: 325px;
+        height: 247.3px;
+      }
+      .frame-group {
+        position: absolute;
+        top: 71px;
+        left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+      .frame-container {
+        width: 325px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .frame-wrapper {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .div2 {
+        align-self: stretch;
+        position: relative;
+      }
+      .frame-child {
+        width: 325px;
+        height: 1px;
+        position: relative;
+        background-color: #d1d5dc;
+      }
+      .frame-div {
+        position: absolute;
+        top: 157px;
+        left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+      .kimjinniigmailcom {
+        align-self: stretch;
+        position: relative;
+        font-size: 16px;
+        color: #000;
+      }
+      .div5 {
+        position: absolute;
+        top: 230.34px;
+        left: 0px;
+        text-decoration: underline;
+        color: #999;
+        cursor: pointer;
+      }
+      .div6 {
+        position: absolute;
+        top: 0px;
+        left: calc(50% - 45.5px);
+        font-size: 16px;
+        font-weight: 500;
+        color: #000;
+      }
+      .div7 {
+        position: absolute;
+        top: 0px;
+        left: 295px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #0a6e3c;
+        cursor: pointer;
+      }
+      .nickname-edit-input {
+        font-size: 16px;
+        border: none;
+        border-bottom: 2px solid #0a6e3c;
+        outline: none;
+        width: 100%;
+        font-family: 'Noto Sans KR';
+        color: #000;
+        padding: 2px 0;
+      }
+      
+      /* 탈퇴 모달 스타일 */
+      .withdraw-modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+      }
+      .withdraw-modal-overlay .modal-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+      }
+      .withdraw-modal-overlay .parent7 {
+        position: absolute;
+        top: 300px;
+        left: calc(50% - 140px);
+        border-radius: 15px;
+        background-color: #fff;
+        width: 280px;
+        height: 156px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 28px 15px;
+        box-sizing: border-box;
+        gap: 36px;
+        flex-shrink: 0;
+        z-index: 1000;
+      }
+      .withdraw-modal-overlay .div11 {
+        position: relative;
+        font-weight: 500;
+        flex-shrink: 0;
+        font-size: 15px;
+        color: #000;
+        font-family: 'Noto Sans KR';
+        text-align: center;
+        line-height: 1.4;
+      }
+      .withdraw-modal-overlay .button-parent {
+        width: 224px;
+        height: 43px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        flex-shrink: 0;
+        font-size: 14px;
+        color: #fff;
+        justify-content: center;
+      }
+      .withdraw-modal-overlay .button {
+        height: 43px;
+        width: 107px;
+        border-radius: 8.79px;
+        background-color: #272727;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      .withdraw-modal-overlay .button2 {
+        height: 43px;
+        width: 107px;
+        border-radius: 8.79px;
+        background-color: #0a6e3c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      .withdraw-modal-overlay .am {
+        position: relative;
+        font-weight: 500;
+        color: #fff;
+      }
+  	</style>
+</head>
+<body>
+  	<div class="app-page-wrapper update-profile-page">
+      <div class="app-content-container">
+        <div class="div">
+          <!-- 뒤로가기 버튼 -->
+          <img class="child btn-back" alt="뒤로가기" src="assets/arrow_back.png">
+          
+          <div class="frame-parent">
+            <!-- 화면 타이틀 -->
+            <div class="div6">개인정보 수정</div>
+            <!-- 편집 / 저장 버튼 -->
+            <div class="div7 btn-edit">편집</div>
+
+            <!-- 이름 섹션 -->
+            <div class="frame-group">
+              <div class="frame-container">
+                <div class="frame-wrapper">
+                  <div class="div2">이름</div>
+                </div>
+                <div class="kimjinniigmailcom name-text">지니</div>
+              </div>
+              <div class="frame-child"></div>
+            </div>
+
+            <!-- 이메일 섹션 -->
+            <div class="frame-div">
+              <div class="frame-container">
+                <div class="frame-wrapper">
+                  <div class="div2">이메일</div>
+                </div>
+                <div class="kimjinniigmailcom email-text">kimjinnii@gmail.com</div>
+              </div>
+              <div class="frame-child"></div>
+            </div>
+
+            <!-- 탈퇴 버튼 -->
+            <div class="div5 btn-withdraw">탈퇴하기</div>
+          </div>
+          
+          <!-- 탈퇴 확인 커스텀 모달 -->
+          <div class="withdraw-modal-overlay" style="display: none;">
+            <div class="modal-bg btn-withdraw-cancel"></div>
+            <div class="parent7">
+              <div class="div11">정말 탈퇴하시겠습니까?<br><span style="font-size: 12px; color: #ff4d4f; font-weight: normal;">데이터가 모두 초기화됩니다.</span></div>
+              <div class="button-parent">
+                <div class="button btn-withdraw-cancel">
+                  <div class="am">취소</div>
+                </div>
+                <div class="button2 btn-withdraw-confirm">
+                  <div class="am">확인</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  	</div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const backBtn = document.querySelector(".btn-back");
+        const editBtn = document.querySelector(".btn-edit");
+        const nameTextEl = document.querySelector(".name-text");
+        const emailTextEl = document.querySelector(".email-text");
+        const withdrawBtn = document.querySelector(".btn-withdraw");
+
+        // 로컬 스토리지에서 닉네임과 이메일 불러오기
+        const savedNickname = localStorage.getItem("user-nickname") || "지니";
+        nameTextEl.textContent = savedNickname;
+
+        // 뒤로가기
+        backBtn.addEventListener("click", () => {
+          window.location.href = "setting.html";
+        });
+
+        // 이름 편집 상태 제어
+        let isEditing = false;
+        editBtn.addEventListener("click", () => {
+          if (!isEditing) {
+            // 편집 모드로 전환
+            isEditing = true;
+            editBtn.textContent = "완료";
+            
+            const currentNickname = nameTextEl.textContent;
+            nameTextEl.innerHTML = `<input type="text" class="nickname-edit-input" value="${currentNickname}" maxlength="6" />`;
+            
+            const inputEl = nameTextEl.querySelector(".nickname-edit-input");
+            inputEl.focus();
+            inputEl.setSelectionRange(inputEl.value.length, inputEl.value.length);
+
+            // 엔터키 입력 시 저장
+            inputEl.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") {
+                saveNickname(inputEl.value);
+              }
+            });
+          } else {
+            // 완료 모드에서 저장 진행
+            const inputEl = nameTextEl.querySelector(".nickname-edit-input");
+            saveNickname(inputEl.value);
+          }
+        });
+
+        function saveNickname(value) {
+          const newNickname = value.trim();
+          if (newNickname) {
+            localStorage.setItem("user-nickname", newNickname);
+            nameTextEl.textContent = newNickname;
+          } else {
+            alert("이름을 입력해주세요.");
+            return;
+          }
+          isEditing = false;
+          editBtn.textContent = "편집";
+        }
+
+        // 커스텀 탈퇴 모달 노출 및 액션 바인딩
+        const withdrawModal = document.querySelector(".withdraw-modal-overlay");
+        const withdrawCancelBtns = document.querySelectorAll(".btn-withdraw-cancel");
+        const withdrawConfirmBtn = document.querySelector(".btn-withdraw-confirm");
+
+        if (withdrawBtn && withdrawModal) {
+          withdrawBtn.addEventListener("click", () => {
+            withdrawModal.style.display = "block";
+          });
+        }
+
+        withdrawCancelBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            withdrawModal.style.display = "none";
+          });
+        });
+
+        if (withdrawConfirmBtn) {
+          withdrawConfirmBtn.addEventListener("click", () => {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = "index.html";
+          });
+        }
+
+        // 개인정보처리방침 클릭 이벤트
+        const privacyBtn = document.querySelector(".btn-privacy");
+        if (privacyBtn) {
+          privacyBtn.addEventListener("click", () => {
+            window.location.href = "https://raw.githubusercontent.com/lingard09/forest-of-economy/c160f583455951a3ba383c5a37e5e43add29f61b/Privacy%20Policy.pdf";
+          });
+        }
+
+        // 서비스 이용약관 클릭 이벤트
+        const termsBtn = document.querySelector(".btn-terms");
+        if (termsBtn) {
+          termsBtn.addEventListener("click", () => {
+            window.location.href = "https://raw.githubusercontent.com/lingard09/forest-of-economy/c160f583455951a3ba383c5a37e5e43add29f61b/Terms%20of%20Use.pdf";
+          });
+        }
+      });
+    </script>
+</body>
+</html>

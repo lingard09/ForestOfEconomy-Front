@@ -1,0 +1,425 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto Sans KR:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=SF Pro:wght@600&display=swap"
+    />
+    <!doctype html>
+    <html lang="ko">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <title>경제의 숲 - 알림설정</title>
+        <link rel="icon" type="image/png" href="assets/acorn.png" />
+        <link rel="stylesheet" href="assets/main.css" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=SF+Pro:wght@600&display=swap"
+        />
+        <style>
+          .notisetting-page .app-content-container {
+            padding: 0 !important;
+            overflow: hidden !important;
+            position: relative !important;
+          }
+          .div {
+            width: 100%;
+            height: 100%;
+            min-height: 844px;
+            position: relative;
+            background-color: #fff;
+            overflow: hidden;
+            text-align: center;
+            font-size: 16px;
+            color: #000;
+            font-family: "Noto Sans KR";
+          }
+          .child {
+            position: absolute;
+            top: 73.5px;
+            left: 32.9px;
+            width: 24px;
+            height: 20px;
+            object-fit: contain;
+            cursor: pointer;
+            z-index: 10;
+          }
+          .parent {
+            position: absolute;
+            top: 72px;
+            left: 33px;
+            width: 325.2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+          }
+          .div2 {
+            align-self: stretch;
+            position: relative;
+            font-weight: 700;
+            text-align: center;
+          }
+          .frame-parent {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 36px;
+          }
+          .frame-wrapper {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .group {
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+          }
+          .weuiarrow-filled {
+            height: 24px;
+            width: 12px;
+            position: relative;
+          }
+          .rectangle-parent {
+            height: 24px;
+            width: 45px;
+            position: relative;
+            cursor: pointer;
+          }
+          .group-child {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border-radius: 20px;
+            background-color: #d9d9d9;
+            width: 45px;
+            height: 24px;
+            transition: background-color 0.2s;
+          }
+          .group-item {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            border-radius: 50%;
+            background-color: #fff;
+            width: 20px;
+            height: 20px;
+            transition: left 0.2s;
+          }
+          .div5 {
+            align-self: stretch;
+            position: relative;
+            font-size: 12px;
+            color: #555;
+            text-align: left;
+            margin-top: 4px;
+          }
+
+          /* 활성화 스위치 상태 */
+          .rectangle-parent.active .group-child {
+            background-color: #0a6e3c;
+          }
+          .rectangle-parent.active .group-item {
+            left: 23px;
+          }
+
+          .parent2 {
+            align-self: stretch;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: left;
+            cursor: pointer;
+          }
+          .am-parent {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #0a6e3c;
+          }
+          .am {
+            position: relative;
+            font-weight: 500;
+          }
+          .div9 {
+            position: relative;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 600;
+            font-family: "SF Pro";
+          }
+        </style>
+      </head>
+      <body>
+        <div class="app-page-wrapper notisetting-page">
+          <div class="app-content-container">
+            <div class="div">
+              <!-- 뒤로가기 버튼 -->
+              <img
+                class="child btn-back"
+                alt="뒤로가기"
+                src="assets/arrow_back.png"
+              />
+
+              <div class="parent">
+                <!-- 화면 타이틀 -->
+                <div class="div2">알림설정</div>
+
+                <div class="frame-parent">
+                  <!-- 전체동의 -->
+                  <div class="frame-wrapper">
+                    <div class="group">
+                      <div class="am">전체동의</div>
+                      <div class="rectangle-parent switch-all">
+                        <div class="group-child"></div>
+                        <div class="group-item"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 필수 알림 -->
+                  <div class="frame-wrapper">
+                    <div class="group">
+                      <div class="am">필수 알림</div>
+                      <div class="rectangle-parent switch-item switch-required">
+                        <div class="group-child"></div>
+                        <div class="group-item"></div>
+                      </div>
+                    </div>
+                    <div class="div5">서비스에 대한 필수적인 알림만 받아요</div>
+                  </div>
+
+                  <!-- 연속 출석 알림 -->
+                  <div class="frame-wrapper">
+                    <div class="group">
+                      <div class="am">연속 출석 알림</div>
+                      <div
+                        class="rectangle-parent switch-item switch-attendance"
+                      >
+                        <div class="group-child"></div>
+                        <div class="group-item"></div>
+                      </div>
+                    </div>
+                    <div class="div5">
+                      연속 출석을 놓치지 않게 알림을 드려요
+                    </div>
+                  </div>
+
+                  <!-- 알림 시간대 -->
+                  <div class="parent2 btn-time-setting">
+                    <div class="am">알림 시간대</div>
+                    <div class="am-parent">
+                      <div class="am time-text">아침 (08:00 AM)</div>
+                      <!-- 화살표 아이콘은 텍스트 형태 보존 -->
+                      <div class="div9">></div>
+                    </div>
+                  </div>
+
+                  <!-- 야간 알림 동의 -->
+                  <div class="frame-wrapper">
+                    <div class="group">
+                      <div class="am">야간 알림 동의</div>
+                      <div class="rectangle-parent switch-item switch-night">
+                        <div class="group-child"></div>
+                        <div class="group-item"></div>
+                      </div>
+                    </div>
+                    <div class="div5">21시~08시 사이에 알림을 받아요</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const backBtn = document.querySelector(".btn-back");
+            const timeBtn = document.querySelector(".btn-time-setting");
+            const timeText = document.querySelector(".time-text");
+
+            // 뒤로가기
+            backBtn.addEventListener("click", () => {
+              window.location.href = "setting.html";
+            });
+
+            // 알림 시간 설정 페이지로 이동
+            timeBtn.addEventListener("click", () => {
+              window.location.href = "notitime.html";
+            });
+
+            // 로컬 스토리지에서 알림 시간 설정 불러오기
+            const savedTime =
+              localStorage.getItem("noti_time") || "아침 (08:00 AM)";
+            timeText.textContent = savedTime;
+
+            // 스위치 요소 선택
+            const switchAll = document.querySelector(".switch-all");
+            const switchRequired = document.querySelector(".switch-required");
+            const switchAttendance =
+              document.querySelector(".switch-attendance");
+            const switchNight = document.querySelector(".switch-night");
+            const individualSwitches = [
+              switchRequired,
+              switchAttendance,
+              switchNight,
+            ];
+
+            // 로컬 스토리지에서 스위치 상태 복원 (기본값: true)
+            const getSwitchState = (key) =>
+              localStorage.getItem(key) !== "false";
+
+            const states = {
+              required: getSwitchState("noti_required"),
+              attendance: getSwitchState("noti_attendance"),
+              night: getSwitchState("noti_night"),
+            };
+
+            // UI 업데이트 함수
+            function updateSwitchUI(el, isActive) {
+              if (isActive) {
+                el.classList.add("active");
+              } else {
+                el.classList.remove("active");
+              }
+            }
+
+            // 초기 상태 설정
+            updateSwitchUI(switchRequired, states.required);
+            updateSwitchUI(switchAttendance, states.attendance);
+            updateSwitchUI(switchNight, states.night);
+            checkAllToggleState();
+
+            // 개별 스위치 클릭 이벤트
+            switchRequired.addEventListener("click", () => {
+              states.required = !states.required;
+              localStorage.setItem("noti_required", states.required);
+              updateSwitchUI(switchRequired, states.required);
+              checkAllToggleState();
+            });
+
+            switchAttendance.addEventListener("click", () => {
+              states.attendance = !states.attendance;
+              localStorage.setItem("noti_attendance", states.attendance);
+              updateSwitchUI(switchAttendance, states.attendance);
+              checkAllToggleState();
+            });
+
+            switchNight.addEventListener("click", () => {
+              states.night = !states.night;
+              localStorage.setItem("noti_night", states.night);
+              updateSwitchUI(switchNight, states.night);
+              checkAllToggleState();
+            });
+
+            // 전체 동의 스위치 클릭 이벤트
+            switchAll.addEventListener("click", () => {
+              const makeActive = !switchAll.classList.contains("active");
+
+              states.required = makeActive;
+              states.attendance = makeActive;
+              states.night = makeActive;
+
+              localStorage.setItem("noti_required", makeActive);
+              localStorage.setItem("noti_attendance", makeActive);
+              localStorage.setItem("noti_night", makeActive);
+
+              updateSwitchUI(switchRequired, makeActive);
+              updateSwitchUI(switchAttendance, makeActive);
+              updateSwitchUI(switchNight, makeActive);
+              updateSwitchUI(switchAll, makeActive);
+            });
+
+            // 전체 동의 체크 여부 확인 함수
+            function checkAllToggleState() {
+              const allActive =
+                states.required && states.attendance && states.night;
+              updateSwitchUI(switchAll, allActive);
+            }
+          });
+        </script>
+      </body>
+    </html>
+  </head>
+  <body>
+    <div class="div">
+      <img class="child" alt="" />
+
+      <div class="parent">
+        <div class="div2">알림설정</div>
+        <div class="frame-parent">
+          <div class="frame-wrapper">
+            <div class="group">
+              <div class="am">전체동의</div>
+              <div class="weuiarrow-filled"></div>
+              <div class="rectangle-parent">
+                <div class="group-child"></div>
+                <div class="group-item"></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-wrapper">
+            <div class="group">
+              <div class="am">필수 알림</div>
+              <div class="weuiarrow-filled"></div>
+              <div class="rectangle-parent">
+                <div class="group-child"></div>
+                <div class="group-item"></div>
+              </div>
+            </div>
+            <div class="div5">서비스에 대한 필수적인 알림만 받아요</div>
+          </div>
+          <div class="frame-wrapper">
+            <div class="group">
+              <div class="am">연속 출석 알림</div>
+              <div class="weuiarrow-filled"></div>
+              <div class="rectangle-parent">
+                <div class="rectangle-div"></div>
+                <div class="group-child2"></div>
+              </div>
+            </div>
+            <div class="div5">연속 출석을 놓치지 않게 알림을 드려요</div>
+          </div>
+          <div class="parent2">
+            <div class="am">알림 시간대</div>
+            <div class="am-parent">
+              <div class="am">아침 (09:00 AM)</div>
+              <div class="div9">􀆏</div>
+            </div>
+          </div>
+          <div class="frame-wrapper">
+            <div class="group">
+              <div class="am">야간 알림 동의</div>
+              <div class="weuiarrow-filled"></div>
+              <div class="rectangle-parent">
+                <div class="rectangle-div"></div>
+                <div class="group-child2"></div>
+              </div>
+            </div>
+            <div class="div5">21시~08시 사이에 알림을 받아요</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

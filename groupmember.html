@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 그룹 멤버</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css?v=1.0.4" />
+    <link rel="stylesheet" href="assets/pages.css?v=1.0.5" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;600;700&family=Yde+street:wght@400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-page-wrapper groupmember-page">
+      <div class="app-content-container">
+        <div class="div">
+          <!-- 뒤로가기 버튼 -->
+          <img class="btn-back" src="assets/arrow_back.png" alt="뒤로가기" />
+
+          <!-- 멤버 리스트 컨텐츠 -->
+          <div class="container-parent">
+            <!-- 타이틀 -->
+            <div class="container">
+              <div class="paragraph">
+                <div class="div2">멤버</div>
+              </div>
+            </div>
+
+            <!-- 멤버 목록 -->
+            <div class="container2" id="memberListContainer">
+              <!-- 1. 나 (현재 사용자) -->
+              <div class="container3">
+                <div class="paragraph2">
+                  <div class="div3">1</div>
+                </div>
+                <div class="container4"></div>
+                <div class="container-wrapper">
+                  <div class="container5">
+                    <div class="member-name">
+                      <span id="myNickname">현재사용자</span>
+                      <span class="span">(나)</span>
+                    </div>
+                    <div class="div5">출석률: 81%</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. 멤버 2 (파파팅) -->
+              <div class="container6">
+                <div class="paragraph2">
+                  <div class="div3">2</div>
+                </div>
+                <div class="container4"></div>
+                <div class="container-group">
+                  <div class="container8">
+                    <div class="member-name">파파팅</div>
+                    <div class="div5">출석률: 85%</div>
+                  </div>
+                  <div class="wrapper btn-poke" data-name="파파팅">
+                    <div class="div9">찌르기</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. 멤버 3 (아몬드) -->
+              <div class="container6">
+                <div class="paragraph2">
+                  <div class="div3">3</div>
+                </div>
+                <div class="container4"></div>
+                <div class="container-group">
+                  <div class="container8">
+                    <div class="member-name">아몬드</div>
+                    <div class="div5">출석률: 79%</div>
+                  </div>
+                  <div class="wrapper btn-poke" data-name="아몬드">
+                    <div class="div9">찌르기</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. 멤버 4 (다람이) -->
+              <div class="container6">
+                <div class="paragraph2">
+                  <div class="div3">4</div>
+                </div>
+                <div class="container4"></div>
+                <div class="container-group">
+                  <div class="container8">
+                    <div class="member-name">다람이</div>
+                    <div class="div5">출석률: 75%</div>
+                  </div>
+                  <div class="wrapper btn-poke" data-name="다람이">
+                    <div class="div9">찌르기</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. 멤버 5 (토리) -->
+              <div class="container6">
+                <div class="paragraph2">
+                  <div class="div3">5</div>
+                </div>
+                <div class="container4"></div>
+                <div class="container-group">
+                  <div class="container8">
+                    <div class="member-name">토리</div>
+                    <div class="div5">출석률: 70%</div>
+                  </div>
+                  <div class="wrapper btn-poke" data-name="토리">
+                    <div class="div9">찌르기</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6. 멤버 6 (도토리헌터) -->
+              <div class="container6">
+                <div class="paragraph2">
+                  <div class="div3">6</div>
+                </div>
+                <div class="container4"></div>
+                <div class="container-group">
+                  <div class="container8">
+                    <div class="member-name">도토리헌터</div>
+                    <div class="div5">출석률: 65%</div>
+                  </div>
+                  <div class="wrapper btn-poke" data-name="도토리헌터">
+                    <div class="div9">찌르기</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- 하단 공통 네비게이션 바 컨테이너 -->
+        <div class="div27"></div>
+      </div>
+    </div>
+
+    <script src="assets/navbar.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 공통 네비게이션 바 렌더링
+        renderNavbar('group');
+
+        // 뒤로가기 핸들러
+        document.querySelector(".btn-back").addEventListener("click", () => {
+          window.location.href = 'groupranking.html';
+        });
+
+        // 로컬스토리지 저장 닉네임 가져와 매핑 (있을 경우)
+        const savedNickname = localStorage.getItem("user-nickname");
+        if (savedNickname) {
+          document.getElementById("myNickname").textContent = savedNickname;
+        }
+
+        // 찌르기 버튼 동작 추가
+        const pokeButtons = document.querySelectorAll(".btn-poke");
+        pokeButtons.forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            const memberName = btn.getAttribute("data-name");
+            alert(`${memberName}님을 쿡 찔렀습니다! 👉🐿️`);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

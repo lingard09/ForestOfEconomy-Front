@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 배틀 모드</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="assets/quizzes.js"></script>
+  </head>
+  <body>
+    <div id="app-container">
+      <!-- 동적 문제 렌더링 영역 -->
+    </div>
+
+    <script>
+      let QUIZ_POOL = [];
+      let PROBLEMS = [];
+      let currentIndex = 0;
+      let answers = [];
+
+      const appContainer = document.getElementById("app-container");
+
+      // 피셔-예이츠 알고리즘 기반 무작위 셔플
+      function shuffleArray(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+
+      function loadProblems() {
+        try {
+          if (!window.QUIZ_POOL || !Array.isArray(window.QUIZ_POOL)) {
+            throw new Error("window.QUIZ_POOL을 찾을 수 없거나 배열이 아닙니다. assets/quizzes.js 파일이 브라우저에서 정상 로드되지 않았을 수 있습니다.");
+          }
+          QUIZ_POOL = window.QUIZ_POOL;
+          PROBLEMS = shuffleArray(QUIZ_POOL).slice(0, 10);
+          answers = Array(PROBLEMS.length).fill(null);
+          render();
+        } catch (error) {
+          console.error("문제를 불러오는 중 오류가 발생했습니다:", error);
+          appContainer.innerHTML = `
+            <div class="error-message">
+              데이터 로드 오류가 발생했습니다.<br>
+              <span style="font-size: 12px; color: #999; display: block; margin-top: 8px;">상세 오류: ${error.message}</span>
+            </div>
+          `;
+        }
+      }
+
+      function initCurrentAnswer() {
+        const currentProblem = PROBLEMS[currentIndex];
+        if (answers[currentIndex] === null) {
+          if (currentProblem.type === "multiple") {
+            answers[currentIndex] = null;
+          } else if (currentProblem.type === "word") {
+            answers[currentIndex] = Array(currentProblem.answerLength).fill("");
+          } else if (currentProblem.type === "subjective") {
+            answers[currentIndex] = "";
+          }
+        }
+      }
+
+      function calculateScore() {
+        let score = 0;
+        PROBLEMS.forEach((prob, index) => {
+          const userAnswer = answers[index];
+          if (prob.type === "multiple") {
+            if (userAnswer === prob.answer) score++;
+          } else if (prob.type === "word") {
+            const answerStr = Array.isArray(userAnswer)
+              ? userAnswer.join("")
+              : "";
+            if (answerStr === prob.answer) score++;
+          } else if (prob.type === "subjective") {
+            const trimmedUser = (userAnswer || "").trim().replace(/\s+/g, "");
+            const trimmedAns = prob.answer.trim().replace(/\s+/g, "");
+
+            if (
+              prob.question.includes("국가나 지방자치단체가 재정 수입") &&
+              (trimmedUser === "세금" || trimmedUser === "조세")
+            ) {
+              score++;
+              return;
+            }
+            if (trimmedUser === trimmedAns) score++;
+          }
+        });
+        return score;
+      }
+
+      function isCurrentAnswerFilled() {
+        const currentProblem = PROBLEMS[currentIndex];
+        const userAnswer = answers[currentIndex];
+        if (currentProblem.type === "multiple") {
+          return userAnswer !== null;
+        } else if (currentProblem.type === "word") {
+          return userAnswer && userAnswer.every((val) => val !== "");
+        } else if (currentProblem.type === "subjective") {
+          return userAnswer && userAnswer.trim() !== "";
+        }
+        return false;
+      }
+
+      function render() {
+        initCurrentAnswer();
+        const currentProblem = PROBLEMS[currentIndex];
+
+        let pageClass = "";
+        let contentHtml = "";
+
+        if (currentProblem.type === "multiple") {
+          pageClass = "problem-multiple-page";
+          const selected = answers[currentIndex];
+          contentHtml = `
+          <div class="frame-group">
+            <div class="group-wrapper">
+              <img class="group-icon" src="assets/acorn.png" alt="도토리" />
+            </div>
+            <div class="div6">${currentProblem.question}</div>
+          </div>
+          <div class="instance-parent">
+            ${currentProblem.options
+              .map((option, idx) => {
+                const index = idx + 1;
+                const isActive = selected === index;
+                return `
+                <div class="ellipse-parent option-item ${isActive ? "is-active" : ""}" data-index="${index}">
+                  <div class="instance-child check-circle">
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#0a6e3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <div class="div2">${option}</div>
+                </div>
+              `;
+              })
+              .join("")}
+          </div>
+          <div class="wrapper btn-next">
+            <div class="div2">다음</div>
+          </div>
+        `;
+        } else if (currentProblem.type === "word") {
+          pageClass = "problem-word-page";
+          const slots = answers[currentIndex] || [];
+          contentHtml = `
+          <div class="div2">${currentProblem.question}</div>
+          <div class="inner">
+            <img class="group-icon" src="assets/acorn.png" alt="도토리" />
+          </div>
+          <div class="word-slots-container">
+            ${slots
+              .map(
+                (char, index) => `
+              <div class="word-slot ${char ? "has-value" : ""}" data-index="${index}">${char}</div>
+            `,
+              )
+              .join("")}
+          </div>
+          <div class="frame-parent">
+            <div class="frame-group">
+              ${currentProblem.letters
+                .slice(0, 5)
+                .map((char) => {
+                  const isUsed = slots.includes(char);
+                  return `<div class="wrapper letter-btn ${isUsed ? "is-used" : ""}" data-char="${char}"><div class="div3">${char}</div></div>`;
+                })
+                .join("")}
+            </div>
+            <div class="frame-group">
+              ${currentProblem.letters
+                .slice(5, 10)
+                .map((char) => {
+                  const isUsed = slots.includes(char);
+                  return `<div class="wrapper letter-btn ${isUsed ? "is-used" : ""}" data-char="${char}"><div class="div3">${char}</div></div>`;
+                })
+                .join("")}
+            </div>
+            <div class="frame-group">
+              ${currentProblem.letters
+                .slice(10, 15)
+                .map((char) => {
+                  const isUsed = slots.includes(char);
+                  return `<div class="wrapper letter-btn ${isUsed ? "is-used" : ""}" data-char="${char}"><div class="div3">${char}</div></div>`;
+                })
+                .join("")}
+            </div>
+          </div>
+          <div class="wrapper13 btn-next">
+            <div class="div18">다음</div>
+          </div>
+        `;
+        } else if (currentProblem.type === "subjective") {
+          pageClass = "problem-subjective-page";
+          const value = answers[currentIndex] || "";
+          contentHtml = `
+          <div class="div2">${currentProblem.question}</div>
+          <div class="parent">
+            <input type="text" class="div3 subjective-input" placeholder="답안 입력" value="${value}" autofocus />
+            <div class="frame-child underline-line"></div>
+          </div>
+          <div class="inner">
+            <img class="group-icon" src="assets/acorn.png" alt="도토리" />
+          </div>
+          <div class="wrapper13 btn-next">
+            <div class="div18">다음</div>
+          </div>
+        `;
+        }
+
+        appContainer.innerHTML = `
+        <div class="app-page-wrapper leveltest-page ${pageClass}">
+          <div class="app-content-container">
+            <div class="div">
+              <img class="child btn-back" src="assets/arrow_back.png" alt="뒤로가기" />
+              
+              <div class="rectangle-parent">
+                ${Array.from({ length: 10 })
+                  .map((_, index) => {
+                    let activeClass = "";
+                    let inactiveClass = "";
+                    if (currentProblem.type === "multiple") {
+                      activeClass = "frame-child";
+                      inactiveClass = "frame-item";
+                    } else if (currentProblem.type === "word") {
+                      activeClass = "frame-child";
+                      inactiveClass = "frame-inner";
+                    } else if (currentProblem.type === "subjective") {
+                      activeClass = "frame-item";
+                      inactiveClass = "frame-child2";
+                    }
+                    const isPassed = index <= currentIndex;
+                    return `<div class="${isPassed ? activeClass : inactiveClass}"></div>`;
+                  })
+                  .join("")}
+              </div>
+              
+              ${contentHtml}
+            </div>
+
+            <!-- 결과 모달을 .app-content-container 영역 내부에 배치 -->
+            <div class="battle-modal-overlay" id="result-modal">
+              <div class="battle-modal-content">
+                <div class="battle-modal-title">배틀 완료!</div>
+                <div class="battle-modal-text">
+                  10문제 중 <strong id="correct-count" class="battle-modal-correct">0</strong>문제를 맞췄습니다!<br>
+                  <span class="battle-modal-subtext">
+                    도토리 코인 <strong id="acorn-reward" class="battle-modal-acorn">0</strong>개를 획득했습니다!<br>
+                    티어 RP가 <strong id="rp-reward" style="color: #bc5d0c; font-weight: bold;">+0</strong> 증가했습니다!
+                  </span>
+                </div>
+                <button class="battle-modal-btn" id="modal-confirm-btn">확인</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+        bindEvents();
+      }
+
+      function bindEvents() {
+        const currentProblem = PROBLEMS[currentIndex];
+        const backBtn = document.querySelector(".btn-back");
+        const nextBtn = document.querySelector(".btn-next");
+
+        const handleNext = () => {
+          if (!isCurrentAnswerFilled()) return;
+
+          if (currentIndex < PROBLEMS.length - 1) {
+            currentIndex++;
+            render();
+          } else {
+            // 10문제 풀이 완료 -> 모달 팝업 노출
+            const finalScore = calculateScore();
+            const acornReward = finalScore * 5; // 문제당 도토리 5코인씩 지급하는 게임적 연출
+
+            // 정답률에 따른 티어 RP 차등 지급
+            let rpReward = 5; // 기본 참가 RP
+            if (finalScore === 10) {
+              rpReward = 30;
+            } else if (finalScore >= 8) {
+              rpReward = 25;
+            } else if (finalScore >= 6) {
+              rpReward = 20;
+            } else if (finalScore >= 4) {
+              rpReward = 15;
+            } else if (finalScore >= 1) {
+              rpReward = 10;
+            }
+
+            // 사용자 누적 RP 업데이트 (티어 점수)
+            let userRp = parseInt(localStorage.getItem('user-rp') || '250', 10);
+            userRp += rpReward;
+            localStorage.setItem('user-rp', userRp.toString());
+
+            document.getElementById("correct-count").textContent = finalScore;
+            document.getElementById("acorn-reward").textContent = acornReward;
+            document.getElementById("rp-reward").textContent = `+${rpReward}`;
+
+            const modal = document.getElementById("result-modal");
+            modal.style.display = "flex";
+          }
+        };
+
+        if (backBtn) {
+          backBtn.addEventListener("click", () => {
+            if (currentIndex > 0) {
+              currentIndex--;
+              render();
+            } else {
+              window.location.href = 'battlestart.html';
+            }
+          });
+        }
+
+        if (currentProblem.type === "multiple") {
+          const options = document.querySelectorAll(".option-item");
+
+          const updateButtonState = () => {
+            if (answers[currentIndex] !== null) {
+              nextBtn.classList.add("is-active");
+            } else {
+              nextBtn.classList.remove("is-active");
+            }
+          };
+
+          options.forEach((option) => {
+            option.addEventListener("click", () => {
+              options.forEach((opt) => opt.classList.remove("is-active"));
+              option.classList.add("is-active");
+              answers[currentIndex] = parseInt(option.dataset.index);
+              updateButtonState();
+            });
+          });
+
+          if (nextBtn) {
+            nextBtn.addEventListener("click", handleNext);
+          }
+          updateButtonState();
+        } else if (currentProblem.type === "word") {
+          const letterBtns = document.querySelectorAll(".letter-btn");
+          const slots = document.querySelectorAll(".word-slot");
+
+          const updateUI = () => {
+            const currentSlots = answers[currentIndex];
+            slots.forEach((slot, idx) => {
+              const val = currentSlots[idx] || "";
+              slot.textContent = val;
+              if (val) {
+                slot.classList.add("has-value");
+              } else {
+                slot.classList.remove("has-value");
+              }
+            });
+
+            const isComplete = currentSlots.every((val) => val !== "");
+            if (isComplete) {
+              nextBtn.classList.add("is-active");
+            } else {
+              nextBtn.classList.remove("is-active");
+            }
+          };
+
+          letterBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+              if (btn.classList.contains("is-used")) return;
+              const currentSlots = answers[currentIndex];
+              const emptyIndex = currentSlots.indexOf("");
+              if (emptyIndex !== -1) {
+                const char = btn.dataset.char;
+                currentSlots[emptyIndex] = char;
+                btn.classList.add("is-used");
+                updateUI();
+              }
+            });
+          });
+
+          slots.forEach((slot, idx) => {
+            slot.addEventListener("click", () => {
+              const currentSlots = answers[currentIndex];
+              const char = currentSlots[idx];
+              if (!char) return;
+
+              currentSlots[idx] = "";
+              const matchedBtn = Array.from(letterBtns).find(
+                (btn) =>
+                  btn.dataset.char === char &&
+                  btn.classList.contains("is-used"),
+              );
+              if (matchedBtn) {
+                matchedBtn.classList.remove("is-used");
+              }
+              updateUI();
+            });
+          });
+
+          if (nextBtn) {
+            nextBtn.addEventListener("click", handleNext);
+          }
+          updateUI();
+        } else if (currentProblem.type === "subjective") {
+          const input = document.querySelector(".subjective-input");
+
+          const updateButtonState = () => {
+            const val = input.value.trim();
+            answers[currentIndex] = val;
+            if (val) {
+              nextBtn.classList.add("is-active");
+            } else {
+              nextBtn.classList.remove("is-active");
+            }
+          };
+
+          if (input) {
+            input.addEventListener("input", updateButtonState);
+            input.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") {
+                const val = input.value.trim();
+                if (val) {
+                  answers[currentIndex] = val;
+                  handleNext();
+                }
+              }
+            });
+
+            input.focus();
+            const valLen = input.value.length;
+            input.setSelectionRange(valLen, valLen);
+          }
+
+          if (nextBtn) {
+            nextBtn.addEventListener("click", handleNext);
+          }
+          updateButtonState();
+        }
+
+        // 모달 확인 버튼 바인딩
+        const modalConfirmBtn = document.getElementById("modal-confirm-btn");
+        if (modalConfirmBtn) {
+          modalConfirmBtn.addEventListener("click", () => {
+            const userRp = parseInt(localStorage.getItem('user-rp') || '200', 10);
+            let targetPage = "today.html";
+            
+            // 사용자의 누적 RP에 알맞은 티어 결과 페이지로 이동하여 차오르는 시각적 링 확인
+            if (userRp >= 3800) {
+              targetPage = "challenger1.html";
+            } else if (userRp >= 3600) {
+              targetPage = "challenger2.html";
+            } else if (userRp >= 3400) {
+              targetPage = "challenger3.html";
+            } else if (userRp >= 3200) {
+              targetPage = "challenger4.html";
+            } else if (userRp >= 3000) {
+              targetPage = "challenger5.html";
+            } else if (userRp >= 2800) {
+              targetPage = "diamond1.html";
+            } else if (userRp >= 2600) {
+              targetPage = "diamond2.html";
+            } else if (userRp >= 2400) {
+              targetPage = "diamond3.html";
+            } else if (userRp >= 2200) {
+              targetPage = "diamond4.html";
+            } else if (userRp >= 2000) {
+              targetPage = "diamond5.html";
+            } else if (userRp >= 1800) {
+              targetPage = "gold1.html";
+            } else if (userRp >= 1600) {
+              targetPage = "gold2.html";
+            } else if (userRp >= 1400) {
+              targetPage = "gold3.html";
+            } else if (userRp >= 1200) {
+              targetPage = "gold4.html";
+            } else if (userRp >= 1000) {
+              targetPage = "gold5.html";
+            } else if (userRp >= 900) {
+              targetPage = "silver1.html";
+            } else if (userRp >= 800) {
+              targetPage = "silver2.html";
+            } else if (userRp >= 700) {
+              targetPage = "silver3.html";
+            } else if (userRp >= 600) {
+              targetPage = "silver4.html";
+            } else if (userRp >= 500) {
+              targetPage = "silver5.html";
+            } else if (userRp >= 440) {
+              targetPage = "bronze1.html";
+            } else if (userRp >= 380) {
+              targetPage = "bronze2.html";
+            } else if (userRp >= 320) {
+              targetPage = "bronze3.html";
+            } else if (userRp >= 260) {
+              targetPage = "bronze4.html";
+            } else {
+              targetPage = "bronze5.html";
+            }
+            window.location.href = targetPage;
+          });
+        }
+      }
+
+      // 첫 렌더링
+      loadProblems();
+    </script>
+  </body>
+</html>

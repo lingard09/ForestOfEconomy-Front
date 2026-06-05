@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 오늘의 학습</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Yde+street:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-page-wrapper today-page-container">
+      <div class="app-content-container">
+        <div class="today-page">
+          <div class="today-parent">
+            <div class="today-title">경제 쌓기</div>
+            <div class="today-subtitle">오늘의 학습</div>
+          </div>
+          <div class="today-btn-wrapper">
+            <button class="today-btn btn-confirm" style="cursor: pointer">
+              시작하기
+            </button>
+          </div>
+          <img class="today-child-img" alt="child" src="assets/child.png" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelector(".btn-confirm").addEventListener("click", () => {
+        sessionStorage.setItem("quiz_round", "1");
+        sessionStorage.setItem("correct_count", "0");
+        window.location.href = 'todayquiz.html';
+      });
+    </script>
+  </body>
+</html>

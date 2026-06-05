@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 중수 다람쥐</title>
+  <link rel="icon" type="image/png" href="assets/acorn.png">
+  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-page-wrapper intermediate-page">
+    <div class="app-content-container">
+      <div class="div">
+        <div class="div2">
+          <div class="div3"></div>
+          <div class="div4">로고</div>
+        </div>
+        
+        <div class="child"></div>
+        <div class="item"></div>
+        
+        <div class="frame-parent">
+          <div class="frame-group">
+            <div class="wrapper">
+              <div class="div5">INTERMEDIATE</div>
+            </div>
+            <div class="div6 user-level-display">400 Lv</div>
+          </div>
+          <div class="div7">경제 뉴스를 꽤 탐독할 수 있는 <br>중수 다람쥐예요! <br>더욱 지식을 쌓아 고수로 나아가요</div>
+        </div>
+        
+        <div class="container">
+          <div class="div8 btn-confirm" style="cursor: pointer;">
+            <div class="div9">확인하기</div>
+          </div>
+        </div>
+        
+        <img class="object-icon" src="assets/badge_intermediate.png" alt="중수 훈장" />
+        <img class="object-icon2" src="assets/squirrel_intermediate.png" alt="중수 다람쥐" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 세부 점수 로드 및 바인딩
+    const levelScore = localStorage.getItem('user-level-score') || '400';
+    document.querySelector('.user-level-display').textContent = levelScore + ' Lv';
+
+    document.querySelector('.btn-confirm').addEventListener('click', () => {
+      window.location.href = 'notisuggest.html';
+    });
+  </script>
+</body>
+</html>

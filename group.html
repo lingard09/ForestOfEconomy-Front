@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 그룹</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Yde+street:wght@400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-page-wrapper group-page">
+      <div class="app-content-container">
+        <div class="div">
+          <!-- 상단 헤더 영역 -->
+          <div class="group-header">
+            <div class="div2">그룹</div>
+            <img
+              class="vector-icon btn-add-group"
+              src="assets/plus_icon.png"
+              alt="그룹 만들기"
+              style="cursor: pointer"
+            />
+          </div>
+
+          <div class="div3">
+            소속된 그룹이 없어요.<br />그룹을 만들어 소통해 보세요.
+          </div>
+
+          <img
+            class="object-icon"
+            src="assets/group_mascot.png"
+            alt="그룹 마스코트"
+          />
+
+          <!-- 그룹 메뉴 팝업 (평소에는 hidden) -->
+          <div class="group-menu-popup" style="display: none">
+            <div class="popup-bg"></div>
+            <div class="popup-menu">
+              <div class="popup-item btn-create-group">그룹 만들기</div>
+              <div class="popup-item btn-join-group">그룹 참여하기</div>
+            </div>
+            <div class="popup-divider"></div>
+          </div>
+
+          <!-- 그룹 만들기 모달 (Dimmed Overlay) -->
+          <div class="gcm-overlay" id="groupCreateModal" style="display: none">
+            <div class="gcm-modal">
+              <b class="gcm-title">그룹 만들기</b>
+
+              <!-- 닫기 버튼 -->
+              <button class="gcm-close-btn" id="gcmCloseBtn" aria-label="닫기">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 6L6 18"
+                    stroke="#131313"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M6 6L18 18"
+                    stroke="#131313"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <form
+                class="gcm-form"
+                id="groupCreateForm"
+                onsubmit="return false;"
+              >
+                <!-- 그룹 이름 입력 -->
+                <div class="gcm-field-container">
+                  <div class="gcm-label">
+                    <div class="gcm-label-text">
+                      <span>그룹 이름 </span>
+                      <span class="gcm-required">*</span>
+                    </div>
+                  </div>
+                  <div class="gcm-input-wrapper">
+                    <input
+                      type="text"
+                      class="gcm-input"
+                      id="gcmInputName"
+                      placeholder="그룹 이름을 입력하세요"
+                      maxlength="5"
+                      required
+                    />
+                    <div class="gcm-char-count-wrapper">
+                      <span class="gcm-char-count" id="gcmNameCount"
+                        >0/5자</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 그룹 소개 입력 -->
+                <div class="gcm-field-container gcm-textarea-field">
+                  <div class="gcm-label">
+                    <div class="gcm-label-text">그룹 소개</div>
+                  </div>
+                  <div class="gcm-textarea-wrapper">
+                    <textarea
+                      class="gcm-textarea"
+                      id="gcmInputDesc"
+                      placeholder="그룹에 대해 간단히 소개해주세요"
+                      maxlength="50"
+                    ></textarea>
+                    <div class="gcm-char-count-wrapper">
+                      <span class="gcm-char-count" id="gcmDescCount"
+                        >0/50자</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 주의사항 안내 -->
+                <div class="gcm-notice-container">
+                  <div class="gcm-notice-text">
+                    • 그룹은 최대 6명까지 참여할 수 있습니다<br />
+                    • 그룹은 한 번만 생성할 수 있습니다<br />
+                    • 그룹코드는 생성 후 공유할 수 있습니다
+                  </div>
+                </div>
+
+                <!-- 완료 버튼 -->
+                <button type="submit" class="gcm-submit-btn" id="gcmSubmitBtn">
+                  <span class="gcm-submit-btn-text">그룹 만들기</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- 그룹 생성 완료 모달 (Success Modal Overlay) -->
+          <div class="gcs-overlay" id="groupSuccessModal" style="display: none">
+            <div class="gcs-modal">
+              <div class="gcs-content">
+                <div class="gcs-text-wrapper">
+                  <div class="gcs-title">그룹이 생성되었습니다!</div>
+                  <div class="gcs-code" id="gcsGroupCode">
+                    그룹 코드: YUA9YFW9
+                  </div>
+                </div>
+                <button class="gcs-confirm-btn" id="gcsConfirmBtn">
+                  <span class="gcs-confirm-btn-text">확인</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 그룹 참여하기 모달 (Group Join Modal Overlay) -->
+          <div class="gjm-overlay" id="groupJoinModal" style="display: none">
+            <div class="gjm-modal">
+              <!-- 닫기 버튼 -->
+              <button class="gjm-close-btn" id="gjmCloseBtn" aria-label="닫기">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 6L6 18"
+                    stroke="#131313"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M6 6L18 18"
+                    stroke="#131313"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <div class="gjm-content">
+                <b class="gjm-title">그룹 참여하기</b>
+                <form
+                  class="gjm-form"
+                  id="groupJoinForm"
+                  onsubmit="return false;"
+                >
+                  <input
+                    type="text"
+                    class="gjm-input"
+                    id="gjmInputCode"
+                    placeholder="그룹 코드를 입력하세요"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    class="gjm-submit-btn"
+                    id="gjmSubmitBtn"
+                  >
+                    <span class="gjm-submit-btn-text">참여하기</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- 그룹 참여 확인 모달 (Join Confirm Modal Overlay) -->
+          <div
+            class="gjc-overlay"
+            id="groupJoinConfirmModal"
+            style="display: none"
+          >
+            <div class="gjc-modal">
+              <div class="gjc-content">
+                <div class="gjc-text" id="gjcTargetGroupName">
+                  ‘경제 연구회’에 참여하시겠습니까?
+                </div>
+                <div class="gjc-btn-group">
+                  <button class="gjc-cancel-btn" id="gjcCancelBtn">
+                    <span class="gjc-btn-text">취소</span>
+                  </button>
+                  <button class="gjc-confirm-btn" id="gjcConfirmBtn">
+                    <span class="gjc-btn-text">확인</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 하단 공통 네비게이션 바 컨테이너 -->
+        <div class="div27"></div>
+      </div>
+    </div>
+
+    <script src="assets/navbar.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 공통 네비게이션 바 컴포넌트 렌더링
+        renderNavbar("group");
+
+        // 뒤로가기 클릭 이벤트 (뒤로가기 버튼이 존재할 때만 바인딩)
+        const backBtn = document.querySelector(".btn-back");
+        if (backBtn) {
+          backBtn.addEventListener("click", () => {
+            window.location.href = 'today.html';
+          });
+        }
+
+        const addGroupBtn = document.querySelector(".btn-add-group");
+        const popup = document.querySelector(".group-menu-popup");
+
+        // 플러스 버튼 클릭 시 팝업 토글
+        addGroupBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isHidden =
+            popup.style.display === "none" || popup.style.display === "";
+          popup.style.display = isHidden ? "block" : "none";
+        });
+
+        const modal = document.getElementById("groupCreateModal");
+        const closeBtn = document.getElementById("gcmCloseBtn");
+        const createForm = document.getElementById("groupCreateForm");
+        const inputName = document.getElementById("gcmInputName");
+        const inputDesc = document.getElementById("gcmInputDesc");
+        const nameCount = document.getElementById("gcmNameCount");
+        const descCount = document.getElementById("gcmDescCount");
+
+        const successModal = document.getElementById("groupSuccessModal");
+        const successConfirmBtn = document.getElementById("gcsConfirmBtn");
+        const successGroupCodeText = document.getElementById("gcsGroupCode");
+
+        const joinModal = document.getElementById("groupJoinModal");
+        const joinCloseBtn = document.getElementById("gjmCloseBtn");
+        const joinForm = document.getElementById("groupJoinForm");
+        const inputJoinCode = document.getElementById("gjmInputCode");
+
+        const joinConfirmModal = document.getElementById(
+          "groupJoinConfirmModal",
+        );
+        const cancelJoinBtn = document.getElementById("gjcCancelBtn");
+        const confirmJoinBtn = document.getElementById("gjcConfirmBtn");
+        const targetGroupNameText =
+          document.getElementById("gjcTargetGroupName");
+
+        // 팝업 내부 메뉴 클릭 이벤트
+        document
+          .querySelector(".btn-create-group")
+          .addEventListener("click", () => {
+            modal.style.display = "flex";
+            popup.style.display = "none";
+          });
+
+        document
+          .querySelector(".btn-join-group")
+          .addEventListener("click", () => {
+            joinModal.style.display = "flex";
+            popup.style.display = "none";
+          });
+
+        // 모달 닫기 기능
+        const closeModal = () => {
+          modal.style.display = "none";
+          createForm.reset();
+          nameCount.textContent = "0/5자";
+          descCount.textContent = "0/50자";
+        };
+
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+
+        // 성공 모달 닫기 기능
+        const closeSuccessModal = () => {
+          successModal.style.display = "none";
+        };
+
+        successConfirmBtn.addEventListener("click", closeSuccessModal);
+        successModal.addEventListener("click", (e) => {
+          if (e.target === successModal) {
+            closeSuccessModal();
+          }
+        });
+
+        // 참여 모달 닫기 기능
+        const closeJoinModal = () => {
+          joinModal.style.display = "none";
+          joinForm.reset();
+        };
+
+        joinCloseBtn.addEventListener("click", closeJoinModal);
+        joinModal.addEventListener("click", (e) => {
+          if (e.target === joinModal) {
+            closeJoinModal();
+          }
+        });
+
+        // 참여 확인 모달 닫기 기능
+        const closeJoinConfirmModal = () => {
+          joinConfirmModal.style.display = "none";
+        };
+
+        cancelJoinBtn.addEventListener("click", closeJoinConfirmModal);
+        joinConfirmModal.addEventListener("click", (e) => {
+          if (e.target === joinConfirmModal) {
+            closeJoinConfirmModal();
+          }
+        });
+
+        // 실시간 글자 수 세기
+        inputName.addEventListener("input", () => {
+          const len = inputName.value.length;
+          nameCount.textContent = `${len}/5자`;
+        });
+
+        inputDesc.addEventListener("input", () => {
+          const len = inputDesc.value.length;
+          descCount.textContent = `${len}/50자`;
+        });
+
+        // 8자리 영문 대문자 + 숫자 조합의 랜덤 그룹 코드 생성 함수
+        const generateGroupCode = () => {
+          const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+          let code = "";
+          for (let i = 0; i < 8; i++) {
+            code += chars.charAt(Math.floor(Math.random() * chars.length));
+          }
+          return code;
+        };
+
+        // 그룹 생성 제출 및 검증
+        createForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const nameVal = inputName.value.trim();
+          const descVal = inputDesc.value.trim();
+
+          if (!nameVal) {
+            alert("그룹 이름을 입력해주세요!");
+            inputName.focus();
+            return;
+          }
+
+          // 랜덤 그룹 코드 발급
+          const groupCode = generateGroupCode();
+
+          // Mock 데이터 저장
+          const groupData = {
+            name: nameVal,
+            description: descVal,
+            code: groupCode,
+            createdAt: new Date().toISOString(),
+          };
+          localStorage.setItem("userGroupInfo", JSON.stringify(groupData));
+
+          // UI 연동 및 모달 전환
+          successGroupCodeText.textContent = `그룹 코드: ${groupCode}`;
+          closeModal();
+          successModal.style.display = "flex";
+        });
+
+        // 그룹 참여 제출 및 검증 (입력 후 확인 컨펌 모달 띄우기)
+        joinForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const codeVal = inputJoinCode.value.trim().toUpperCase();
+
+          if (!codeVal) {
+            alert("그룹 코드를 입력해주세요!");
+            inputJoinCode.focus();
+            return;
+          }
+
+          // 생성된 그룹 정보 가져오기 및 이름 매핑
+          let groupName = "경제 연구회";
+          const savedGroup = localStorage.getItem("userGroupInfo");
+          if (savedGroup) {
+            try {
+              const groupData = JSON.parse(savedGroup);
+              if (groupData.code && groupData.code.toUpperCase() === codeVal) {
+                groupName = groupData.name;
+              }
+            } catch (err) {
+              console.error("그룹 정보 파싱 실패", err);
+            }
+          }
+
+          // 컨펌 텍스트 설정 및 모달 띄우기
+          targetGroupNameText.textContent = `‘${groupName}’에 참여하시겠습니까?`;
+          joinConfirmModal.style.display = "flex";
+        });
+
+        // 그룹 참여 최종 확인 완료 리스너
+        confirmJoinBtn.addEventListener("click", () => {
+          const codeVal = inputJoinCode.value.trim();
+
+          // Mock 데이터 저장
+          const joinData = {
+            code: codeVal,
+            joinedAt: new Date().toISOString(),
+          };
+          localStorage.setItem("userJoinedGroup", JSON.stringify(joinData));
+
+          alert("성공적으로 그룹에 참여했습니다!");
+          closeJoinConfirmModal();
+          closeJoinModal();
+        });
+
+        // 바깥 영역 클릭 시 팝업 닫기
+        document.addEventListener("click", (e) => {
+          if (
+            popup.style.display === "block" &&
+            !popup.contains(e.target) &&
+            e.target !== addGroupBtn
+          ) {
+            popup.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

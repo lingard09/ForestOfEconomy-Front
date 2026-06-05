@@ -1,0 +1,1059 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>경제의 숲 - 홈</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap"
+    />
+    <style>
+      .div {
+        width: 100%;
+        height: 1400px;
+        position: relative;
+        background-color: #5f5591;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 20px;
+        padding-left: 32px;
+        padding-right: 32px;
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+        font-family: "Noto Sans KR", sans-serif;
+        box-sizing: border-box;
+      }
+      .coin-step {
+        position: absolute;
+        width: 76.2px;
+        height: 76.1px;
+        z-index: 2;
+      }
+      .frame-parent {
+        position: absolute;
+        top: 70px;
+        left: 33px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #fff;
+      }
+      .group-parent {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .frame-child {
+        height: 24.1px;
+        width: 22.4px;
+        position: relative;
+        object-fit: contain;
+      }
+      .lv {
+        position: relative;
+        font-weight: 500;
+      }
+      .frame-item {
+        height: 23.8px;
+        width: 23.8px;
+        position: relative;
+      }
+      .object-icon {
+        position: absolute;
+        width: 75px;
+        height: 90px;
+        z-index: 5;
+        object-fit: contain;
+        transition: all 0.5s ease;
+        cursor: pointer;
+      }
+      .study-bubble {
+        position: absolute;
+        width: 177px;
+        height: 106.1px;
+        display: none;
+        text-align: left;
+        font-size: 16px;
+        color: #131313;
+        font-family: "Noto Sans KR", sans-serif;
+        z-index: 100;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease;
+      }
+      .study-bubble:hover {
+        transform: scale(1.05);
+      }
+      .study-bubble .bubble-wrapper {
+        position: absolute;
+        top: 10.08px;
+        left: 0px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        width: 177px;
+        height: 96px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .study-bubble .bubble-group {
+        align-self: stretch;
+        height: 96px;
+        border-radius: 15px;
+        background-color: #f8c31f;
+        display: flex;
+        align-items: flex-start;
+        padding: 15px 57px 15px 20px;
+        box-sizing: border-box;
+        position: relative;
+        isolation: isolate;
+        gap: 8px;
+      }
+      .study-bubble .bubble-parent {
+        width: 71px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4px;
+        z-index: 0;
+        flex-shrink: 0;
+      }
+      .study-bubble .bubble-title {
+        position: relative;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .study-bubble .bubble-subtitle {
+        align-self: stretch;
+        position: relative;
+        font-size: 14px;
+        font-weight: 500;
+        color: #555555;
+        white-space: nowrap;
+      }
+      .study-bubble .bubble-icon-group {
+        height: 16.98%;
+        width: 11.13%;
+        position: absolute;
+        margin: 0 !important;
+        top: 63.98%;
+        right: 14.52%;
+        bottom: 19.04%;
+        left: 74.35%;
+        max-width: 100%;
+        overflow: hidden;
+        max-height: 100%;
+        z-index: 1;
+        flex-shrink: 0;
+      }
+      .study-bubble .bubble-frame-child {
+        height: 35px;
+        width: 35px;
+        position: absolute;
+        margin: 0 !important;
+        right: 14px;
+        bottom: 9px;
+        z-index: 2;
+        flex-shrink: 0;
+      }
+      .study-bubble .bubble-tail {
+        position: absolute;
+        top: 0px;
+        left: 17.41px;
+        border-radius: 2px;
+        width: 26.4px;
+        height: 20.2px;
+        z-index: 5;
+      }
+      .frame-group {
+        position: absolute;
+        top: 130px;
+        left: 33px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        width: 325px;
+        height: 80px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        isolation: isolate;
+        gap: 15px;
+        text-align: left;
+        font-size: 16px;
+        color: #fff;
+        transition: height 0.3s ease;
+        overflow: hidden;
+        border-radius: 15px;
+      }
+      .frame-wrapper {
+        height: 100%;
+        flex: 1;
+        border-radius: 15px;
+        background-color: #131313;
+        display: flex;
+        align-items: flex-start;
+        padding: 20px 57px 15px 20px;
+        box-sizing: border-box;
+        z-index: 0;
+        flex-shrink: 0;
+      }
+      .frame-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+      .wrapper {
+        width: 284px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .o-x-wrapper {
+        width: 284px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 14px;
+        color: #787878;
+      }
+      .frame-inner {
+        height: 18.63%;
+        width: 6.62%;
+        position: absolute;
+        margin: 0 !important;
+        top: 31.39%;
+        right: 8.46%;
+        bottom: 49.98%;
+        left: 84.92%;
+        max-width: 100%;
+        overflow: hidden;
+        max-height: 100%;
+        z-index: 1;
+        flex-shrink: 0;
+      }
+      .div4 {
+        position: absolute;
+        top: 762.41px;
+        left: 32.57px;
+        border-radius: 40px;
+        background-color: #131313;
+        width: 325px;
+        height: 50px;
+      }
+      .rectangle-icon {
+        position: absolute;
+        top: 5px;
+        left: 6.49px;
+        border-radius: 22px;
+        width: 81.6px;
+        height: 40px;
+        flex-shrink: 0;
+      }
+      .frame-div {
+        position: absolute;
+        top: 9.59px;
+        left: calc(50% - 126.39px);
+        width: 264px;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        flex-shrink: 0;
+      }
+      .rectangle-parent {
+        width: 21.5px;
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 3px;
+      }
+      .rectangle-div {
+        height: 10.7px;
+        width: 10.7px;
+        position: relative;
+        border-radius: 2px;
+        border: 2px solid #fff;
+        box-sizing: border-box;
+      }
+      .vector-icon {
+        height: 23.9px;
+        width: 30.4px;
+        position: relative;
+      }
+      .pepicons-poppeople {
+        height: 30px;
+        width: 30px;
+        position: relative;
+      }
+      .group-icon2 {
+        height: 21.3px;
+        width: 22.8px;
+        position: relative;
+      }
+      .group-group {
+        position: absolute;
+        top: 72px;
+        left: 280px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+      .group-icon3 {
+        height: 25.2px;
+        width: 21.3px;
+        position: relative;
+      }
+      .rectangle-group {
+        height: 24px;
+        width: 45px;
+        position: relative;
+      }
+      .group-child {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-radius: 20px;
+        background-color: #f8c31f;
+        width: 45px;
+        height: 24px;
+      }
+      .group-item {
+        position: absolute;
+        top: 2px;
+        left: 22.5px;
+        border-radius: 50%;
+        background-color: #fff;
+        width: 20px;
+        height: 20px;
+      }
+      /* 오늘의 퀴즈 토글 스타일 */
+      #quizCard.expanded {
+        height: 170px !important;
+      }
+      #quizCard.expanded .quiz-collapsed-content {
+        display: none !important;
+      }
+      #quizCard.expanded .quiz-expanded-content {
+        display: flex !important;
+      }
+
+      /* Expanded State Styles mimicking user snippet styling */
+      .quiz-expanded-content {
+        height: 170px;
+        flex: 1;
+        width: 100%;
+        position: relative;
+        border-radius: 15px;
+        background-color: #131313;
+        display: flex;
+        align-items: flex-start;
+        padding: 15px 20px;
+        box-sizing: border-box;
+        text-align: left;
+        font-size: 16px;
+        color: #fff;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .quiz-expanded-content .quiz-inner-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+        isolation: isolate;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .quiz-expanded-content .quiz-header-parent {
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        z-index: 0;
+        flex-shrink: 0;
+        width: 100%;
+      }
+      .quiz-expanded-content .quiz-title {
+        position: relative;
+        font-weight: 500;
+      }
+      .quiz-expanded-content .union-icon {
+        height: 16px;
+        width: 16px;
+        position: relative;
+        cursor: pointer;
+      }
+      .quiz-expanded-content .quiz-question {
+        width: 100%;
+        position: relative;
+        font-size: 14px;
+        font-weight: 500;
+        white-space: normal;
+        display: inline-block;
+        z-index: 1;
+        flex-shrink: 0;
+        line-height: 1.4;
+      }
+      .quiz-expanded-content .ellipse-parent {
+        width: 117px;
+        height: 35px;
+        position: absolute;
+        margin: 0 !important;
+        top: 95px;
+        left: calc(50% - 59px);
+        z-index: 2;
+        flex-shrink: 0;
+      }
+      .quiz-expanded-content .frame-child {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 34.9px;
+        height: 34.9px;
+        cursor: pointer;
+      }
+      .quiz-expanded-content .union-icon2 {
+        position: absolute;
+        top: 2.6px;
+        left: 86.91px;
+        width: 29.7px;
+        height: 29.7px;
+        cursor: pointer;
+      }
+      #quizCard.solved .quiz-title-collapsed,
+      #quizCard.solved .quiz-title {
+        color: #888888 !important;
+      }
+      .battle-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+      }
+      .battle-modal-content {
+        background-color: #fff;
+        padding: 30px 24px;
+        border-radius: 20px;
+        text-align: center;
+        width: 300px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .battle-modal-title {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 22px;
+        color: #0a6e3c;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+      .battle-modal-text {
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
+      .battle-modal-btn {
+        width: 100%;
+        height: 48px;
+        background-color: #0a6e3c;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .battle-modal-btn:hover {
+        opacity: 0.9;
+      }
+      .battle-modal-acorn {
+        color: #ea9b00;
+      }
+      .main-home-page .app-content-container {
+        position: relative !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+      }
+      .forest-map-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        scrollbar-width: none;
+        z-index: 1;
+      }
+      .forest-map-container::-webkit-scrollbar {
+        display: none;
+      }
+      .frame-parent,
+      .frame-group,
+      .group-group,
+      .div27 {
+        z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-page-wrapper main-home-page">
+      <div class="app-content-container">
+        <!-- Fixed Header overlay -->
+        <div class="frame-parent">
+          <div class="group-parent">
+            <img class="frame-child" src="assets/acorn.png" alt="도토리" />
+            <div class="lv">401 lv.</div>
+          </div>
+          <div class="group-parent">
+            <img class="frame-item" src="assets/coin.png" alt="코인" />
+            <div class="lv" id="userCoinCount">400</div>
+          </div>
+        </div>
+
+        <!-- Fixed Today's Quiz Card overlay -->
+        <div class="frame-group" id="quizCard">
+          <!-- 1. 접힌 상태 (Collapsed) -->
+          <div
+            class="quiz-collapsed-content"
+            style="
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <div
+              class="frame-wrapper"
+              style="
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+              "
+            >
+              <div class="frame-container">
+                <div class="wrapper">
+                  <div class="lv quiz-title-collapsed">오늘의 퀴즈</div>
+                </div>
+                <div class="o-x-wrapper">
+                  <div class="lv" style="font-size: 14px; color: #787878">
+                    O, X 퀴즈
+                  </div>
+                </div>
+              </div>
+              <img
+                class="frame-inner btn-toggle-quiz"
+                src="assets/arrow_down.png"
+                alt="열기"
+                style="cursor: pointer; width: 20px; height: 11px"
+              />
+            </div>
+          </div>
+
+          <!-- 2. 펼쳐진 상태 (Expanded) -->
+          <div class="quiz-expanded-content" style="display: none">
+            <div class="quiz-inner-group">
+              <div class="quiz-header-parent">
+                <div class="quiz-title">오늘의 퀴즈</div>
+                <img
+                  class="union-icon btn-toggle-quiz"
+                  src="assets/close_btn.svg"
+                  alt="닫기"
+                  style="transform: rotate(180deg)"
+                />
+              </div>
+              <div class="quiz-question">
+                한은 총재 후보에 오른 신현송은 대표적인 ‘매파’ 성향으로 알려져
+                있다.
+              </div>
+              <div class="ellipse-parent">
+                <img class="frame-child" src="assets/union_o.svg" alt="O" />
+                <img class="union-icon2" src="assets/union_x.svg" alt="X" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fixed Switch Control overlay -->
+        <div class="group-group">
+          <img
+            class="group-icon3"
+            src="assets/switch_icon.png"
+            alt="스위치 아이콘"
+          />
+
+          <div class="rectangle-group">
+            <div class="group-child"></div>
+            <div class="group-item"></div>
+          </div>
+        </div>
+
+        <!-- Scrollable Forest Path Map -->
+        <div class="forest-map-container">
+          <div class="div" style="height: 1400px">
+            <img
+              class="object-icon"
+              src="assets/home_mascot.png"
+              alt="마스코트"
+            />
+            <div class="study-bubble" id="studyBubble">
+              <div class="bubble-wrapper">
+                <div class="bubble-group">
+                  <div class="bubble-parent">
+                    <div class="bubble-title">배틀 모드</div>
+                    <div class="bubble-subtitle">시작</div>
+                  </div>
+                  <img
+                    class="bubble-frame-child"
+                    src="assets/arrow_shortcut.png"
+                    alt="바로가기"
+                  />
+                </div>
+              </div>
+              <svg
+                class="bubble-tail"
+                viewBox="0 0 27 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M13.5 0L27 20.2H0L13.5 0Z" fill="#f8c31f" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fixed Navigation Bar -->
+        <div class="div27"></div>
+      </div>
+    </div>
+
+    <!-- 결과 알림 모달 -->
+    <div class="battle-modal-overlay" id="quizResultModal">
+      <div class="battle-modal-content">
+        <div class="battle-modal-title" id="modalTitle">정답입니다!</div>
+        <div class="battle-modal-text" id="modalText">
+          코인 <strong class="battle-modal-acorn">10</strong>개를 획득했습니다!
+        </div>
+        <button class="battle-modal-btn" id="modalConfirmBtn">확인</button>
+      </div>
+    </div>
+
+    <!-- 네비바 스크립트 실행 -->
+    <script src="assets/navbar.js"></script>
+    <script>
+      // bfcache(뒤로가기 캐시) 감지: 복원된 페이지면 강제 새로고침하여 최신 상태 반영
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+          window.location.reload();
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // 공통 네비게이션 바 홈(home) 활성화 렌더링
+        renderNavbar("home");
+
+        // 코인 점수 로드 및 초기화
+        let currentCoins = parseInt(
+          localStorage.getItem("user_coins") || "400",
+        );
+        const coinCountEl = document.getElementById("userCoinCount");
+        if (coinCountEl) {
+          coinCountEl.textContent = currentCoins;
+        }
+
+        // 다람쥐 전진 및 동전 무제한 동적 생성 로직
+        const xPattern = [219, 127, 66, 132, 206, 131];
+        const startY = 250;
+        const spacingY = 120;
+        let battleCompletedCount = parseInt(
+          localStorage.getItem("battle_completed_count") || "0",
+        );
+        const mapContainer = document.querySelector(".div");
+        let renderedCoinCount = 0;
+
+        const generateCoins = (startIndex, amount) => {
+          if (!mapContainer) return;
+          for (let i = 0; i < amount; i++) {
+            const step = startIndex + i;
+            const top = startY + step * spacingY;
+            const left = xPattern[step % xPattern.length];
+
+            const img = document.createElement("img");
+            img.className = `coin-step coin-step-${step}`;
+            img.style.position = "absolute";
+            img.style.top = `${top}px`;
+            img.style.left = `${left}px`;
+            img.alt = "코인";
+
+            // 배틀 완료 여부에 따른 색상 적용 (과거 단계는 노란코인, 미래 단계는 회색코인)
+            if (battleCompletedCount > step) {
+              img.src = "assets/coin_battle.svg";
+            } else {
+              img.src = "assets/gray_battle_coin.svg";
+            }
+
+            mapContainer.appendChild(img);
+          }
+          renderedCoinCount += amount;
+          mapContainer.style.height = `${startY + renderedCoinCount * spacingY + 300}px`;
+        };
+
+        // 초기 동전 40개 미리 생성
+        generateCoins(0, 40);
+
+        // 스크롤 시 동전 무한 추가 생성 (무한 스크롤)
+        const forestMapContainer = document.querySelector(
+          ".forest-map-container",
+        );
+        if (forestMapContainer) {
+          forestMapContainer.addEventListener("scroll", () => {
+            const scrollTop = forestMapContainer.scrollTop;
+            const clientHeight = forestMapContainer.clientHeight;
+            const scrollHeight = forestMapContainer.scrollHeight;
+            if (scrollTop + clientHeight > scrollHeight - 300) {
+              generateCoins(renderedCoinCount, 20);
+            }
+          });
+        }
+
+        // 다람쥐 위치 및 수평반전 갱신
+        const squirrel = document.querySelector(".object-icon");
+        const studyBubble = document.getElementById("studyBubble");
+
+        // battle 모드용 즉시 반영 함수
+        const refreshBattleCoins = () => {
+          battleCompletedCount = parseInt(
+            localStorage.getItem("battle_completed_count") || "0",
+          );
+          const coinEls = document.querySelectorAll("img.coin-step");
+          coinEls.forEach((el) => {
+            const cls = Array.from(el.classList).find((c) =>
+              c.startsWith("coin-step-"),
+            );
+            if (!cls) return;
+            const step = parseInt(cls.split("-")[2], 10);
+            el.src =
+              battleCompletedCount > step
+                ? "assets/coin_battle.svg"
+                : "assets/gray_battle_coin.svg";
+          });
+          updateMascotPosition();
+          updateBubblePosition();
+        };
+
+        // 다른 탭에서 변경 감지
+        window.addEventListener("storage", (e) => {
+          if (e.key === "battle_completed_count") refreshBattleCoins();
+        });
+        try {
+          const bcBattle = new BroadcastChannel("battle_channel");
+          bcBattle.addEventListener("message", (ev) => {
+            if (ev.data === "battle_updated") refreshBattleCoins();
+          });
+        } catch (err) {
+          console.debug("BroadcastChannel(battle) unavailable", err);
+        }
+
+        const updateMascotPosition = () => {
+          const activeIndex =
+            battleCompletedCount > 0 ? battleCompletedCount - 1 : 0;
+          const activeCoinEl = document.querySelector(
+            `.coin-step-${activeIndex}`,
+          );
+
+          if (squirrel && activeCoinEl) {
+            const coinTop = parseFloat(activeCoinEl.style.top);
+            const coinLeft = parseFloat(activeCoinEl.style.left);
+
+            // 다람쥐가 코인 위에 앉아있도록 배치
+            const squirrelTop = coinTop - 45;
+            squirrel.style.top = `${squirrelTop}px`;
+            squirrel.style.left = `${coinLeft + 1}px`;
+
+            // 코인길의 위치에 왼쪽이면 다람쥐가 수평반전
+            if (coinLeft < 150) {
+              squirrel.style.transform = "scaleX(-1)";
+            } else {
+              squirrel.style.transform = "scaleX(1)";
+            }
+
+            // 다람쥐를 화면 수직 중앙에 맞추어 스크롤 (정밀한 수학적 계산)
+            setTimeout(() => {
+              if (forestMapContainer) {
+                const containerHeight = forestMapContainer.clientHeight;
+                const squirrelHeight = 90;
+                const targetScrollTop =
+                  squirrelTop - containerHeight / 2 + squirrelHeight / 2;
+
+                forestMapContainer.scrollTo({
+                  top: Math.max(0, targetScrollTop),
+                  behavior: "smooth",
+                });
+              }
+            }, 100);
+          }
+        };
+
+        const updateBubblePosition = () => {
+          if (squirrel && studyBubble) {
+            const sqTop = parseFloat(squirrel.style.top);
+            const sqLeft = parseFloat(squirrel.style.left);
+            const sqWidth =
+              parseFloat(window.getComputedStyle(squirrel).width) || 75;
+            const sqHeight =
+              parseFloat(window.getComputedStyle(squirrel).height) || 90;
+
+            // 다람쥐 아래에 말풍선 위치 (top: Y + height + 8px)
+            studyBubble.style.top = `${sqTop + sqHeight + 8}px`;
+
+            requestAnimationFrame(() => {
+              const containerWidth = forestMapContainer
+                ? forestMapContainer.clientWidth
+                : 390;
+              const bubbleWidth = 177;
+              const tailWidth = 26.4;
+
+              // 다람쥐의 중앙 X 좌표
+              const mascotCenter = sqLeft + sqWidth / 2;
+
+              // 꼬리의 원래 위치(Figma 사양)를 보정한 말풍선의 이상적인 left 좌표
+              const idealTailCenter = 17.41 + tailWidth / 2; // 30.61px
+              const idealBubbleLeft = mascotCenter - idealTailCenter;
+
+              // 화면(컨테이너)을 넘지 않도록 말풍선 자체의 X 좌표 제한 (좌우 여백 10px씩)
+              const clampedBubbleLeft = Math.max(
+                10,
+                Math.min(containerWidth - bubbleWidth - 10, idealBubbleLeft),
+              );
+              studyBubble.style.left = `${clampedBubbleLeft}px`;
+
+              // 말풍선이 위치이동을 했으므로, 다람쥐를 계속 가리키도록 꼬리의 left 좌표 동적 계산
+              let newTailLeft =
+                mascotCenter - clampedBubbleLeft - tailWidth / 2;
+
+              // 꼬리가 말풍선 카드 좌우 라운드 영역(15px) 바깥으로 튀어나가지 않도록 제한
+              newTailLeft = Math.max(
+                15,
+                Math.min(bubbleWidth - 15 - tailWidth, newTailLeft),
+              );
+
+              const tailEl = studyBubble.querySelector(".bubble-tail");
+              if (tailEl) {
+                tailEl.style.left = `${newTailLeft}px`;
+              }
+            });
+          }
+        };
+
+        // 초기 위치 설정
+        updateMascotPosition();
+
+        // 다람쥐 클릭 시 이미지 전환 및 말풍선 제어
+        if (squirrel && studyBubble) {
+          let isClicked = false;
+
+          squirrel.addEventListener("click", (e) => {
+            e.stopPropagation();
+            isClicked = !isClicked;
+
+            if (isClicked) {
+              // 클릭 상태: 앞모습 이미지로 변경 및 말풍선 표시
+              squirrel.src = "assets/mascot_click.png";
+              squirrel.style.transform = "scaleX(1)"; // 정면 응시를 위해 대칭 해제
+              studyBubble.style.display = "block";
+              updateBubblePosition();
+            } else {
+              resetMascot();
+            }
+          });
+
+          const resetMascot = () => {
+            isClicked = false;
+            squirrel.src = "assets/home_mascot.png";
+            studyBubble.style.display = "none";
+            // 기존 코인 위치 및 대칭 상태로 복원
+            updateMascotPosition();
+          };
+
+          // 화면 다른 곳 클릭 시 복원
+          document.addEventListener("click", (e) => {
+            if (e.target !== squirrel && e.target !== studyBubble) {
+              resetMascot();
+            }
+          });
+
+          // 말풍선 클릭 시 배틀 모드 시작 페이지로 이동
+          studyBubble.addEventListener("click", () => {
+            window.location.href = "battlestart.html";
+          });
+        }
+
+        // 오늘의 O/X 퀴즈 더미데이터 목록
+        const oxQuizzes = [
+          {
+            question:
+              "한은 총재 후보에 오른 신현송은 대표적인 ‘매파’ 성향으로 알려져 있다.",
+            answer: "O",
+          },
+          {
+            question:
+              "기준금리가 인하되면 시중 은행의 대출 금리는 일반적으로 상승한다.",
+            answer: "X",
+          },
+          {
+            question: "인플레이션 시기에는 화폐의 구매력이 상승한다.",
+            answer: "X",
+          },
+          {
+            question:
+              "지속가능경영을 위한 비재무적 요소인 ESG에서 E는 Environment(환경)를 의미한다.",
+            answer: "O",
+          },
+          {
+            question:
+              "GDP는 한 나라 영토 안에서 일정 기간 동안 생산된 최종 생산물의 시장가치 합계다.",
+            answer: "O",
+          },
+        ];
+
+        // 매일 다른 문제 로드 (날짜 기반 인덱스 결정)
+        const today = new Date();
+        const dateKey = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+        const quizIndex = today.getDate() % oxQuizzes.length;
+        const selectedQuiz = oxQuizzes[quizIndex];
+
+        // 퀴즈 문제 적용
+        const questionEl = document.querySelector(
+          ".quiz-expanded-content .quiz-question",
+        );
+        if (questionEl && selectedQuiz) {
+          questionEl.textContent = selectedQuiz.question;
+        }
+
+        // 오늘 퀴즈 완료 여부 체크
+        const quizCard = document.getElementById("quizCard");
+        const isSolved = localStorage.getItem(`quiz_solved_${dateKey}`);
+        if (isSolved === "true") {
+          quizCard.classList.add("solved");
+        }
+
+        // 오늘의 퀴즈 카드 토글 제어
+        const toggleButtons = document.querySelectorAll(".btn-toggle-quiz");
+        toggleButtons.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            quizCard.classList.toggle("expanded");
+          });
+        });
+
+        // 모달 관련 요소
+        const resultModal = document.getElementById("quizResultModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalText = document.getElementById("modalText");
+        const modalConfirmBtn = document.getElementById("modalConfirmBtn");
+
+        // O, X 버튼 클릭 리스너 설정
+        const btnO = quizCard.querySelector(
+          ".quiz-expanded-content .frame-child",
+        );
+        const btnX = quizCard.querySelector(
+          ".quiz-expanded-content .union-icon2",
+        );
+
+        const handleAnswer = (userAnswer) => {
+          // 이미 오늘 퀴즈를 풀었다면
+          if (localStorage.getItem(`quiz_solved_${dateKey}`) === "true") {
+            modalTitle.textContent = "참여 완료";
+            modalTitle.style.color = "#888888";
+            modalText.innerHTML =
+              "오늘의 퀴즈를 이미 완료하셨습니다. 내일 새로운 문제로 만나요!";
+            resultModal.style.display = "flex";
+            return;
+          }
+
+          if (userAnswer === selectedQuiz.answer) {
+            // 정답 처리
+            currentCoins += 10;
+            localStorage.setItem("user_coins", currentCoins.toString());
+            if (coinCountEl) {
+              coinCountEl.textContent = currentCoins;
+            }
+
+            modalTitle.textContent = "정답입니다!";
+            modalTitle.style.color = "#0a6e3c";
+            modalText.innerHTML = `코인 <strong class="battle-modal-acorn">10</strong>개를 획득했습니다!`;
+          } else {
+            // 오답 처리
+            modalTitle.textContent = "아쉽게도 틀렸습니다!";
+            modalTitle.style.color = "#ff4d4d";
+            modalText.innerHTML = `정답은 <strong>${selectedQuiz.answer}</strong>입니다.<br><span style="font-size: 14px; color: #666;">내일 다시 도전해 보세요!</span>`;
+          }
+
+          // 오늘 퀴즈 풀기 완료 상태 저장 및 UI 반영
+          localStorage.setItem(`quiz_solved_${dateKey}`, "true");
+          quizCard.classList.add("solved");
+          resultModal.style.display = "flex";
+        };
+
+        if (btnO) {
+          btnO.addEventListener("click", (e) => {
+            e.stopPropagation();
+            handleAnswer("O");
+          });
+        }
+        if (btnX) {
+          btnX.addEventListener("click", (e) => {
+            e.stopPropagation();
+            handleAnswer("X");
+          });
+        }
+
+        // 모달 닫기 버튼
+        if (modalConfirmBtn) {
+          modalConfirmBtn.addEventListener("click", () => {
+            resultModal.style.display = "none";
+            quizCard.classList.remove("expanded"); // 모달 닫을 때 카드 접기
+          });
+        }
+
+        // 토글 스위치 클릭 시 일반 홈화면으로 이동
+        const toggleSwitch = document.querySelector(".group-group");
+        if (toggleSwitch) {
+          toggleSwitch.style.cursor = "pointer";
+          toggleSwitch.addEventListener("click", () => {
+            window.location.href = "home.html";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

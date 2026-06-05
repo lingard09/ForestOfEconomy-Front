@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 시작 옵션</title>
+  <link rel="icon" type="image/png" href="assets/acorn.png">
+  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-page-wrapper leveloption-page">
+    <div class="app-content-container">
+      <div class="div">
+        <div class="parent">
+          <img class="icon" src="assets/coin.png" alt="도토리 코인" />
+          
+          <div class="group">
+            <div class="div2 global-font-noto">시사/경제 상식 정도에 따라 <br>문제의 난이도가 달라져요</div>
+            <div class="div3 global-font-noto">원하는 시작 방법을 선택해주세요</div>
+          </div>
+        </div>
+        
+        <div class="container">
+          <div class="div4 select-direct-btn" style="cursor: pointer;">
+            <div class="div5 global-font-noto">직접 선택하기</div>
+          </div>
+          <div class="ai level-test-btn" style="cursor: pointer;">
+            <div class="div5 global-font-noto">레벨 테스트로 시작하기</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.select-direct-btn').addEventListener('click', () => {
+      window.location.href = 'levelselect.html';
+    });
+
+    document.querySelector('.level-test-btn').addEventListener('click', () => {
+      window.location.href = 'teststart.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경제의 숲 - 오늘의 퀴즈</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/pages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 컨테이너 패딩 제거 */
+      .todayquiz-page .app-content-container {
+        padding: 0 !important;
+      }
+
+      .todayquiz-page .div {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 14px;
+        color: #000;
+        font-family: "Noto Sans KR";
+        padding: 0 32px;
+        box-sizing: border-box;
+      }
+
+      /* 뒤로가기 화살표 */
+      .todayquiz-page .child {
+        width: 31.9px;
+        height: 14.6px;
+        object-fit: contain;
+        opacity: 0.3;
+        cursor: pointer;
+        align-self: flex-start;
+        margin-top: 40px;
+      }
+
+      /* 진행바 */
+      .todayquiz-page .rectangle-parent {
+        align-self: stretch;
+        height: 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 20px;
+      }
+      .todayquiz-page .frame-child {
+        height: 3px;
+        width: 28px;
+        border-radius: 2px;
+        background-color: #0a6e3c;
+      }
+      .todayquiz-page .frame-item {
+        height: 3px;
+        width: 28px;
+        border-radius: 2px;
+        background-color: #f6f6f6;
+      }
+
+      /* 도토리 아이콘 + 질문 영역 */
+      .todayquiz-page .frame-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        width: 100%;
+        margin-top: 35px;
+        color: #787878;
+      }
+      .todayquiz-page .group-parent {
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .todayquiz-page .group-icon {
+        height: 32.2px;
+        width: 30px;
+        object-fit: contain;
+      }
+      .todayquiz-page .div2 {
+        font-weight: 500;
+      }
+      .todayquiz-page .div7 {
+        align-self: stretch;
+        font-size: 16px;
+        font-weight: 500;
+        color: #000;
+        text-align: left;
+      }
+
+      /* 보기 선택지 */
+      .todayquiz-page .instance-parent {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
+        font-size: 16px;
+        margin-top: 40px;
+        flex: 1;
+      }
+
+      /* 미선택 보기 */
+      .todayquiz-page .ellipse-parent {
+        align-self: stretch;
+        height: 60px;
+        border-radius: 40px;
+        background-color: #f6f6f6;
+        border: 1px solid #f6f6f6;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        padding: 5px 20px 5px 6px;
+        gap: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+      .todayquiz-page .ellipse-parent:hover {
+        background-color: #f0f0f0;
+      }
+      .todayquiz-page .instance-child {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #fff;
+        flex-shrink: 0;
+      }
+
+      /* 선택된 보기 */
+      .todayquiz-page .ellipse-parent.is-active {
+        background-color: #0a6e3c;
+        border-color: #0a6e3c;
+      }
+      .todayquiz-page .ellipse-parent.is-active .div2 {
+        color: #fff;
+      }
+      .todayquiz-page .ellipse-parent.is-active .instance-child {
+        background-color: #fff;
+      }
+
+      /* 체크 아이콘 (선택 시 표시) */
+      .todayquiz-page .check-icon {
+        width: 20px;
+        height: 20px;
+        display: none;
+      }
+      .todayquiz-page .ellipse-parent.is-active .check-icon {
+        display: block;
+      }
+      .todayquiz-page .vector-wrapper {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      /* 다음 버튼 */
+      .todayquiz-page .wrapper {
+        border-radius: 30px;
+        background-color: #f6f6f6;
+        border: 1px solid #f6f6f6;
+        box-sizing: border-box;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 17px 60px;
+        color: #999;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        align-self: center;
+        margin-top: auto;
+        margin-bottom: 40px;
+      }
+      .todayquiz-page .wrapper.is-enabled {
+        background-color: #272727;
+        border-color: #272727;
+        color: #fff;
+        font-weight: 500;
+      }
+
+      @media (min-width: 768px) {
+        .todayquiz-page .div {
+          min-height: 844px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-page-wrapper todayquiz-page">
+      <div class="app-content-container">
+        <div class="div">
+          <img
+            class="child btn-back"
+            src="assets/arrow_back.png"
+            alt="뒤로가기"
+          />
+
+          <div class="rectangle-parent">
+            <div class="frame-child"></div>
+            <div class="frame-item"></div>
+            <div class="frame-item"></div>
+            <div class="frame-item"></div>
+            <div class="frame-item"></div>
+            <div class="frame-item"></div>
+            <div class="frame-item"></div>
+            <div class="frame-item"></div>
+            <div class="frame-item"></div>
+            <div class="frame-item"></div>
+          </div>
+
+          <div class="frame-group">
+            <div class="group-parent">
+              <img class="group-icon" alt="도토리" src="assets/acorn.png" />
+              <div class="div2">편하게 풀어보세요</div>
+            </div>
+            <div class="div7">
+              이란의 최고 지도자인 하메네이가 미군의 폭격으로 사망한 이후, 다음
+              지도자로 선출된 사람은?
+            </div>
+          </div>
+
+          <div class="instance-parent">
+            <div class="ellipse-parent" data-index="1" style="cursor: pointer">
+              <div class="vector-wrapper">
+                <svg
+                  class="check-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0a6e3c"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <div class="div2">모즈타파</div>
+            </div>
+            <div class="ellipse-parent" data-index="2" style="cursor: pointer">
+              <div class="instance-child"></div>
+              <div class="div2">전공타파</div>
+            </div>
+            <div class="ellipse-parent" data-index="3" style="cursor: pointer">
+              <div class="instance-child"></div>
+              <div class="div2">소나타파</div>
+            </div>
+            <div class="ellipse-parent" data-index="4" style="cursor: pointer">
+              <div class="instance-child"></div>
+              <div class="div2">무스탕파</div>
+            </div>
+          </div>
+
+          <div class="wrapper btn-next">
+            <div class="div2">다음</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const quizData = {
+        "1": {
+          question: "이란의 최고 지도자인 하메네이가 미군의 폭격으로 사망한 이후, 다음 지도자로 선출된 사람은?",
+          options: ["모즈타파", "전공타파", "소나타파", "무스탕파"],
+          progress: 1
+        },
+        "2": {
+          question: "최근 연방준비제도(Fed)가 물가 안정을 위해 기준금리를 한 번에 0.5%p 인상하는 조치를 무엇이라 부를까요?",
+          options: ["베이비 스텝", "빅스텝", "자이언트 스텝", "울트라 스텝"],
+          progress: 4
+        },
+        "3": {
+          question: "기업의 비재무적 요소인 환경, 사회, 지배구조를 뜻하며, 투자 의사 결정 시 지속가능성을 평가하는 지표는 무엇일까요?",
+          options: ["ESG", "FTA", "RCEP", "IMF"],
+          progress: 7
+        }
+      };
+
+      const currentRound = sessionStorage.getItem("quiz_round") || "1";
+      const currentData = quizData[currentRound] || quizData["1"];
+
+      // 질문 변경
+      document.querySelector(".div7").textContent = currentData.question;
+
+      // 보기 변경
+      const options = document.querySelectorAll(".ellipse-parent[data-index]");
+      options.forEach((el) => {
+        const index = parseInt(el.getAttribute("data-index")) - 1;
+        const textDiv = el.querySelector(".div2");
+        if (textDiv && currentData.options[index]) {
+          textDiv.textContent = currentData.options[index];
+        }
+      });
+
+      // 진행바 변경
+      const progressBars = document.querySelectorAll(".rectangle-parent > div");
+      progressBars.forEach((bar, idx) => {
+        if (idx < currentData.progress) {
+          bar.className = "frame-child";
+        } else {
+          bar.className = "frame-item";
+        }
+      });
+
+      const nextBtn = document.querySelector(".btn-next");
+      const backBtn = document.querySelector(".btn-back");
+      let selectedOption = null;
+
+      // 모든 보기에 체크 아이콘 구조 통일 (선택 시 원 안에 체크 표시)
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          options.forEach((opt) => {
+            opt.classList.remove("is-active");
+
+            // instance-child → vector-wrapper+check-icon 교체 복원
+            const circle = opt.querySelector(".vector-wrapper");
+            const plainCircle = opt.querySelector(".instance-child");
+            if (circle) {
+              const newPlain = document.createElement("div");
+              newPlain.className = "instance-child";
+              opt.replaceChild(newPlain, circle);
+            }
+          });
+
+          option.classList.add("is-active");
+          selectedOption = parseInt(option.dataset.index);
+
+          // 선택된 보기의 원을 체크 아이콘으로 교체
+          const plainCircle = option.querySelector(".instance-child");
+          if (plainCircle) {
+            const wrapper = document.createElement("div");
+            wrapper.className = "vector-wrapper";
+            wrapper.innerHTML = `
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#0a6e3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            `;
+            option.replaceChild(wrapper, plainCircle);
+          }
+
+          // 다음 버튼 활성화
+          if (nextBtn) {
+            nextBtn.classList.add("is-enabled");
+          }
+        });
+      });
+
+      if (backBtn) {
+        backBtn.addEventListener("click", () => {
+          window.history.back();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          if (selectedOption) {
+            console.log("선택된 정답 인덱스:", selectedOption);
+            window.location.href = 'relatedarticle.html';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

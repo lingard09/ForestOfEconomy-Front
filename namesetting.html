@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 닉네임 설정</title>
+  <link rel="icon" type="image/png" href="assets/acorn.png">
+  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="assets/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-page-wrapper namesetting-page">
+    <div class="app-content-container">
+      <!-- 상단 헤더 영역 (코인 + 타이틀) -->
+      <div class="header-section">
+        <div class="icon-wrapper">
+          <img class="coin-image" src="assets/coin.png" alt="도토리 코인" />
+        </div>
+        <div class="instruction-text global-font-noto">
+          앱 내에서 사용할<br />닉네임을 설정해주세요
+        </div>
+      </div>
+
+      <!-- 중앙 인풋 영역 -->
+      <div class="input-container">
+        <input
+          type="text"
+          maxlength="6"
+          placeholder="최대 6자"
+          class="nickname-input global-font-noto"
+          autofocus
+        />
+      </div>
+
+      <!-- 하단 설정하기 버튼 -->
+      <div class="button-wrapper">
+        <button class="btn-primary-green btn-submit" disabled>
+          설정하기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const inputEl = document.querySelector('.nickname-input');
+    const submitBtn = document.querySelector('.btn-submit');
+
+    inputEl.addEventListener('input', (e) => {
+      let val = e.target.value;
+      if (val.length > 6) {
+        val = val.substring(0, 6);
+        e.target.value = val;
+      }
+      submitBtn.disabled = !val.trim();
+    });
+
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = inputEl.value.trim();
+        if (val) {
+          localStorage.setItem('user-nickname', val);
+          window.location.href = 'hellosir.html?nickname=' + encodeURIComponent(val);
+        }
+      }
+    });
+
+    submitBtn.addEventListener('click', () => {
+      const val = inputEl.value.trim();
+      if (val) {
+        localStorage.setItem('user-nickname', val);
+        window.location.href = 'hellosir.html?nickname=' + encodeURIComponent(val);
+      }
+    });
+  </script>
+</body>
+</html>

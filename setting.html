@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>경제의 숲 - 설정</title>
+    <link rel="icon" type="image/png" href="assets/acorn.png" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+    />
+    <style>
+      .setting-page .app-content-container {
+        padding: 0 !important;
+        overflow: hidden !important;
+        position: relative !important;
+      }
+      .div {
+        width: 100%;
+        height: 100%;
+        min-height: 844px;
+        position: relative;
+        background-color: #fff;
+        overflow: hidden;
+        text-align: left;
+        font-size: 12px;
+        color: #787878;
+        font-family: "Noto Sans KR";
+      }
+      .vector-parent {
+        position: absolute;
+        top: 72px;
+        left: 33px;
+        width: 325.2px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+      }
+      .frame-child {
+        width: 24px;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+        object-fit: contain;
+      }
+      .frame-parent {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .frame-group {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+      }
+      .frame-container {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .frame-div {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .div2 {
+        align-self: stretch;
+        position: relative;
+        font-size: 12px;
+        color: #787878;
+      }
+      .group {
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        text-align: left;
+        font-size: 14px;
+        color: #000;
+        cursor: pointer;
+      }
+      .div3 {
+        position: relative;
+        font-weight: 500;
+      }
+      .weuiarrow-filled-icon {
+        height: 24px;
+        width: 12px;
+        position: relative;
+      }
+      .div4 {
+        align-self: stretch;
+        position: relative;
+        font-size: 14px;
+        font-weight: 500;
+        color: #000;
+        cursor: pointer;
+      }
+      .frame-item {
+        align-self: stretch;
+        height: 1px;
+        position: relative;
+        background-color: #d1d5dc;
+      }
+      .frame-parent2 {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .parent6 {
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        text-align: left;
+        font-size: 14px;
+        color: #999;
+      }
+      .div10 {
+        position: relative;
+      }
+
+      /* 로그아웃 모달 스타일 */
+      .logout-modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+      }
+      .logout-modal-overlay .modal-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+      }
+      .logout-modal-overlay .parent7 {
+        position: absolute;
+        top: 300px;
+        left: calc(50% - 140px);
+        border-radius: 15px;
+        background-color: #fff;
+        width: 280px;
+        height: 156px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 28px 15px;
+        box-sizing: border-box;
+        gap: 45px;
+        flex-shrink: 0;
+        z-index: 1000;
+      }
+      .logout-modal-overlay .div11 {
+        position: relative;
+        font-weight: 500;
+        flex-shrink: 0;
+        font-size: 16px;
+        color: #000;
+        font-family: "Noto Sans KR";
+        text-align: center;
+      }
+      .logout-modal-overlay .button-parent {
+        width: 224px;
+        height: 43px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        flex-shrink: 0;
+        font-size: 14px;
+        color: #fff;
+        justify-content: center;
+      }
+      .logout-modal-overlay .button {
+        height: 43px;
+        width: 107px;
+        border-radius: 8.79px;
+        background-color: #272727;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      .logout-modal-overlay .button2 {
+        height: 43px;
+        width: 107px;
+        border-radius: 8.79px;
+        background-color: #0a6e3c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      .logout-modal-overlay .am {
+        position: relative;
+        font-weight: 500;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-page-wrapper setting-page">
+      <div class="app-content-container">
+        <div class="div">
+          <div class="vector-parent">
+            <!-- 뒤로가기 버튼 -->
+            <img
+              class="frame-child btn-back"
+              style="display: none !important"
+              alt="뒤로가기"
+              src="assets/arrow_back.png"
+            />
+
+            <div class="frame-parent">
+              <div class="frame-group">
+                <!-- 프로필 섹션 -->
+                <div class="frame-container">
+                  <div class="frame-div">
+                    <div class="frame-container">
+                      <div class="div2">프로필</div>
+                      <div class="group btn-edit-profile">
+                        <div class="div3">개인정보수정</div>
+                        <svg
+                          class="weuiarrow-filled-icon"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#000"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="div4 btn-logout">로그아웃</div>
+                  </div>
+                  <div class="frame-item"></div>
+                </div>
+
+                <!-- 알림 섹션 -->
+                <div class="frame-parent2">
+                  <div class="frame-container">
+                    <div class="div2">알림</div>
+                    <div class="group btn-noti-setting">
+                      <div class="div3">알림설정</div>
+                      <svg
+                        class="weuiarrow-filled-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="frame-item"></div>
+                </div>
+
+                <!-- 약관 및 정책 섹션 -->
+                <div class="frame-container">
+                  <div class="frame-div">
+                    <div class="frame-container">
+                      <div class="div2">약관 및 정책</div>
+                      <div class="group btn-privacy">
+                        <div class="div3">개인정보 처리방침</div>
+                        <svg
+                          class="weuiarrow-filled-icon"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#000"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="group btn-terms">
+                      <div class="div3">서비스 이용약관</div>
+                      <svg
+                        class="weuiarrow-filled-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="frame-item"></div>
+                </div>
+              </div>
+
+              <!-- 버전 정보 및 앱 정보 -->
+              <div class="parent6">
+                <div class="div10">앱정보</div>
+                <div class="div10">v 1.0.0</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 로그아웃 확인 커스텀 모달 -->
+          <div class="logout-modal-overlay" style="display: none">
+            <div class="modal-bg btn-logout-cancel"></div>
+            <div class="parent7">
+              <div class="div11">로그아웃 하시겠습니까?</div>
+              <div class="button-parent">
+                <div class="button btn-logout-cancel">
+                  <div class="am">취소</div>
+                </div>
+                <div class="button2 btn-logout-confirm">
+                  <div class="am">확인</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 하단 공통 네비게이션 바 -->
+          <div class="div27"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/navbar.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 네비게이션 바 설정 탭 활성화 상태로 렌더링
+        renderNavbar("setting");
+
+        // 뒤로가기 버튼 클릭 이벤트
+        const backBtn = document.querySelector(".btn-back");
+        if (backBtn) {
+          backBtn.addEventListener("click", () => {
+            window.location.href = "today.html";
+          });
+        }
+
+        // 개인정보수정 클릭 이벤트
+        const editProfileBtn = document.querySelector(".btn-edit-profile");
+        if (editProfileBtn) {
+          editProfileBtn.addEventListener("click", () => {
+            window.location.href = "update_profile.html";
+          });
+        }
+
+        // 알림설정 클릭 이벤트
+        const notiSettingBtn = document.querySelector(".btn-noti-setting");
+        if (notiSettingBtn) {
+          notiSettingBtn.addEventListener("click", () => {
+            window.location.href = "notisetting.html";
+          });
+        }
+
+        // 개인정보처리방침 클릭 이벤트
+        const privacyBtn = document.querySelector(".btn-privacy");
+        if (privacyBtn) {
+          privacyBtn.addEventListener("click", () => {
+            window.location.href =
+              "https://raw.githubusercontent.com/lingard09/forest-of-economy/c160f583455951a3ba383c5a37e5e43add29f61b/Privacy%20Policy.pdf";
+          });
+        }
+
+        // 서비스 이용약관 클릭 이벤트
+        const termsBtn = document.querySelector(".btn-terms");
+        if (termsBtn) {
+          termsBtn.addEventListener("click", () => {
+            window.location.href =
+              "https://raw.githubusercontent.com/lingard09/forest-of-economy/c160f583455951a3ba383c5a37e5e43add29f61b/Terms%20of%20Use.pdf";
+          });
+        }
+
+        // 커스텀 로그아웃 모달 노출 및 액션 바인딩
+        const logoutModal = document.querySelector(".logout-modal-overlay");
+        const logoutBtn = document.querySelector(".btn-logout");
+        const logoutCancelBtns =
+          document.querySelectorAll(".btn-logout-cancel");
+        const logoutConfirmBtn = document.querySelector(".btn-logout-confirm");
+
+        if (logoutBtn && logoutModal) {
+          logoutBtn.addEventListener("click", () => {
+            logoutModal.style.display = "block";
+          });
+        }
+
+        logoutCancelBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            logoutModal.style.display = "none";
+          });
+        });
+
+        if (logoutConfirmBtn) {
+          logoutConfirmBtn.addEventListener("click", () => {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = "index.html";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

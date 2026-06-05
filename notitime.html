@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경제의 숲 - 알림 시간 선택</title>
+  <link rel="icon" type="image/png" href="assets/acorn.png">
+  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+  <style>
+    .notitime-page .app-content-container {
+      padding: 0 !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    .notitime-container {
+      width: 100%;
+      height: 100%;
+      min-height: 844px;
+      position: relative;
+      background-color: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 72px 33px 40px;
+      box-sizing: border-box;
+    }
+    
+    /* 뒤로가기 */
+    .btn-back {
+      position: absolute;
+      top: 73.5px;
+      left: 33px;
+      width: 24px;
+      height: 20px;
+      object-fit: contain;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    /* 헤더 섹션 */
+    .header-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .bell-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+    .header-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #000;
+      font-family: 'Noto Sans KR';
+    }
+
+    /* 휠 피커 컨테이너 */
+    .wheel-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background: #f9f9f9;
+      border-radius: 16px;
+      margin: 60px auto;
+      overflow: hidden;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    
+    /* 피커 위아래 페이드 효과 */
+    .wheel-fade-top, .wheel-fade-bottom {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .wheel-fade-top {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(249,249,249,0.95), rgba(249,249,249,0));
+    }
+    .wheel-fade-bottom {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(249,249,249,0.95), rgba(249,249,249,0));
+    }
+
+    /* 현재 선택 라인 표시기 */
+    .wheel-indicator {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 80px;
+      height: 40px;
+      border-top: 1.5px solid #0a6e3c;
+      border-bottom: 1.5px solid #0a6e3c;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    /* 휠 개별 열 */
+    .wheel-column {
+      flex: 1;
+      height: 200px;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none; /* Firefox */
+      z-index: 2;
+      position: relative;
+    }
+    .wheel-column::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    /* 여백 정렬용 더미 엘리먼트 */
+    .wheel-space-holder {
+      height: 80px;
+    }
+
+    /* 휠 아이템 */
+    .wheel-item {
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      color: #aaa;
+      scroll-snap-align: center;
+      transition: color 0.15s, font-size 0.15s, font-weight 0.15s;
+    }
+    .wheel-item.selected {
+      color: #0a6e3c;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* 하단 버튼 */
+    .button-wrapper {
+      margin-top: auto;
+      margin-bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .submit-button {
+      width: 325px;
+      height: 50px;
+      border: none;
+      border-radius: 30px;
+      background-color: #0a6e3c;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Noto Sans KR';
+    }
+  </style>
+</head>
+<body>
+  <div class="app-page-wrapper notitime-page">
+    <div class="app-content-container">
+      <div class="notitime-container">
+        <!-- 뒤로가기 -->
+        <img class="btn-back" alt="뒤로가기" src="assets/arrow_back.png">
+
+        <!-- 상단 질문 헤더 -->
+        <div class="header-section">
+          <img class="bell-icon" src="assets/bell.png" alt="알림 종" />
+          <div class="header-title">언제 알람을 드릴까요?</div>
+        </div>
+
+        <!-- 다이얼 휠 시간 피커 -->
+        <div class="wheel-container">
+          <div class="wheel-fade-top"></div>
+          <div class="wheel-indicator"></div>
+          
+          <!-- AM/PM 열 -->
+          <div class="wheel-column" id="wheel-ampm"></div>
+          
+          <!-- 시(Hour) 열 -->
+          <div class="wheel-column" id="wheel-hour"></div>
+          
+          <!-- 분(Minute) 열 -->
+          <div class="wheel-column" id="wheel-minute"></div>
+          
+          <div class="wheel-fade-bottom"></div>
+        </div>
+
+        <!-- 설정 완료 버튼 -->
+        <div class="button-wrapper">
+          <button class="submit-button btn-submit">설정 완료</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backBtn = document.querySelector(".btn-back");
+      const submitBtn = document.querySelector(".btn-submit");
+
+      // 뒤로가기 핸들러
+      backBtn.addEventListener("click", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const from = urlParams.get("from");
+        if (from === "onboarding") {
+          window.location.href = "notisuggest.html";
+        } else {
+          window.location.href = "notisetting.html";
+        }
+      });
+
+      // 피커 데이터 설정
+      const ampms = ["오전", "오후"];
+      const hours = Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, "0"));
+      const minutes = ["00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"];
+
+      // 선택 값 상태 관리
+      let selectedVal = {
+        ampm: "오전",
+        hour: "09",
+        minute: "00"
+      };
+
+      // 스토리지에 기저장된 시간 정보 분석하여 디폴트 바인딩
+      const savedTime = localStorage.getItem("noti_time") || "오전 (09:00 AM)";
+      // 포맷 파싱 예: "오후 (08:30 PM)"
+      try {
+        if (savedTime.includes("오후")) {
+          selectedVal.ampm = "오후";
+        }
+        const timeMatch = savedTime.match(/\d{2}:\d{2}/);
+        if (timeMatch) {
+          const [h, m] = timeMatch[0].split(":");
+          selectedVal.hour = h;
+          // 가장 가까운 5분 단위 설정
+          const mInt = parseInt(m);
+          const roundedMin = String(Math.round(mInt / 5) * 5).padStart(2, "0");
+          selectedVal.minute = minutes.includes(roundedMin) ? roundedMin : "00";
+        }
+      } catch (e) {
+        console.warn("저장된 시간 파싱 오류, 기본값 적용");
+      }
+
+      // 휠 컴포넌트 초기화 함수
+      function initWheel(columnId, items, initialValue, onChange) {
+        const column = document.getElementById(columnId);
+        column.innerHTML = "";
+
+        // 상단 스페이서
+        const topSpacer = document.createElement("div");
+        topSpacer.className = "wheel-space-holder";
+        column.appendChild(topSpacer);
+
+        const elList = [];
+        items.forEach((item, idx) => {
+          const el = document.createElement("div");
+          el.className = "wheel-item";
+          el.textContent = item;
+          el.dataset.value = item;
+          column.appendChild(el);
+          elList.push(el);
+        });
+
+        // 하단 스페이서
+        const bottomSpacer = document.createElement("div");
+        bottomSpacer.className = "wheel-space-holder";
+        column.appendChild(bottomSpacer);
+
+        // 기본 활성화 인덱스 계산
+        const initialIdx = items.indexOf(initialValue) !== -1 ? items.indexOf(initialValue) : 0;
+        let currentSelectedIdx = initialIdx;
+
+        // 스크롤 감지 및 스냅 적용
+        let scrollTimeout;
+        column.addEventListener("scroll", () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            const scrollTop = column.scrollTop;
+            const itemHeight = 40;
+            const selectedIdx = Math.round(scrollTop / itemHeight);
+
+            if (selectedIdx >= 0 && selectedIdx < items.length) {
+              if (selectedIdx !== currentSelectedIdx) {
+                // 스타일 갱신
+                elList.forEach((el, idx) => {
+                  if (idx === selectedIdx) {
+                    el.classList.add("selected");
+                  } else {
+                    el.classList.remove("selected");
+                  }
+                });
+                currentSelectedIdx = selectedIdx;
+                onChange(items[selectedIdx]);
+              }
+            }
+          }, 50);
+        });
+
+        // 초기 스크롤 세팅
+        setTimeout(() => {
+          column.scrollTop = initialIdx * 40;
+          elList[initialIdx].classList.add("selected");
+        }, 100);
+      }
+
+      // 3개 열 각각 휠 바인딩
+      initWheel("wheel-ampm", ampms, selectedVal.ampm, (val) => {
+        selectedVal.ampm = val;
+      });
+
+      initWheel("wheel-hour", hours, selectedVal.hour, (val) => {
+        selectedVal.hour = val;
+      });
+
+      initWheel("wheel-minute", minutes, selectedVal.minute, (val) => {
+        selectedVal.minute = val;
+      });
+
+      // 설정 완료 클릭 시 로컬 스토리지 저장 후 뒤로가기
+      submitBtn.addEventListener("click", () => {
+        // 저장 포맷: "오전 (09:00 AM)" 혹은 "오후 (08:30 PM)"
+        const englishAmPm = selectedVal.ampm === "오전" ? "AM" : "PM";
+        const timeString = `${selectedVal.ampm} (${selectedVal.hour}:${selectedVal.minute} ${englishAmPm})`;
+        
+        localStorage.setItem("noti_time", timeString);
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const from = urlParams.get("from");
+        if (from === "onboarding") {
+          window.location.href = `noticonfirm.html?time=${encodeURIComponent(timeString)}`;
+        } else {
+          window.location.href = "notisetting.html";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
